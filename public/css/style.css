@@ -1,0 +1,110 @@
+
+/* 
+***********************************************************
+General Setting
+***********************************************************
+*/
+
+*{
+    padding: 0px;
+    margin: 0x;
+    box-sizing: border-box;
+    font-family: 'Noto Serif', serif;;
+}
+
+/*  
+***********************************************************
+DISPLAYING FLEX FOR ALL CONTAINERS
+***********************************************************
+*/
+
+
+
+/* 
+***********************************************************
+Nav Bar Setting
+***********************************************************
+*/
+
+.navbar {
+    background-color: #093d2a;
+ 
+}
+
+.navbar ul li a{
+    color: white;
+    font-size: 25px;
+}
+.navbar ul li a:hover{
+    color: cornflowerblue;
+}
+
+.navbar-nav{
+    width: 50%;
+    margin: auto;
+}
+
+.internetButton{
+    background-color: #fff;
+}
+
+/* 
+***********************************************************
+Carousel Setting
+***********************************************************
+*/
+.carousel-item{
+    position: relative;
+    margin-top: 75px;
+}
+
+.carousel-item > img{
+    height: 700px;
+    
+   
+}
+
+.carousel-item > img + section{
+    position: absolute;
+    left: 35%;
+    top : 40%;  
+    padding: 30px 20px;
+    color: #fff;
+    text-align: center;
+    font-size: 30px;
+    width: 50%;
+    
+}
+
+.heroText{
+    font-size: 35px;
+    font-weight: bold;
+    color: #20d492;
+}
+
+.heroText::first-letter{
+    color: #fff;
+}
+
+.contactButton{
+    position: absolute;
+    left: 50%;
+    bottom : 5%;
+}
+
+
+
+/* 
+***********************************************************
+Services Setting 
+***********************************************************
+*/
+
+.services{
+    margin-top: 100px;
+}
+
+.section-title{
+    margin: auto;
+    width: 50%;
+}
