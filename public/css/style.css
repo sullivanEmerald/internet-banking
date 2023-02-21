@@ -18,6 +18,13 @@ DISPLAYING FLEX FOR ALL CONTAINERS
 ***********************************************************
 */
 
+.serviceFlex{
+    display: flex;
+    justify-content: space-evenly;
+    flex-basis: 30%;
+    gap: 30px;
+   
+}
 
 
 /* 
@@ -101,10 +108,18 @@ Services Setting
 */
 
 .services{
-    margin-top: 100px;
+    margin-top: 80px;
+    text-align: center;
 }
 
-.section-title{
-    margin: auto;
-    width: 50%;
+.serviceFlex section{
+    background-color: rgb(137, 187, 207);
+    text-align: center;
+    border-radius: 10px;
+    width: 33.33%;
+}
+
+.serviceFlex section > img{
+    border-radius: 10px;
+    width: 100%;
 }
