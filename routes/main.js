@@ -7,6 +7,7 @@ const mainController = require('../controllers/main')
 
 // Applying Crud operation on the main routes 
 router.get('/', mainController.getIndex)
+router.get('/invest', mainController.getIvest)
 
 
 module.exports = router

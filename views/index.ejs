@@ -1,60 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Orbitron:wght@500&family=Oswald:wght@300&family=Roboto&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Orbitron:wght@500&family=Oswald:wght@300&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <link rel="stylesheet" href="/css/style.css">
-    <title> <%= title %></title>
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm fixed-top">
-            <div class="container-fluid navflex">
-              <img class="navbar-brand" href="/" src="/images/logo.PNG">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Investing</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Loan</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Insurance</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Saving</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                  </li>
-                </ul>
-                <a href="" class="btn btn-outline-info internetButton">Internet Banking</a>
-              </div>
-              
-              
-            </div>
-          </nav>
-    </header>
+    <%- include('./partials/nav.ejs') %>
+
 
     <!-- 
       ************************************************************************************************
@@ -146,80 +92,12 @@
 
       <!-- INSURANCE SECTION -->
 
-      <section class="container insuranceSection">
-        <span>Our Insurance</span>
-        <h2>Types of Insurance we Offer</h2>
-        <p>You can't always predict what's going to happen in the future. But you can protect your family and
-           your belongings should something go wrong. Insurance can give you peace of
-          mind that whatever happens you won't be left out of pocket.
-        </p>
-        <section class="subInsurance">
-          <section>
-            <div>
-              <i class="fa-regular fa-handshake fontIcon"></i>
-            </div>
-            <h3>Pet Insurance</h3>
-            <p>Protect your cat or dog with a great value Pet Insurance policy from M & S Bank</p>
-            <a href="insurance.html">
-            <i class="flaticon-right"></i>
-            </a>
-          </section>
-          <section>
-            <div>
-              <i class="fa-solid fa-house-tsunami fontIcon"></i>
-            </div>
-            <span class="flaticon-insurance"></span>
-            <h3>Home Insurance</h3>
-            <p>Choose between different levels of cover for your home and contents.</p>
-            <a href="insurance.html">
-            </a>
-          </section>
-          <section>
-           <div>
-            <i class="fa-solid fa-people-carry-box fontIcon"></i>
-           </div>
-            <h3>Business Insurance</h3>
-            <p>Policies designed to offer dedicated protection for your type of business.</p>
-            <a href="insurance.html">
-            </a>
-          </section>
-          <section>
-            <div>
-              <i class="fa-solid fa-graduation-cap fontIcon"></i>
-            </div>
-            <h3>Student Insurance</h3>
-            <p>Let us protect the things you love while you enjoy life at university worry-free. Cover starts from just £25 a year.</p>
-            <a href="insurance.html">
-            </a>
-          </section>
-          <section>
-            <div>
-              <i class="fa-solid fa-bed-pulse fontIcon"></i>
-            </div>
-            <h3>Health Insurance</h3>
-            <p>At Finance Reliance we are always there for you, with our team on board</p>
-            <a href="insurance.html">
-            </a>
-          </section>
-          <section>
-            <div>
-              <i class="fa-solid fa-globe fontIcon"></i>
-            </div>
-            <h3>Life Insurance</h3>
-            <p>Finance Reliance Bank Life Insurance helps ensure your loved ones are financially protected if the unexpected happens.</p>
-            <a href="insurance.html">
-            <i class="flaticon-right"></i>
-            </a>
-          </section>
-    
-        </section>
-            
-      </section>
+      
 
       <!-- DISPLAY SECTION BEFORE FOOTER -->
 
-        <section class=" container futureSection">
-            <img src="/images/future2.jpg" alt="" id="FutureImg">
+        <section class="container futureSection">
+            <img src="/images/future2.jpg" alt="" class="FutureImg">
             <div>
               <h2>Invest in your future</h2>
               <p> Wherever you are today, we could help you create a better tomorrow</p>
@@ -227,20 +105,6 @@
             </div>
         </section>
         
+        <%- include('./partials/insurance.ejs') %>
   
-
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,160L48,160C96,160,192,160,288,186.7C384,213,480,267,576,282.7C672,299,768,277,864,245.3C960,213,1056,171,1152,160C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
-
-
-    
-
-
-
-
-    
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</body>
-</html>
+        <%- include('./partials/footer.ejs') %>

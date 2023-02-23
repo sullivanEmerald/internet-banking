@@ -18,7 +18,7 @@ DISPLAYING FLEX FOR ALL CONTAINERS
 ***********************************************************
 */
 
-.serviceFlex, .aboutUsFlex, .subInsurance{
+.serviceFlex, .aboutUsFlex, .subInsurance, footer > section{
     display: flex;
     justify-content: space-evenly;
     flex-basis: 30%;
@@ -246,6 +246,7 @@ Insurance Section
 .insuranceSection > span + h2{
     font-weight: bold;
     margin: 20px 0px;
+    color: #093d2a;
 }
 
 .insuranceSection > span + h2 + p{
@@ -255,6 +256,14 @@ Insurance Section
     font-size: 17px;
     margin-bottom: 30px;
 }
+
+/* 
+***********************************************************
+    Futuure Section
+***********************************************************
+*/
+
+
 
 .futureSection{
     background-color: rgb(179, 212, 225);
@@ -288,3 +297,89 @@ Insurance Section
 .futureSection > img + div > h2{
     font-weight: bold;
 }
+
+/* 
+***********************************************************
+FOOTER SECTION
+***********************************************************
+*/
+
+footer{
+    margin-top: 70px;
+    background-color: #093d2a;
+    padding: 70px;
+    color: #fff;
+}
+
+
+footer > section > section > h3, .subSection > h2{
+    color: #00af6f;
+    font-size: 30px;
+    
+}
+
+footer > section > section{
+    flex-basis: 20%;
+}
+
+footer {
+    font-size: 20px;
+}
+
+
+/* 
+***********************************************************
+INVEST PAGE
+***********************************************************
+*/
+
+#investHero{
+    height: 420px;
+}
+
+.investHolder{
+    margin-top: 160px;
+}
+
+
+#investSection > span{
+    font-weight: bold;
+    font-size: 17px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+#investSection > span + h2{
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#investSection > span + h2 + p{
+    color: gray;
+    text-align: justify;
+    font-size: 17px;
+    letter-spacing: 2px;
+    line-height: 2.0;
+}
+
+#investSection{
+    width: 50%;
+    margin-right: 30px;
+}
+
+#secondColumn{
+    width: 40%;
+}
+
+#secondColumn > img{
+    border-radius: 10px;
+    margin-top: 120px;
+}
+
+#investFont{
+    color: #093d2a;
+}
+
+/* SECOND SECTION */
+
