@@ -13,6 +13,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Orbitron:wght@500&family=Oswald:wght@300&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <link rel="stylesheet" href="/css/style.css">
     <title> <%= title %></title>
@@ -72,18 +74,17 @@
     <!-- The slideshow/carousel -->
     <div class="carousel-inner">
 
-      <div class="carousel-item active">
-        <img src="/images/online3.jpg" alt="Los Angeles" class="d-block w-100">
+      <div class="carousel-item active laptopCarousel">
+        <!-- <img src="/images/online3.jpg" alt="Los Angeles" class="d-block w-100"> -->
         <section>
             <p class="heroText">Life service from Finance Reliance</p>
             <h1 class="heroText">Open a bank with us today for your family</h1>
             <p  class="heroText">We support family loans and insurance, making it possible for you to have a healthy family. Get started with us today.</p>
         </section>
-        <a href="" class="btn btn-primary contactButton btn-lg">Contact Us</a>
+        <a href="" class="btn btn-outline-info contactButton btn-lg">Contact Us</a>
       </div>
 
-      <div class="carousel-item">
-        <img src="/images/online6.jpg" alt="Chicago" class="d-block w-100">
+      <div class="carousel-item familyCarousel">
         <section>
             <span>Helping you have fun</span>
             <h1>Get a holiday savings from us today</h1>
@@ -119,232 +120,126 @@
   </section>
 
 
-    <section class="about-area about-area-three ptb-100">
-      <div class="container">
-      <div class="row align-items-center">
-      <div class="col-lg-6 col-md-6">
-      <div class="about-content">
-      <span>About Us</span>
-      <h2>We are Committed to Help Our Customers Reach Their Goals</h2>
-      <p>Finance Reliance Bank is one of the world’s largest banking and financial services organisations. We serve more than 40 million customers through our global businesses: Wealth and Personal Banking, Commercial Banking, and Global Banking and Markets.
-      Our network covers 64 countries and territories in Europe, Asia, the Middle East and Africa, North America and Latin America.</p>
-      <p>We aim to be where the growth is, connecting customers to opportunities, enabling businesses to thrive and economies to prosper,
-      and ultimately helping people to fulfil their hopes and realise their ambitions.</p>
-      <a href="about.html" class="default-btn">
-      Read More
-      </a>
-      </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-      <div class="about-img-3 wow fadeInRight" data-wow-delay=".2s">
-      <img src="files\theme\assets\img\about-img-5.jpg" alt="Image">
-      </div>
-      </div>
-      </div>
+  <!-- ABOUT US SECTION -->
+
+    <section class="aboutUs">
+        <div class="container aboutUsFlex">
+          <div>
+            <span>About Us</span>
+            <h2>We are Committed to Help Our Customers Reach Their Goals</h2>
+            <p>Finance Reliance Bank is one of the world’s largest banking and financial services organisations. We serve more than 40 million customers through our global businesses: Wealth and Personal Banking, Commercial Banking, and Global Banking and Markets.
+            Our network covers 64 countries and territories in Europe, Asia, the Middle East and Africa, North America and Latin America.</p>
+            <p>We aim to be where the growth is, connecting customers to opportunities, enabling businesses to thrive and economies to prosper,
+            and ultimately helping people to fulfil their hopes and realise their ambitions.</p>
+            <a href="about.html" class="btn btn-outline-info btn-lg">
+            Read More
+            </a>
+        </div>
+        <div class="aboutUsImage">
+          <img src="/images/online7.jpg" alt="Image">
+        </div>
+        
+     
       </div>
       </section>
 
-      <section class="services-area-three pt-100 pb-70">
-        <div class="container">
-        <div class="section-title">
+
+      <!-- INSURANCE SECTION -->
+
+      <section class="container insuranceSection">
         <span>Our Insurance</span>
         <h2>Types of Insurance we Offer</h2>
         <p>You can't always predict what's going to happen in the future. But you can protect your family and
-        your belongings should something go wrong. Insurance can give you peace of
-        mind that whatever happens you won't be left out of pocket.</p>
-        </div>
-        <div class="row">
-        <div class="col-lg-4">
-        <div class="single-choose wow fadeInLeft" data-wow-delay=".3s">
-        <span class="flaticon-hand"></span>
-        <h3>Pet Insurance</h3>
-        <p>Protect your cat or dog with a great value Pet Insurance policy from M & S Bank</p>
-        <a href="insurance.html">
-        <i class="flaticon-right"></i>
-        </a>
-        </div>
-        </div>
-        <div class="col-lg-4">
-        <div class="single-choose wow fadeInLeft" data-wow-delay=".2s">
-        <span class="flaticon-insurance"></span>
-        <h3>Home Insurance</h3>
-        <p>Choose between different levels of cover for your home and contents.</p>
-        <a href="insurance.html">
-        <i class="flaticon-right"></i>
-        </a>
-        </div>
-        </div>
-        <div class="col-lg-4">
-        <div class="single-choose wow fadeInLeft" data-wow-delay=".1s">
-        <span class="flaticon-salesman"></span>
-        <h3>Business Insurance</h3>
-        <p>Policies designed to offer dedicated protection for your type of business.</p>
-        <a href="insurance.html">
-        <i class="flaticon-right"></i>
-        </a>
-        </div>
-        </div>
-        <div class="col-lg-4">
-        <div class="single-choose wow fadeInRight" data-wow-delay=".1s">
-        <span class="flaticon-insurance-1"></span>
-        <h3>Student Insurance</h3>
-        <p>Let us protect the things you love while you enjoy life at university worry-free. Cover starts from just £25 a year.</p>
-        <a href="insurance.html">
-        <i class="flaticon-right"></i>
-        </a>
-        </div>
-        </div>
-        <div class="col-lg-4">
-        <div class="single-choose wow fadeInRight" data-wow-delay=".2s">
-        <span class="flaticon-life-insurance"></span>
-        <h3>Health Insurance</h3>
-        <p>At Finance Reliance we are always there for you, with our team on board</p>
-        <a href="insurance.html">
-        <i class="flaticon-right"></i>
-        </a>
-        </div>
-        </div>
-        <div class="col-lg-4">
-        <div class="single-choose wow fadeInRight" data-wow-delay=".3s">
-        <span class="flaticon-travel-insurance"></span>
-        <h3>Life Insurance</h3>
-        <p>Finance Reliance Bank Life Insurance helps ensure your loved ones are financially protected if the unexpected happens.</p>
-        <a href="insurance.html">
-        <i class="flaticon-right"></i>
-        </a>
-        </div>
-        </div>
-        </div>
-        </div>
+           your belongings should something go wrong. Insurance can give you peace of
+          mind that whatever happens you won't be left out of pocket.
+        </p>
+        <section class="subInsurance">
+          <section>
+            <div>
+              <i class="fa-regular fa-handshake fontIcon"></i>
+            </div>
+            <h3>Pet Insurance</h3>
+            <p>Protect your cat or dog with a great value Pet Insurance policy from M & S Bank</p>
+            <a href="insurance.html">
+            <i class="flaticon-right"></i>
+            </a>
+          </section>
+          <section>
+            <div>
+              <i class="fa-solid fa-house-tsunami fontIcon"></i>
+            </div>
+            <span class="flaticon-insurance"></span>
+            <h3>Home Insurance</h3>
+            <p>Choose between different levels of cover for your home and contents.</p>
+            <a href="insurance.html">
+            </a>
+          </section>
+          <section>
+           <div>
+            <i class="fa-solid fa-people-carry-box fontIcon"></i>
+           </div>
+            <h3>Business Insurance</h3>
+            <p>Policies designed to offer dedicated protection for your type of business.</p>
+            <a href="insurance.html">
+            </a>
+          </section>
+          <section>
+            <div>
+              <i class="fa-solid fa-graduation-cap fontIcon"></i>
+            </div>
+            <h3>Student Insurance</h3>
+            <p>Let us protect the things you love while you enjoy life at university worry-free. Cover starts from just £25 a year.</p>
+            <a href="insurance.html">
+            </a>
+          </section>
+          <section>
+            <div>
+              <i class="fa-solid fa-bed-pulse fontIcon"></i>
+            </div>
+            <h3>Health Insurance</h3>
+            <p>At Finance Reliance we are always there for you, with our team on board</p>
+            <a href="insurance.html">
+            </a>
+          </section>
+          <section>
+            <div>
+              <i class="fa-solid fa-globe fontIcon"></i>
+            </div>
+            <h3>Life Insurance</h3>
+            <p>Finance Reliance Bank Life Insurance helps ensure your loved ones are financially protected if the unexpected happens.</p>
+            <a href="insurance.html">
+            <i class="flaticon-right"></i>
+            </a>
+          </section>
+    
         </section>
+            
+      </section>
 
+      <!-- DISPLAY SECTION BEFORE FOOTER -->
 
+        <section class=" container futureSection">
+            <img src="/images/future2.jpg" alt="" id="FutureImg">
+            <div>
+              <h2>Invest in your future</h2>
+              <p> Wherever you are today, we could help you create a better tomorrow</p>
+              </p>
+            </div>
+        </section>
         
-  <section class="business-contact-area pt-4 pb-4">
-    <div class="container">
-    <div class="row align-items-center">
-    <div class="col-lg-6 p-0">
-    <div class="business-img">
-    <img src="files\theme\assets\img\business-img-2.jpg" alt="Image">
-    </div>
-    </div>
-    <div class="col-lg-6 p-0">
-    <div class="business-content">
-    <h3>Invest in your future</h3><br>
-    <p>Wherever you are today, we could help you create a better tomorrow</p>
-    </div>
-    </div>
-    </div>
-    </div>
-    </section>
+  
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,160L48,160C96,160,192,160,288,186.7C384,213,480,267,576,282.7C672,299,768,277,864,245.3C960,213,1056,171,1152,160C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
 
 
-    <footer class="footer-top-area pt-100 pb-70">
-      <div class="container">
-      <div class="row">
-      <div class="col-lg-3 col-md-6">
-      <div class="single-widget">
-      <a href="index.html">
-      <img src="files\theme\assets\img\home-one-logo.png" alt="Image">
-      </a>
-      <p>Finance Reliance Investment Bank was born from one simple idea – a local bank serving international needs. In March 1865,
-      Finance Reliance Investment Bank opened its doors...</p>
-      <div class="social-area">
-      <ul>
-      <li>
-      <a href="#"><i class="bx bxl-facebook"></i></a>
-      </li>
-      <li>
-      <a href="#"><i class="bx bxl-twitter"></i></a>
-      </li>
-      <li>
-      <a href="#"><i class="bx bxl-linkedin"></i></a>
-      </li>
-      <li>
-      <a href="#"><i class="bx bxl-youtube"></i></a>
-      </li>
-      <li>
-      <a href="#"><i class="bx bxl-instagram"></i></a>
-      </li>
-      </ul>
-      </div>
-      </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-      <div class="single-widget contact">
-      <h3>Contact Us</h3>
-      <ul>
-      <li class="pl-0">
-      <a href="#">
-      <i class="flaticon-call"></i>
-      <span>Hotline:</span>
-      Phone:
-      +10  630 704</a>
-      </li>
-      <li class="pl-0">
-      <a href="#">
-      <i class="flaticon-email"></i>
-      <span>Email:</span>
-      <!--<span class="__cf_email__" data-cfemail="2a43444c456a49435e43504f4459494b5a435e4b464f4e4d4f04494547">[email&#160;protected]</span> </a>-->
-      <span class="__cf_email__" >info@royalunion.icu</span> </a>
-      </li>
-      <li>
-      <i class="flaticon-maps-and-flags"></i>
-      <span>Address:</span>
-      PO Box: Ermyn Way, Leatherhead KT24 6UX United Kingdom.</ul>
-      </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-      <div class="single-widget">
-      <h3> Company</h3>
-      <ul>
-      <li>
-      <a href="about.html">
-      About us
-      </a>
-      </li>
-      <li>
-      <a href="support.php">
-      Contact
-      </a>
-      </li>
-      <li>
-      <a href="privacy.html">
-      Privacy Policy
-      </a>
-      </li>
-      <li>
-      <a href="term.html">
-      Terms &amp; Conditions
-      </a>
-      </li>
-      </ul>
-      </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-      <div class="single-widget">
-      <h3>Newsletter</h3>
-      <p class="newsletter-p">Subscribe to our newsletter to get latest product and services </p>
-      <div class="subscribe-wrap">
-      <form class="newsletter-form" data-toggle="validator">
-      <input type="email" class="form-control" placeholder="Enter Your Email" name="EMAIL" required="" autocomplete="off">
-      <button class="default-btn" type="submit">
-      Subscribe
-      </button>
-      <div id="validator-newsletter" class="form-result"></div>
-      </form>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
-      </footer>
+    
 
 
 
 
     
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>

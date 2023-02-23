@@ -18,11 +18,12 @@ DISPLAYING FLEX FOR ALL CONTAINERS
 ***********************************************************
 */
 
-.serviceFlex{
+.serviceFlex, .aboutUsFlex, .subInsurance{
     display: flex;
     justify-content: space-evenly;
     flex-basis: 30%;
     gap: 30px;
+    flex-wrap: nowrap;
    
 }
 
@@ -62,43 +63,55 @@ Carousel Setting
 */
 .carousel-item{
     position: relative;
-    margin-top: 75px;
+        margin-top: 75px;
 }
 
-.carousel-item > img{
-    height: 700px;
-    
-   
-}
 
-.carousel-item > img + section{
+.carousel-item > section{
     position: absolute;
-    left: 35%;
-    top : 40%;  
+    left: 25%;
+    top : 20%;  
     padding: 30px 20px;
     color: #fff;
     text-align: center;
     font-size: 30px;
     width: 50%;
     
-}
-
+}   
 .heroText{
     font-size: 35px;
     font-weight: bold;
-    color: #20d492;
-}
-
-.heroText::first-letter{
-    color: #fff;
+    color:azure;
+    /* color: #20d492; */
 }
 
 .contactButton{
     position: absolute;
-    left: 50%;
-    bottom : 5%;
+    left: 45%;
+    bottom : 10%;
+    padding: 15px;
+    text-align: center;
+    width: 12%;
+    color: #fff;
+    font-size: 30px;
 }
 
+.laptopCarousel {
+    background: linear-gradient(rgba(40, 58, 90, 0.6), rgba(40, 58, 90, 0.6)), url("/images/online3.jpg") fixed center center;
+    background-size: cover;
+    /* padding: 120px 0; */
+    width: 100%;
+    height: 670px;
+    
+}
+
+.familyCarousel {
+    background: linear-gradient(rgba(40, 58, 90, 0.6), rgba(40, 58, 90, 0.6)), url("/images/vacation.jpg") fixed center center;
+    background-size: cover;
+    /* padding: 120px 0; */
+    width: 100%;
+    height: 670px;  
+}
 
 
 /* 
@@ -111,9 +124,19 @@ Services Setting
     margin-top: 80px;
     text-align: center;
 }
+.services > h2{
+    font-size: 50px;
+}
+
+.services > h2 + p{
+    color: gray;
+    font-size: 18px;
+    display: inline-block;
+    margin-bottom: 30px;
+}
 
 .serviceFlex section{
-    background-color: rgb(137, 187, 207);
+    background-color: rgb(179, 212, 225);
     text-align: center;
     border-radius: 10px;
     width: 33.33%;
@@ -122,4 +145,146 @@ Services Setting
 .serviceFlex section > img{
     border-radius: 10px;
     width: 100%;
+    height: 300px;
+}
+
+.serviceFlex section > img + h3{
+    font-size: 30px;
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+.serviceFlex section > img + h3 + p{
+    font-size: 20px;
+    padding: 10px;
+    color: rgb(42, 37, 37);
+}
+
+
+/* 
+***********************************************************
+About Us Setting 
+***********************************************************
+*/
+.aboutUs{
+    margin-top: 100px;
+    background-color: rgb(241, 239, 239);
+    padding: 100px 40px;
+}
+
+.aboutUsImage{
+    background-color: rgb(179, 212, 225);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.aboutUsImage img{
+    border-radius: 10px;
+}
+
+.aboutUsFlex > div > span{
+    font-weight: bold;
+    font-size: 20px;
+    display: inline-block;
+    border-left: 3px solid red;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.aboutUsFlex > div > span + h2{
+    font-size: 40px;
+    font-weight: bold;    
+}
+
+
+/* 
+***********************************************************
+Insurance Section 
+***********************************************************
+*/
+
+.insuranceSection{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.subInsurance{
+    flex-wrap: wrap;
+}
+
+.subInsurance > section{
+    width:30%;
+    background-color: #093d2a;
+    color: #fff;
+    padding: 50px;
+    border-radius: 5px;
+}
+
+.subInsurance > section > div {
+    width:80px;
+    height: 80px;
+    border-radius: 100%;
+    background-color: red;
+    margin: auto;
+    margin-bottom: 30px;
+    padding:15px;
+    background-color: #fff;
+}
+
+ .fontIcon {
+    font-size: 45px;
+    color: black;
+}
+
+.insuranceSection > span{
+    font-weight: bold;
+    font-size: 20px;
+    display: inline-block;
+    margin-top: 30px;
+}
+
+.insuranceSection > span + h2{
+    font-weight: bold;
+    margin: 20px 0px;
+}
+
+.insuranceSection > span + h2 + p{
+    display: inline-block;
+    width: 60%;
+    color: gray;
+    font-size: 17px;
+    margin-bottom: 30px;
+}
+
+.futureSection{
+    background-color: rgb(179, 212, 225);
+    padding: 0;
+    margin-top: 100px;
+    border-radius: 10px;
+    height: 320px;
+    width: 75%;
+    position: relative;
+}
+
+.futureSection > img{
+    border-radius: 30px;
+    width:50%;
+}
+
+.futureSection > img + div{
+    width: 50%;
+    position:absolute;
+    right: 10px;
+    bottom: 140px;
+    padding: 30px;
+    
+}
+
+.futureSection > img + div p{
+    text-align: right;
+    font-weight: bold;
+}
+
+.futureSection > img + div > h2{
+    font-weight: bold;
 }
