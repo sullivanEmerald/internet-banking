@@ -13,5 +13,13 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
+    },
+
+    getLoan :  async (req, res) => {
+        try {
+            res.render('loan.ejs', { title : "Loan"})
+        } catch (error) {
+            console.error(error)
+        }
     }
 }

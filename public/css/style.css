@@ -335,10 +335,12 @@ INVEST PAGE
 
 #investHero{
     height: 420px;
+    transform: translate(0%, 20%);
+
 }
 
 .investHolder{
-    margin-top: 160px;
+    margin-top: 180px;
 }
 
 
@@ -383,6 +385,20 @@ INVEST PAGE
 
 /* SECOND ie HELP SECTION */
 
+.helpSection{
+    margin-top: 150px;
+    text-align: center;
+    
+}
+.helpSection > h2{
+    font-weight: bold;
+    font-size: 50px;
+}
+.helpSection > h2 + p { 
+    display: inline-block;
+    width: 60%;
+    color: gray;
+}
 
 .helpSection > section{
     display: flex;
@@ -436,4 +452,85 @@ INVEST PAGE
     border-radius: 50%;
     background-color: #093d2a;
     padding: 15px;
+    margin:auto;
+    transform: translate(0%, -25%);
+    
+}
+
+#helpfont{
+    color: #fff;
+    font-size: 40px;
+}
+
+
+/* 
+***********************************************************
+Loan page
+***********************************************************
+*/
+
+.loanSection{
+    display: flex;
+    justify-content: space-between; 
+    width: 90%; 
+    margin: 200px auto;
+
+}
+
+.loanSection > * {
+    flex-basis: 30%;
+}
+
+.loanSection > div{
+    border: 5px solid #093d2a;
+    flex-basis: 45%;
+    height: 510px;
+    border-radius: 10px;
+   
+}
+
+.loanSection > div + section{
+    flex-basis: 50%;
+    line-height: 2.0;
+    color: gray;
+}
+
+.loanSection > div > img{
+    transform: translate(6%, -10%);
+    width: 100%;
+    border-radius: 10px;
+}
+
+#loadImage{
+    width: 45%;
+}
+
+#loadSection{
+    margin-top: 120px;
+}
+
+
+.loanSection > div + section > section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.loanSection > div + section > section > section{
+    flex-basis: 50%;
+}
+
+.loanSection > div + section > span + h2{
+    font-weight: bold;
+    margin: 10px 0;
+    color: black;
+}
+
+.loanSection > div + section > span + h2 + p{
+    line-height: 2.0;
+    
+}
+
+.loanSection > div + section > section > section > span{
+    font-weight: bold;
+    color: black;
 }
