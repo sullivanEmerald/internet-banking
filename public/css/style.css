@@ -486,6 +486,7 @@ Loan page
     flex-basis: 45%;
     height: 510px;
     border-radius: 10px;
+    margin-top: 170px;
    
 }
 
@@ -493,6 +494,7 @@ Loan page
     flex-basis: 50%;
     line-height: 2.0;
     color: gray;
+    font-size: 18px;
 }
 
 .loanSection > div > img{
@@ -503,6 +505,10 @@ Loan page
 
 #loadImage{
     width: 45%;
+}
+
+#loadImage2{
+    height: 320px;
 }
 
 #loadSection{
@@ -527,6 +533,7 @@ Loan page
 
 .loanSection > div + section > span + h2 + p{
     line-height: 2.0;
+    text-align: justify;
     
 }
 

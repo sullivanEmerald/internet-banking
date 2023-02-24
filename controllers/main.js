@@ -21,5 +21,14 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
+    },
+
+    getInsurance : async (req, res) => {
+        try {
+            res.render('insurance.ejs', { title : "Insurance Policy"})
+        } catch (error) {
+            console.error(error)
+        }
     }
+
 }
