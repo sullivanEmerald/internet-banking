@@ -381,5 +381,59 @@ INVEST PAGE
     color: #093d2a;
 }
 
-/* SECOND SECTION */
+/* SECOND ie HELP SECTION */
 
+
+.helpSection > section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.helpSection > section > section{
+    width: 30%;
+    background-color: #fff;
+    box-shadow:  3px 5px 6px #ccc;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.helpSection > section > section > img{
+    width: 100%;
+}
+
+.helpSection > section > section > img + div + h2{
+    margin: 15px 0;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.helpSection > section > section > img + div +  h2 + p {
+    padding: 20px;
+    color: gray;
+}
+
+.helpSection > section > section > img + div +  h2 + p + div {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #093d2a;
+    color: #fff;
+    padding: 10px;
+    margin: 15px auto;
+}
+
+
+.fa-angles-right {
+    font-size: 20px;
+
+}
+
+.helpSection > section > section > img + div{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #093d2a;
+    padding: 15px;
+}
