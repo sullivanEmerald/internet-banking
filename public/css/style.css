@@ -18,7 +18,7 @@ DISPLAYING FLEX FOR ALL CONTAINERS
 ***********************************************************
 */
 
-.serviceFlex, .aboutUsFlex, .subInsurance, footer > section{
+.serviceFlex, .aboutUsFlex, .subInsurance, footer > section, .visionSection > section + section > section, .visionSection{
     display: flex;
     justify-content: space-evenly;
     flex-basis: 30%;
@@ -469,7 +469,7 @@ Loan page
 ***********************************************************
 */
 
-.loanSection{
+.loanSection, .save, .saveSection{
     display: flex;
     justify-content: space-between; 
     width: 90%; 
@@ -540,4 +540,110 @@ Loan page
 .loanSection > div + section > section > section > span{
     font-weight: bold;
     color: black;
+}
+
+
+
+/* 
+***********************************************************
+SAVE PAGE
+***********************************************************
+*/
+.save{
+    display: flex;
+    justify-content: space-around; 
+    width: 100%; 
+    margin: 100px auto;
+    gap: 20px;
+  
+}
+
+.save > section{
+    border: 1px dotted #093d2a;
+    padding: 50px;
+    text-align: center;
+}
+
+.save > section:hover{
+    background-color: black;
+    color: #fff;
+    animation: fadeIn 3s;
+    transition: 2s;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+.saveIdea{
+    background-color: rgb(254, 254, 254);
+    padding: 30px;
+}
+
+.saveSection{
+    justify-content:space-between;
+    gap: 100px;
+}
+
+.saveSection > section{
+    flex-basis: 45%;
+}
+
+.saveSection > section h2{
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.saveSection > section p{
+    line-height: 2.0;
+}
+
+.saveSection > section + section{
+    margin-top: -80px;
+    flex-basis: 55%;
+}
+
+#saveHero{
+    margin-top: -30px;
+}
+
+
+/* vision section on save page */
+
+.visionSection{
+    margin-top: 120px;
+    padding: 20px;
+}
+
+.visionSection > section + section > section{
+    flex-wrap: wrap;
+    width: 70%;
+    justify-content: flex-start;
+}
+
+.visionSection > section{
+    flex-basis: 40%;
+    justify-content: space-around;
+}
+
+.visionSection > section + section > p{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.visionSection > section + section > p + h2{
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.visionSection > section + section > p + h2 + span{
+    line-height: 2.0;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.visionSection > section + section p{
+    font-weight: bold;
+    display: inline-block;
 }

@@ -29,6 +29,14 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
-    }
+    },
+
+    getSave : async (req, res) => {
+        try {
+            res.render('save.ejs', { title : "Save"})
+        } catch (error) {
+            console.error(error)
+        }
+    } 
 
 }
