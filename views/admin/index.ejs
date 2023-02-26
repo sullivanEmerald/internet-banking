@@ -1,0 +1,106 @@
+
+<%- include('../partials/admin/nav.ejs') %>
+
+<section class="accountForm">
+              
+    <form action="/admin/createProduct" enctype="multipart/form-data" method="POST">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="firstname" name="name">
+            <label for="Enter firstname">Name</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Middlename" name="middlename">
+            <label for="floatingInput">Enter Middlename</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Lastname" name="lastname">
+            <label for="floatingInput">Enter Lastname</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="date" class="form-control" id="floatingInput" placeholder="Date of Birth" name="date">
+            <label for="floatingInput">Date of birth</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" placeholder="Phone Number" name="phone">
+            <label for="floatingInput">Phone Number</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="email" name="email">
+            <label for="floatingInput">email</label>
+          </div>
+
+          <div class="mb-3">
+            <label for="imgUpload" class="form-label">Image</label>
+            <input type="file" class="form-control" id="imageUpload" name="file">
+          </div>
+
+          <div class="form-floating mb-3">
+            <strong>gender</strong>
+            <input type="radio"  id="floatingInput" placeholder="Phone Number" name="gender">Male
+            <input type="radio"  id="floatingInput" placeholder="Phone Number" name="gender">Female
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="occupation" name="occupation">
+            <label for="floatingInput">occupations</label>
+          </div>
+
+          <h2>ADDRESS</h2>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="address" name="address">
+            <label for="floatingInput">Address</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="nation" name="nationality">
+            <label for="floatingInput">nationality</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="state" name="state">
+            <label for="floatingInput">state</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="landmark" name="landmark">
+            <label for="floatingInput">landmark</label>
+          </div>
+
+          <h2>Next of Kin</h2>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Name" name="kinName">
+            <label for="Enter firstname">Name</label>
+          </div>
+         
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="relationship" name="relationship">
+            <label for="Enter firstname">relationship</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" placeholder="Phone Number" name="kinPhone">
+            <label for="floatingInput">Phone Number</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="address" name="kinaddress">
+            <label for="Enter firstname">Address</label>
+          </div>
+
+        <button type="submit" class="btn btn-outline-primary pull-right">Create Product</button>
+      </form>
+</section>
+</div>
+</main>
+
+</section>
+
+
+<%- include('../partials/admin/footer.ejs') %>
+

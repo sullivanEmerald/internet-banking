@@ -727,12 +727,24 @@ Contact Page
 
 #contactTextArea {
     flex-basis: 92%;
+    text-align: left;
+
+}
+
+#contactTextArea > textarea {
+    height: 150px;
+    text-align: left;
 }
 
 .contactFont{
     font-size: 25px;
     display: inline-block;
     margin-right: 10px;
+}
+
+
+.formButton{
+    margin: 20px auto;
 }
 
 

@@ -1,0 +1,21 @@
+/* 
+********************************************************************************
+CREATE ACCOUNT PAGE
+********************************************************************************
+*/
+
+
+.accountForm{
+    width: 50%;
+    margin: 150px auto;
+}
+
+.accountForm > form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.accountForm > form > div{
+    flex-basis: 30%;
+}
