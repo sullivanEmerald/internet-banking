@@ -37,6 +37,14 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
-    } 
+    },
+
+    gtContact : async (req, res) => {
+        try {
+            res.render('contact.ejs', { title : "Contact Us"})
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
 }

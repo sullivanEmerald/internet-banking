@@ -1,0 +1,74 @@
+<%- include('./partials/nav.ejs') %>
+
+<section class="container futureSection"  id="loadSection">
+    <img src="/images/contact.jpg" alt="" id="loadImage2">
+    <div>
+      <h2>Are you satisfied ? </h2>
+      <p> We want want to hear from you have a question or suggestion</p>
+      </p>
+    </div>
+</section>
+
+<section class="contactPage">
+    <section class="formSection"> 
+        <form action="/admin/createProduct" enctype="multipart/form-data" method="POST" class="contactForm">
+            <h2>Drop Us A Message For Any Query</h2>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Name of Product" name="name">
+                <label for="floatingInput">Your name</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="Description of Product" name="email">
+                <label for="floatingInput">Email</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="floatingInput" placeholder="Price of Producgt" name="number">
+                <label for="floatingInput">Phone Number</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Price of Producgt" name="subject">
+                <label for="floatingInput">Subject</label>
+              </div>
+
+              <div class="form-floating mb-3" id="contactTextArea">
+                <textarea rows="10" cols="50" class="form-control">
+
+                </textarea>
+              </div>
+
+            <button type="submit" class="btn btn-outline-info btn-lg">Submit</button>
+          </form>
+    </section>
+    <section>
+        <h2>Locations & Contacts</h2>
+        <section>
+            <h4>United Kingdom</h4>
+            <p>Ermyn Way, Leatherhead KT24 6UX United Kingdom United Kingdom</p>
+
+            <h4>Turkey</h4>
+            <p>Gündüzlü,17, 52850, Ulubey/ Ordu, Turkey </p>
+        </section>
+        <section>
+            <span>
+                <i class="fa-solid fa-phone-volume contactFont"></i> Our lines:
+            +10 630 704
+            </span>
+        </section>
+        <section>
+            <span>
+                <i class="fa-solid fa-envelope contactFont"></i> Email Us:
+                info@firstreliancecr.com
+            </span>
+        </section>
+    </section>
+</section>
+
+
+
+
+
+
+<%- include('./partials/footer.ejs') %>

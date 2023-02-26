@@ -18,7 +18,7 @@ DISPLAYING FLEX FOR ALL CONTAINERS
 ***********************************************************
 */
 
-.serviceFlex, .aboutUsFlex, .subInsurance, footer > section, .visionSection > section + section > section, .visionSection{
+.serviceFlex, .aboutUsFlex, .subInsurance, footer > section, .visionSection > section + section > section, .visionSection, .contactPage, .contactForm{
     display: flex;
     justify-content: space-evenly;
     flex-basis: 30%;
@@ -509,6 +509,8 @@ Loan page
 
 #loadImage2{
     height: 320px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 #loadSection{
@@ -549,6 +551,16 @@ Loan page
 SAVE PAGE
 ***********************************************************
 */
+
+.saveIntro {
+    width: 50%;
+    margin: 150px auto;
+    text-align: center;
+    font-size: 20px;
+    color: gray;
+    
+}
+
 .save{
     display: flex;
     justify-content: space-around; 
@@ -647,3 +659,80 @@ SAVE PAGE
     font-weight: bold;
     display: inline-block;
 }
+
+
+/* 
+***********************************************************
+Contact Page
+***********************************************************
+*/
+
+
+.contactPage{
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* margin-top: 120px; */
+    padding: 30px;
+    gap: 10px;
+    margin: 150px auto;
+}
+
+.contactPage > section{
+    flex-basis: 50%;
+}
+
+.formSection{
+    padding: 40px;
+    height: 600px;
+    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+}
+
+.formSection + section{
+    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+    padding: 50px;
+}
+
+.formSection + section section{
+    background-color: #093d2a;
+    color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.formSection + section span{
+    font-size: 18px;
+}
+
+
+.formSection > form > h2, .formSection + section > h2 {
+    margin: 15px auto;
+    font-weight: bolder;
+}
+
+.contactPage > section + section{
+    flex-basis: 40%;
+}
+
+.contactForm{
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-basis: 45%;
+}
+.contactForm > div {
+    flex-basis: 45%
+}
+
+
+#contactTextArea {
+    flex-basis: 92%;
+}
+
+.contactFont{
+    font-size: 25px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+

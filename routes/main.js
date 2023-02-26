@@ -11,6 +11,7 @@ router.get('/invest', mainController.getIvest)
 router.get('/loan', mainController.getLoan)
 router.get('/insurance', mainController.getInsurance)
 router.get('/save', mainController.getSave)
+router.get('/contact', mainController.gtContact)
 
 
 module.exports = router
