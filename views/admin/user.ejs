@@ -1,0 +1,80 @@
+<%- include('../partials/admin/nav.ejs') %>
+
+
+<section class="userHeaders">
+    <h2>Account Details</h2>
+    <h2 class="userInfo">User Information</h2>
+    <h2>Next of Kin</h2>
+</section>
+<section class="accountInfo">
+    <section class="accDetails">
+        <img src="<%= user.ownerImage  %>" class="accImg" alt="">
+        <section>
+            <section>
+                <p>Your Account Number : </p>
+                <p>Account Balance  : </p> 
+            </section>
+            <section>
+                <p><%= user.accountNumber %></p>
+                <p>&dollar; <%= user.balance %></p> 
+            </section>
+        </section>
+         
+    </section>
+
+    <section class="middle"> 
+           <section class="headers">
+                <p>First Name : </p>  
+                <p>Middle Name : </p>   
+                <p>Last Name : </p>  
+                <p>Date of Birth :</p>  
+                <p>Email : </p>  
+                <p>Mobile : </p>   
+                <p>Gender : </p>   
+                <p>Occupation : <p>   
+                <p>Address : </p>  
+                <p>Nationality : </p>
+                <p>landmark : </p> 
+           </section>  
+
+            <section>
+                <p> <%= user.username %></p>
+                <p> <%= user.middlename %></p>
+                <p><%= user.lastname %></p>
+                <p><%= user.dateOfBirth %></p>
+                <p><%= user.email %></p>
+                <p><%= user.mobile %></p>
+                <p><%= user.gender %></p>
+                <p><%= user.occupation %></p>
+                <p><%= user.gender %></p>
+                <p><%= user.nation %></p>
+                <p><%= user.landmark %></p>
+            </section>
+    </section>
+   <section class="last">
+            <section class="headers">
+                <p>Next Of Kin : </p>
+                <p>Relationship : </p>
+                <p>Mobile : </p>
+                <p>Address : </p>
+                <p>Date Of Creation :</p>
+            </section>
+            <section>
+                <p><%= user.kin %></p>
+                <p><%= user.relationship %></p>
+                <p><%= user.kinMobile %></p>
+                <p><%= user.Kinaddress %></p>
+                <p><%= user.createdAt %></p>
+            </section>
+            
+    </section>
+</section>
+
+<section class="userButton">
+    <button class="btn btn-outline-info btn-lg">Edit User</button>
+    <button class="btn btn-outline-info btn-lg">Delete User</button>
+</section>
+
+<%- include('../partials/admin/modal.ejs') %>
+
+<%- include('../partials/admin/footer.ejs') %>

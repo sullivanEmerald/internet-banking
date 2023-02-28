@@ -3,6 +3,12 @@ const app =  express()
 const logger = require('morgan')
 const mainIndex = require('./routes/main')
 const adminRoute = require('./routes/admin')
+const mongoose = require('mongoose')
+const connectDB =  require('./config/database')
+
+require('dotenv').config({ path : './config/.env'})
+
+connectDB()
 
 
 
@@ -20,6 +26,6 @@ app.use("/", mainIndex)
 app.use('/admin', adminRoute)
 
 
-app.listen(3000, () => {
-    console.log('app is running and listeninng to the Api')
+app.listen(process.env.PORT, () => {
+    console.log('Server is running')
 })

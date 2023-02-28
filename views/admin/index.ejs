@@ -1,32 +1,33 @@
 
 <%- include('../partials/admin/nav.ejs') %>
 
+
 <section class="accountForm">
-              
-    <form action="/admin/createProduct" enctype="multipart/form-data" method="POST">
+    <h1>Create Customer Account</h1>
+    <form action="/admin/createAccount" enctype="multipart/form-data" method="POST">
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="firstname" name="name">
-            <label for="Enter firstname">Name</label>
+            <input type="text" class="form-control" id="floatingInput" placeholder="firstname" name="username">
+            <label for="Enter firstname">firstname</label>
           </div>
 
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingInput" placeholder="Middlename" name="middlename">
-            <label for="floatingInput">Enter Middlename</label>
+            <label for="floatingInput">Middlename</label>
           </div>
 
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingInput" placeholder="Lastname" name="lastname">
-            <label for="floatingInput">Enter Lastname</label>
+            <label for="floatingInput">Lastname</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" placeholder="Phone Number" name="phone">
+            <label for="floatingInput">mobile</label>
           </div>
 
           <div class="form-floating mb-3">
             <input type="date" class="form-control" id="floatingInput" placeholder="Date of Birth" name="date">
             <label for="floatingInput">Date of birth</label>
-          </div>
-
-          <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="floatingInput" placeholder="Phone Number" name="phone">
-            <label for="floatingInput">Phone Number</label>
           </div>
 
           <div class="form-floating mb-3">
@@ -39,18 +40,18 @@
             <input type="file" class="form-control" id="imageUpload" name="file">
           </div>
 
-          <div class="form-floating mb-3">
-            <strong>gender</strong>
-            <input type="radio"  id="floatingInput" placeholder="Phone Number" name="gender">Male
-            <input type="radio"  id="floatingInput" placeholder="Phone Number" name="gender">Female
+          <div class="form-floating mb-3 gender">
+            <strong>gender  :</strong>
+            Male  <input type="radio"  id="floatingInput" placeholder="Phone Number" name="gender" value="male">
+            Female <input type="radio"  id="floatingInput" placeholder="Phone Number" name="gender" value="female">
           </div>
 
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingInput" placeholder="occupation" name="occupation">
-            <label for="floatingInput">occupations</label>
+            <label for="floatingInput">occupation</label>
           </div>
 
-          <h2>ADDRESS</h2>
+          <h2 class="caption">ADDRESS</h2>
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingInput" placeholder="address" name="address">
             <label for="floatingInput">Address</label>
@@ -71,7 +72,12 @@
             <label for="floatingInput">landmark</label>
           </div>
 
-          <h2>Next of Kin</h2>
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" placeholder="Inital Desposit" name="depoist">
+            <label for="floatingInput">Deposit</label>
+          </div>
+
+          <h2 class="caption">Next of Kin</h2>
 
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingInput" placeholder="Name" name="kinName">
@@ -92,8 +98,8 @@
             <input type="text" class="form-control" id="floatingInput" placeholder="address" name="kinaddress">
             <label for="Enter firstname">Address</label>
           </div>
-
-        <button type="submit" class="btn btn-outline-primary pull-right">Create Product</button>
+          <h2></h2>
+        <button type="submit" class="btn btn-outline-primary btn-lg">Create Account</button>
       </form>
 </section>
 </div>
@@ -101,6 +107,7 @@
 
 </section>
 
+<%- include('../partials/admin/modal.ejs') %>
 
 <%- include('../partials/admin/footer.ejs') %>
 

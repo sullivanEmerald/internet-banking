@@ -1,0 +1,30 @@
+   <!-- The Modal -->
+   <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Find A User Account</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form action="/admin/find/user" method="POST">
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="floatingInput" placeholder="Acount Number" name="account">
+                <label for="floatingInput">Acount Number</label>
+              </div>
+              <button type="submit" class="btn btn-outline-info">Find User</button>
+          </form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
