@@ -52,23 +52,32 @@ module.exports = {
 
     getUser : async (req, res) => {
         try {
-            res.render('signup.ejs', { title : "Sign Up"})
+            res.render('search.ejs', { title : "Find Account"})
         } catch (error) {
             console.error(error)
         }
     },
 
-    postLogin : async (req, res) => {
+    findUser : async (req, res) => {
         try {
             const user = await accounts.find({ accountNumber : req.body.account})
             if(user.length > 0){
                 const userObj = user[0]
-                res.redirect('user/profile')
+                res.redirect(`/user/profile/${userObj.id}`)
             }else{
-                res.render('login.ejs', { user : user})
+                res.redirect('/search')
             }
         } catch (error) {
             console.error(error)
         }
     },
+
+    getProfie : async (req, res) => {
+        try {
+            const userAccount = await accounts.findById(req.params.id)
+            res.render('profile.ejs', { title : userAccount.username , user : userAccount})
+        } catch (error) {
+            console.error(error)
+        }
+    }
 }

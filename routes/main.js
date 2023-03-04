@@ -13,17 +13,20 @@ router.get('/loan', mainController.getLoan)
 router.get('/insurance', mainController.getInsurance)
 router.get('/save', mainController.getSave)
 router.get('/contact', mainController.getContact)
-router.get('/user/signup', mainController.getUser)
+router.get('/search', mainController.getUser)
+router.post('/find/user', mainController.findUser)
+router.get('/user/profile/:id', mainController.getProfie )
+
 
 
 // Routes for login and Sign up
-
-
 router.get("/login", authController.getLogin);
 router.post("/login", authController.postLogin);
 router.get("/logout", authController.logout);
 router.get("/signup", authController.getSignup);
 router.post("/signup", authController.postSignup);
+
+
 
 
 

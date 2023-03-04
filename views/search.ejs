@@ -1,0 +1,12 @@
+<%- include('./partials/banking.ejs') %>
+<section class="container account">
+    <form action="/find/user" method="POST">
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" placeholder="Acount Number" name="account">
+            <label for="floatingInput">Acount Number</label>
+          </div>
+          <button type="submit" class="btn btn-outline-info">Find User</button>
+      </form>
+</section>
+
+<%- include('./partials/bankfooter.ejs') %>
