@@ -1,3 +1,6 @@
+
+const accounts =  require('../models/accounts')
+
 module.exports = {
     getIndex  : async (req, res) => {
         try {
@@ -39,12 +42,33 @@ module.exports = {
         }
     },
 
-    gtContact : async (req, res) => {
+    getContact : async (req, res) => {
         try {
             res.render('contact.ejs', { title : "Contact Us"})
         } catch (error) {
             console.error(error)
         }
-    }
+    },
 
+    getUser : async (req, res) => {
+        try {
+            res.render('signup.ejs', { title : "Sign Up"})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    postLogin : async (req, res) => {
+        try {
+            const user = await accounts.find({ accountNumber : req.body.account})
+            if(user.length > 0){
+                const userObj = user[0]
+                res.redirect('user/profile')
+            }else{
+                res.render('login.ejs', { user : user})
+            }
+        } catch (error) {
+            console.error(error)
+        }
+    },
 }

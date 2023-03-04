@@ -150,6 +150,15 @@ Account Information Page
     color: #093d2a;
     font-size: 15px;
     font-weight: bold;
-    display: inline-block;
-    
+    display: inline-block; 
+}
+
+.modalForm{
+    padding: 25px;
+}
+
+.modal-title{
+    color: #093d2a;
+    text-decoration: underline;
+    margin-left: 30% ;
 }

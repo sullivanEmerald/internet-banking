@@ -1,5 +1,5 @@
-const accounts =  require('../model/accounts')
-const cloudinary = require('../middleware/cloudinary')
+const accounts =  require('../models/accounts')
+const cloudinary = require('../middleware/cloudinary');
 
 // Function to generate 10 random number
 function getAccount(){
@@ -76,6 +76,9 @@ module.exports = {
     findUser : async (req, res) => {
         try {
             const user = await accounts.findOne({ accountNumber : req.body.account})
+            if(!user){
+                res.json({ message : 'Account Not Found'}).status(404)
+            }
             res.redirect(`/admin/account/user/${user._id}`)
         } catch (error) {
             console.error(error)
@@ -85,9 +88,46 @@ module.exports = {
     getAccount : async (req, res) => {
         try {
             const user = await accounts.findById(req.params.id)
-            res.render('admin/user.ejs', { title : user.username, user : user})
+            res.render('admin/found.ejs', { title : user.username, user : user})
         } catch (error) {
             console.error(error)
         }
+    },
+
+    deleteAccount : async (req, res) => {
+        try {
+            await accounts.findOneAndDelete({ _id : req.params.id})
+            console.log("Delete")
+            res.redirect('/admin')
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    editAccount : async (req, res) => {
+        try {
+            await accounts.findOneAndUpdate({ _id : req.params.id }, {
+                        username : req.body.username,
+                        middlename : req.body.middlename,
+                        lastname : req.body.lastname,
+                        dateOfBirth : req.body.date,
+                        email : req.body.email,
+                        mobile : req.body.phone,
+                        occupation : req.body.occupation,
+                        address  : req.body.address,
+                        nation : req.body.nation,
+                        state :  req.body.state,
+                        landmark : req.body.landmark,
+                        kin  : req.body.kinName,
+                        relationship  : req.body.relationship,
+                        kinMobile  : req.body.kinPhone,
+                        Kinaddress  : req.body.kinaddress
+                    
+            })
+            console.log('Account Successfully Updated')
+            res.redirect(`/admin/account/user/${req.params.id}`)
+        } catch (error) {
+            console.log(error)
+        }
     }
-}
+ }

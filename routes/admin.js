@@ -9,6 +9,8 @@ router.post('/createAccount', upload.single('file'), adminController.createAccou
 router.get('/fetch/user/:id', adminController.getUser)
 router.post('/find/user', adminController.findUser)
 router.get('/account/user/:id', adminController.getAccount)
+router.delete('/delete/user/:id', adminController.deleteAccount)
+router.post('/account/editAccount/:id', adminController.editAccount)
 
 
 module.exports = router

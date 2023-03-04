@@ -19,6 +19,17 @@
                 <p>&dollar; <%= user.balance %></p> 
             </section>
         </section>
+        <section class="userButton">
+
+            <button type="button" class="btn btn-outline-info btn-lg" data-bs-toggle="modal" data-bs-target="#editmodal">
+                Edit
+              </button>
+            
+            <form action="/admin/delete/user/<%= user._id%>?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-outline-info btn-lg">Delete</button>
+            </form>
+            
+        </section>
          
     </section>
 
@@ -71,5 +82,7 @@
 </section>
 
 <%- include('../partials/admin/modal.ejs') %>
+
+<%- include('../partials/admin/editmodal.ejs') %>
 
 <%- include('../partials/admin/footer.ejs') %>
