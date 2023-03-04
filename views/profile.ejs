@@ -1,21 +1,70 @@
 <%- include('./partials/banking.ejs') %>
 
 
-<h1>Hello, <%= user.email %></h1>
 
-<section>
+<section class="profile">
+    <section>
+        <p>Available Balance</p>
+        <h5><%= user.balance %> GBP</h5>
+        <strong><%= user.balance %> GBP</strong>
+        <a href="" class="btn btn-outline-info btn-lg">Transfer</a>
+        <a href="" class="btn btn-outline-info btn-lg">Pay Bills</a>
+        <ul>
+            <li><a href="">Dashboard</a></li>
+            <li><a href="">My Account</a></li>
+            <li><a href="">Account Summary</a></li>
+            <li><a href="">Send Money</a></li>
+            <li><a href="">International Transfer</a></li>
+            <li><a href="">Deposit Check</a></li>
+            <li><a href="">Pay bills</a></li>
+            <li><a href="">Virtual Card</a></li>
+            <li><a href="">crypto Currency</a></li>
+            <li><a href="">KYC status</a></li>
+            <li><a href="">Loan and crediting Financing</a></li>
+            <li><a href="">Account Setting</a></li>
+            <li><a href="">Support</a></li>
+        </ul>
+        
+    </section>
     <section>
         <section>
-            <h1>Welcome, <%= user.username %> <%= user.lastname %> </h1>
+            <h1>Welcome, <%= user.username %><%= user.lastname %> </h1>
+            <p>Account Summary</p>
+        </section>
+        <iframe src="/main" scrolling="no">sullivan</iframe>
+        <section>
+            <section>
+                <h2>Overview</h2>
+                <section>
+                    <img src="<%= user.ownerImage %>" alt="">
+                    <p>Available Balance</p>
+                    <H3>GBP</H3>
+                    <p>&dollar; <%= user.balance %> </p>
+                </section>
+            </section>
+            <section>
+                <h2>Checking Account</h2>
+                <section>
+                   <p>  <%= user.accountNumber  %> </p>
+                   <p>  <%= user.balance %>  GBP</p>
+                </section>
+                <h2>Loans and Lines of credit</h2>
+                <section>
+                    <section>
+                        <p>Business Support Loan</p>
+                        <strong>+4000 GBP</strong>
+                    </section>
+                    <section>
+                        <p>FICO Credit Store</p>
+                    </section>
+                </section>
+            </section>
+            <section>
+                <strong>We’re here to help you!</strong>
+                <p>Ask a question or file a support ticket, manage request, report an issues. Our team support team will get back to you by email.</p>
+                <button>Get Support Now</button>
+            </section>
         </section>
     </section>
-    <section>
-
-    </section>
-    <section>
-
-    </section>
-</section>
-
 
 <%- include('./partials/bankfooter.ejs') %>

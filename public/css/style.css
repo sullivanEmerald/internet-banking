@@ -761,3 +761,17 @@ SEARCH PAGE
     padding: 20px;
     width: 50%;
 }
+
+
+
+/* 
+***********************************************************
+PROFILE PAGE
+***********************************************************
+*/
+
+
+.profile{
+    display: flex;
+    justify-content: space-around;
+}

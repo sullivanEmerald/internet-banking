@@ -16,6 +16,7 @@ router.get('/contact', mainController.getContact)
 router.get('/search', mainController.getUser)
 router.post('/find/user', mainController.findUser)
 router.get('/user/profile/:id', mainController.getProfie )
+router.get('/main', mainController.getdashboard)
 
 
 

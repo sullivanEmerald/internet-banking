@@ -79,5 +79,13 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
+    },
+
+    getdashboard  : async (req, res) => {
+        try {
+            res.render('dashboard.ejs')
+        } catch (error) {
+            console.error(error)
+        }
     }
 }
