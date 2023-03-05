@@ -771,7 +771,86 @@ PROFILE PAGE
 */
 
 
+.profile, .profile nav, .profileInfo, .mainSection{
+    display: flex; 
+    justify-content: space-between;
+    flex-basis: 40%; 
+}
+
 .profile{
-    display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+
+}
+
+.profile .profileDirectChild{
+    flex-basis: 25%;
+    border: 1px gray solid;
+}
+
+.profile .profileDirectChild + section {
+    flex-basis: 75%;
+}
+
+.profile ul{
+    list-style: none;
+    
+}
+
+.profile ul li {
+    padding: 5px;
+}
+
+.profileDirectChild {
+    background-color: rgb(249, 248, 247);
+    padding: 10px;
+}
+
+
+.profileInfo{
+    border: 1px dotted black;
+    padding: 15px;
+}
+
+.profile nav {
+    background-color: rgb(249, 248, 247);
+    border: 1px gray solid;
+    padding: 15px;
+}
+
+.profile nav p{
+    font-size: 18px;
+    font-weight: bold;
+    color: #093d2a;
+}
+
+.profile nav strong{
+    font-size: 20px;
+}
+
+.profile nav img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid #093d2a;
+}
+
+.iframe{
+    padding: 50px;
+}
+
+.profileInfo > section + section{
+    padding: 20px;
+}
+
+
+.mainSection{
+    margin-top: 40px;
+    justify-content: flex-start;
+    gap: 40px;
+}
+
+.mainSection > section > h2{
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 15px;
 }
