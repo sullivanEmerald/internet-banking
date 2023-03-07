@@ -87,5 +87,24 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
+    },
+
+    getTransfer :  async (req, res) => {
+        try {
+            const account = await accounts.findById(req.params.id)
+            res.render('transfer.ejs', { title : 'Transfer', account : account})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    transferMoney :  async (req, res) => {
+        console.log(req.body)
+        try {
+            const transferAmount =  req.body.amount
+            console.log(transferAmount)
+        } catch (error) {
+            console.error(error)
+        }
     }
 }

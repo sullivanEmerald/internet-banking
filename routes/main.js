@@ -16,7 +16,9 @@ router.get('/contact', mainController.getContact)
 router.get('/search', mainController.getUser)
 router.post('/find/user', mainController.findUser)
 router.get('/user/profile/:id', mainController.getProfie )
-router.get('/main', mainController.getdashboard)
+router.get('/dashbord', mainController.getdashboard)
+router.get('/transfer/:id', mainController.getTransfer)
+router.post('/myaccount/transfer', mainController.transferMoney)
 
 
 

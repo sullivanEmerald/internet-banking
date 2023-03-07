@@ -771,10 +771,11 @@ PROFILE PAGE
 */
 
 
-.profile, .profile nav, .profileInfo, .mainSection{
+.profile, .profile nav, .profileInfo, .mainSection, .mainSectionFirst > section, .loansCheck{
     display: flex; 
     justify-content: space-between;
     flex-basis: 40%; 
+    flex-wrap: wrap;
 }
 
 .profile{
@@ -846,11 +847,75 @@ PROFILE PAGE
 .mainSection{
     margin-top: 40px;
     justify-content: flex-start;
-    gap: 40px;
+    gap: 60px;
+    
+    
 }
 
 .mainSection > section > h2{
     font-weight: bold;
     font-size: 25px;
     margin-bottom: 15px;
+}
+
+.mainSectionFirst{
+    background-color: #093d2a;
+    border-radius: 10px;
+    padding: 20px;
+    color: #fff;
+    gap: 40px;
+   
+}
+
+.mainSectionFirst img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.mainSection .mainSectionFirst{
+    flex-basis: 50%;
+}
+
+.mainSection .mainSectionFirst + section{
+    flex-basis: 40%;
+}
+
+.accountCheck{
+    background-color: rgb(249, 248, 247);
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+
+
+/* 
+***********************************************************
+TRANSFER IFRAME PAGE
+***********************************************************
+*/
+
+
+
+
+.transfer > h2 {
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 35px;
+}
+
+iframe{
+    width: 70%;
+    margin: 40px 15%;
+    height: 500px;
+}
+
+.transferButton{
+    margin: 10px auto;
+    display: block;
 }
