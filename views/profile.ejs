@@ -1,14 +1,16 @@
 <%- include('./partials/banking.ejs') %>
-
+<% function useComma(price) { %>
+    <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
 <section class="profile">
     <section class="profileDirectChild">
         <p>Available Balance</p>
-        <h5><%= user.balance %> GBP</h5>
-        <strong><%= user.balance %> GBP</strong>
+        <h5>&dollar; <%= useComma (user.balance) %> GBP</h5>
+        <strong>&dollar; <%= useComma(user.balance)  %> GBP</strong>
         <a href="/transfer/<%= user._id %>" target="dashboard" class="btn btn-outline-info btn-lg">Transfer</a>
         <a href="" class="btn btn-outline-info btn-lg">Pay Bills</a>
         <ul>
-            <li><a href="/main" target="dashboard" class="btn btn-outline-primary btn-lg">Dashboard</a></li>
+            <li><a href="/dashboard/<%= user._id %>" target="dashboard" class="btn btn-outline-primary btn-lg active">Dashboard</a></li>
             <li><a class="btn btn-outline-primary btn-lg">My Account</a></li>
             <li><a href="" class="btn btn-outline-primary btn-lg">Account Summary</a></li>
             <li><a href="" class="btn btn-outline-primary btn-lg">Send Money</a></li>
@@ -25,70 +27,25 @@
         
     </section>
     <section>
-        <nav>
-            <strong>Do you know the latest of Covid 2019 ? An Overview of ours is now available </strong>
-            <section>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid userNav" style="position: relative ;">  
+                <strong>Do you know the latest of Covid 2019 ? An Overview of ours is now available</strong>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div>
+
+                </div>
+                <strong><%= user.username %> <%= user.lastname %> </strong>
                 <img src="<%= user.ownerImage %>" alt="">
-                <p>connected</p>
-                <p><%= user.username %> <%= user.lastname %> </p>
-            </section>
-        </nav>
-        <section class="iframe">
-            <section class="profileInfo">
-                <section>
-                    <h1>Welcome, <%= user.username %> <%= user.lastname %> </h1>
-                    <p>Account Summary</p>
-                </section>
-                <section>
-                    <button class="btn  btn-outline-info btn-lg">Crypto</button>
-                    <button class="btn  btn-outline-info btn-lg">Transfer</button>
-                </section>
-            </section>
 
-            <iframe src="/dashbord" scrolling="no" name="dashboard" allowfullscreen="true">sullivan</iframe>
-            
-
-            <section class="mainSection">
-                <section class="mainSectionFirst">
-                    <h2>Overview</h2>
-                    <section>
-                        <img src="<%= user.ownerImage %>" alt="">
-                        <section>
-                            <p>Available Balance</p>
-                            <h2>GBP</h2>
-                            <h2>&dollar; <%= user.balance %> </h2>
-                            <p><%= user.username %> <%= user.lastname %>  </p>
-                        </section>
-                    </section>
-                </section>
-                <section class="">
-                    <h2>Checking Account</h2>
-                    <section class="accountCheck">
-                       <p>  <%= user.accountNumber  %> </p>
-                       <p>  <%= user.balance %>  GBP</p>
-                    </section>
-                    <h2>Loans and Lines of credit</h2>
-                    <section class="loansCheck">
-                        <section class="accountCheck">
-                            <p>Business Support Loan</p>
-                            <strong>+4000 GBP</strong>
-                        </section>
-                        <section class="accountCheck">
-                            <p>FICO Credit Store</p>
-                            <p>750</p>
-                        </section>
-                    </section>
-                </section>
-            </section>
-
-           
-
-            <section>
-                <strong>We’re here to help you!</strong>
-                <p>Ask a question or file a support ticket, manage request, report an issues. Our team support team will get back to you by email.</p>
-                <button>Get Support Now</button>
-            </section>
-        </section>
+              </div>
+            </div>
+          </nav>
+          
+        <iframe src="/dashboard/<%= user._id %>" scrolling="no" width="100%" height="800" name="dashboard" allowfullscreen="true">sullivan</iframe>
+        
         
     </section>
 

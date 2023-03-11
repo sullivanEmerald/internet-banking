@@ -11,6 +11,7 @@ router.post('/find/user', adminController.findUser)
 router.get('/account/user/:id', adminController.getAccount)
 router.delete('/delete/user/:id', adminController.deleteAccount)
 router.post('/account/editAccount/:id', adminController.editAccount)
+router.post('/deposit/user/:id', adminController.updateBalance)
 
 
 module.exports = router

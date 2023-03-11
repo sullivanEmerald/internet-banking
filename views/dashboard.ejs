@@ -1,1 +1,61 @@
-<h1>Sullivan the big boy and phenominal software engineer</h1>
+
+<%- include('./partials/banking.ejs') %>
+<% function useComma(price) { %>
+    <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
+<section class="iframe">
+    <section class="profileInfo">
+        <section>
+            <h1>Welcome, <%= user.username %> <%= user.lastname %> </h1>
+            <p>Account Summary</p>
+        </section>
+        <section>
+            <button class="btn  btn-outline-info btn-lg">Crypto</button>
+            <button class="btn  btn-outline-info btn-lg">Transfer</button>
+        </section>
+    </section>    
+    <section class="mainSection">
+        <section class="mainSectionFirst">
+            <h2>Overview</h2>
+            <section>
+                <img src="<%= user.ownerImage %>" alt="">
+                <section>
+                    <p>Available Balance</p>
+                    <h2>GBP</h2>
+                    <h2>&dollar; <%= useComma(user.balance)  %> </h2>
+                    <p><%= user.username %> <%= user.lastname %>  </p>
+                </section>
+            </section>
+        </section>
+        <section class="">
+            <h2>Checking Account</h2>
+            <section class="accountCheck">
+               <p>  <%= user.accountNumber  %> </p>
+               <p>&dollar; <%= useComma(user.balance)  %>  GBP</p>
+            </section>
+            <h2>Loans and Lines of credit</h2>
+            <section class="loansCheck">
+                <section class="accountCheck">
+                    <p>Business Support Loan</p>
+                    <strong>+4000 GBP</strong>
+                </section>
+                <section class="accountCheck">
+                    <p>FICO Credit Store</p>
+                    <p>750</p>
+                </section>
+            </section>
+        </section>
+    </section>
+
+
+   
+
+    <section>
+        <strong>We’re here to help you!</strong>
+        <p>Ask a question or file a support ticket, manage request, report an issues. Our team support team will get back to you by email.</p>
+        <button class="btn btn-outline-primary btn-lg">Get Support Now</button>
+    </section>
+</section>
+
+
+<%- include('./partials/bankfooter.ejs') %>

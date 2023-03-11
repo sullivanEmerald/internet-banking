@@ -1,8 +1,10 @@
 <%- include('./partials/banking.ejs') %>
-
+<% function useComma(price) { %>
+  <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
 <section class="container transfer">
     <h2 class="text-success">First Reliance online Transfer.</h2>
-    <h4 class="text-danger text-center">Available Balance : GBP <%= account.balance %></h4>
+    <h4 class="text-danger text-center">Available Balance : GBP  &dollar;<%= useComma(account.balance) %></h4>
     <form action="/myaccount/transfer/<%= account._id %>"  method="POST">
         <div class="form-floating mb-3">
             <input type="number" class="form-control" id="floatingInput" placeholder="amount" name="amount">

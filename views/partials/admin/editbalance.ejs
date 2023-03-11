@@ -1,0 +1,31 @@
+   <!-- The Modal -->
+   <div class="modal" id="editbalance">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Enter Amount to Deposit</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form action="/admin/deposit/user/<%= user._id %>" method="POST">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Acount Number" name="amount">
+                <label for="floatingInput">Amount</label>
+              </div>
+              <button type="submit" class="btn btn-outline-info">Deposit</button>
+          </form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>

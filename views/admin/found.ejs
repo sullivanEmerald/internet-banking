@@ -1,5 +1,8 @@
 <%- include('../partials/admin/nav.ejs') %>
 
+<% function useComma(price) { %>
+    <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
 
 <section class="userHeaders">
     <h2>Account Details</h2>
@@ -16,7 +19,7 @@
             </section>
             <section>
                 <p><%= user.accountNumber %></p>
-                <p>&dollar; <%= user.balance %></p> 
+                <p>&dollar; <%= useComma(user.balance) %></p> 
             </section>
         </section>
         <section class="userButton">
@@ -28,7 +31,11 @@
             <form action="/admin/delete/user/<%= user._id%>?_method=DELETE" method="POST">
                 <button type="submit" class="btn btn-outline-info btn-lg">Delete</button>
             </form>
-            
+
+            <button type="button" class="btn btn-outline-info btn-lg" data-bs-toggle="modal" data-bs-target="#editbalance">
+                Deposit
+              </button>
+        
         </section>
          
     </section>
@@ -82,6 +89,8 @@
 </section>
 
 <%- include('../partials/admin/modal.ejs') %>
+
+<%- include('../partials/admin/editbalance.ejs') %>
 
 <%- include('../partials/admin/editmodal.ejs') %>
 

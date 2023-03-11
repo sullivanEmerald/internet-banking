@@ -94,7 +94,8 @@ module.exports = {
 
     getdashboard  : async (req, res) => {
         try {
-            res.render('dashboard.ejs')
+            const userAccount = await accounts.findById(req.params.id)
+            res.render('dashboard.ejs',  { title : userAccount.username , user : userAccount})
         } catch (error) {
             console.error(error)
         }
@@ -151,7 +152,7 @@ module.exports = {
                 }
            })
            console.log('updated')
-           res.redirect('/transfer')
+           res.redirect(`/transfer/${req.params.id}`)
         } catch (error) {
             console.error(error)
         }

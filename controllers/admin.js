@@ -129,5 +129,20 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
+    },
+
+    updateBalance : async (req, res) => {
+            const amount = req.body.amount
+        try {
+            await accounts.findOneAndUpdate({ _id :  req.params.id}, {
+                $inc : {
+                    balance : amount
+                }
+            })
+            console.log('balance of user updated')
+            res.redirect(`/admin/account/user/${req.params.id}`)
+        } catch (error) {
+            console.log(error)
+        }
     }
  }
