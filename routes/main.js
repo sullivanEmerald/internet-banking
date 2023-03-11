@@ -18,8 +18,8 @@ router.post('/find/user', mainController.findUser)
 router.get('/user/profile/:id', mainController.getProfie )
 router.get('/dashbord', mainController.getdashboard)
 router.get('/transfer/:id', mainController.getTransfer)
-router.post('/myaccount/transfer', mainController.transferMoney)
-
+router.post('/myaccount/transfer/:id', mainController.transferMoney)
+router.post('/myaccount/transfer/reciever/:id', mainController.postTransfer)
 
 
 // Routes for login and Sign up

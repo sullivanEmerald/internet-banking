@@ -1,5 +1,16 @@
 
 const accounts =  require('../models/accounts')
+const history = require('../models/transact')
+
+function generateNums(){
+    let result = '';
+    for (let i = 0; i < 12; i++) {
+        result += Math.floor(Math.random() * 10);
+    }
+
+    return result
+}
+
 
 module.exports = {
     getIndex  : async (req, res) => {
@@ -90,6 +101,7 @@ module.exports = {
     },
 
     getTransfer :  async (req, res) => {
+        console.log(req.params.id)
         try {
             const account = await accounts.findById(req.params.id)
             res.render('transfer.ejs', { title : 'Transfer', account : account})
@@ -99,12 +111,51 @@ module.exports = {
     },
 
     transferMoney :  async (req, res) => {
-        console.log(req.body)
+        console.log(req.params.id)
         try {
             const transferAmount =  req.body.amount
-            console.log(transferAmount)
+            res.render('reciever.ejs', { title : 'Reciever', amount : transferAmount, user : req.params.id})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    postTransfer : async (req, res) => {
+        const date = new Date();
+        const day = date.getDate();
+        const month = date.getMonth() + 1; // add 1 because getMonth() returns 0-11 for Jan-Dec
+        const year = date.getFullYear();  
+        const time = date.toLocaleTimeString();  
+        const amount = req.body.amountTransfer
+        try {
+           const user = await accounts.findById(req.params.id)
+        //    creating the transaction history
+           await history.create({
+            from : `${user.username} ${user.lastname}`,
+            fromNo : user.accountNumber,
+            toName : req.body.holder,
+            toNumber : req.body.account,
+            tobank : req.body.name,
+            account : req.body.account,
+            description :  req.body.description,
+            referenceNo  : generateNums(),
+            date : `${day}/${month}/${year}`,
+            time : time,
+            transferAmount : amount,
+
+           })
+
+           await accounts.findByIdAndUpdate(req.params.id, {
+                $inc : {
+                    balance : -amount
+                }
+           })
+           console.log('updated')
+           res.redirect('/transfer')
         } catch (error) {
             console.error(error)
         }
     }
+
+    
 }

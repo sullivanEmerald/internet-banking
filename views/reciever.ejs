@@ -1,0 +1,32 @@
+<%- include('./partials/banking.ejs') %>
+
+<section class="reciever">
+    <h1 class="text-success text-center">First Reliance online Transfer</h1>
+    <h3 class="text-danger">AMOUNT TO TRANSFER : GPB <%= amount %></h3>
+    <% console.log(user) %>
+    <form action="/myaccount/transfer/reciever/<%= user %>" method="POST">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="firstname" name="name">
+            <label for="Enter firstname">Bank Name</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" placeholder="Middlename" name="account">
+            <label for="floatingInput">Account Number</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Lastname" name="holder">
+            <label for="floatingInput">Account Holder</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Phone Number" name="description">
+            <label for="floatingInput">Description(Optional)</label>
+          </div>
+          <input type="hidden" value="<%= amount %>" name="amountTransfer">
+        <button type="submit" class="btn btn-outline-primary btn-lg">Continue to next step</button>
+      </form>
+</section>
+
+<%- include('./partials/bankfooter.ejs') %>

@@ -919,3 +919,14 @@ iframe{
     margin: 10px auto;
     display: block;
 }
+
+.reciever > h1{
+    margin-bottom: 25px;
+}
+
+.reciever > h3{
+    word-spacing: 7px;
+    letter-spacing: 3px;
+    font-size: 17px;
+    margin-bottom: 15px;
+}
