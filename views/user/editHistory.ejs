@@ -1,0 +1,40 @@
+<%- include('../partials/banking.ejs') %>
+
+<% function useComma(price) { %>
+    <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
+
+<section class="reciever">
+    <h1 class="text-success text-center">Utopia Edit Transfer</h1>
+    <form action="/myaccount/transfer/reciever/<%= user %>" method="POST">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="firstname" name="name" value="<%= user.tobank %>">
+            <label for="Enter firstname">Bank Name</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" placeholder="Middlename" name="account" value="<%= user.toNumber %>">
+            <label for="floatingInput">Account Number</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Lastname" name="holder" value="<%= user.toName %>">
+            <label for="floatingInput">Account Holder</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" placeholder="Lastname" name="holder" value="<%= user.transferAmount %>">
+            <label for="floatingInput">Amount Transferrable</label>
+          </div>
+
+          <input type="hidden" name="former" id="" value="<%= user.toNumber %>">
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Phone Number" name="description" value="<%= user.description %>">
+            <label for="floatingInput">Description(Optional)</label>
+          </div>
+        <button type="submit" class="btn btn-outline-primary btn-lg">Confirm Correction</button>
+      </form>
+</section>
+
+<%- include('../partials/bankfooter.ejs') %>

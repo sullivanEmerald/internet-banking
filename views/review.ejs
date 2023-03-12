@@ -1,0 +1,37 @@
+<%- include('./partials/banking.ejs') %>
+<% function useComma(price) { %>
+    <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
+
+
+<section class="reviewPage">
+    <h1 class="text-success text-center">Confirm Transaction Details before Proceeding</h1>
+    <section>
+        <section>
+            <p>Sender Name : </p>
+            <p>Sender Account Number : </p>
+            <p>Reciever Name : </p>
+            <p>Reciever Account Number : </p>
+            <p>Description : </p>
+            <p>Amount : </p>
+            <p>Bank Name : </p>
+        </section>
+        <section>
+            <p><%= user.from %></p>
+            <p><%= user.fromNo %></p>
+            <p><%= user.toName %></p>
+            <p><%= user.toNumber %></p>
+            <p><%= user.description %></p>
+            <p><%= user.transferAmount %></p>
+            <p><%= user.tobank %></p>
+        </section>
+    </section>
+
+    <section>
+        <a href="/edit/history/<%= user._id %>" target="dashboard" class="btn btn-outline-success btn-lg">Edit</a>
+        <a href="" class="btn btn-outline-success btn-lg">Confirm</a>
+    </section>
+</section>
+
+
+<%- include('./partials/bankfooter.ejs') %>

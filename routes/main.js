@@ -20,6 +20,8 @@ router.get('/dashboard/:id', mainController.getdashboard)
 router.get('/transfer/:id', mainController.getTransfer)
 router.post('/myaccount/transfer/:id', mainController.transferMoney)
 router.post('/myaccount/transfer/reciever/:id', mainController.postTransfer)
+router.get('/user/confirm/:id', mainController.transactionDetails)
+router.get('/edit/history/:id', mainController.getHistory)
 
 
 // Routes for login and Sign up

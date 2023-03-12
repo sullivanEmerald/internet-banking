@@ -1,9 +1,12 @@
 <%- include('./partials/banking.ejs') %>
 
+<% function useComma(price) { %>
+  <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
+
 <section class="reciever">
-    <h1 class="text-success text-center">First Reliance online Transfer</h1>
-    <h3 class="text-danger">AMOUNT TO TRANSFER : GPB <%= amount %></h3>
-    <% console.log(user) %>
+    <h1 class="text-success text-center">Utopia online Transfer</h1>
+    <h3 class="text-danger">AMOUNT TO TRANSFER : GPB  &dollar;<%= useComma(amount) %></h3>
     <form action="/myaccount/transfer/reciever/<%= user %>" method="POST">
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingInput" placeholder="firstname" name="name">
@@ -28,5 +31,7 @@
         <button type="submit" class="btn btn-outline-primary btn-lg">Continue to next step</button>
       </form>
 </section>
+
+
 
 <%- include('./partials/bankfooter.ejs') %>

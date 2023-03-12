@@ -897,8 +897,9 @@ PROFILE PAGE
 TRANSFER IFRAME PAGE
 ***********************************************************
 */
-
-
+.transfer{
+    width: 60%;
+}
 
 
 .transfer > h2 {
@@ -907,6 +908,7 @@ TRANSFER IFRAME PAGE
     font-weight: bold;
     margin-bottom: 20px;
     font-size: 35px;
+    margin-top: 10%;
 }
 
 
@@ -915,8 +917,23 @@ TRANSFER IFRAME PAGE
     display: block;
 }
 
+
+.reciever{
+    width: 60%;
+    padding: 15px;
+    margin: 20px auto;
+}
+
+/* centering all buttons to the middle */
+
+.reciever button {
+    margin: 10px auto;
+    display: block;
+}
+
 .reciever > h1{
     margin-bottom: 25px;
+    text-decoration: underline;
 }
 
 .reciever > h3{
@@ -948,3 +965,57 @@ TRANSFER IFRAME PAGE
     margin-right: 15px;
     color: crimson;
 }
+
+#frameFooter{
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+/* 
+***********************************************************
+REVIEW PAGE
+***********************************************************
+*/
+
+.reviewPage{
+    width: 80%;
+    margin: 30px auto;
+}
+
+.reviewPage h1:first-child + section{
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 20%;
+    gap:10px;
+}
+
+.reviewPage h1:first-child {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.reviewPage h1:first-child + section section:first-child{
+    flex-basis: 30%;    
+}
+
+.reviewPage section:first-child + section {
+    flex: 60%;
+    text-align: right;
+    padding-right: 10px;
+    margin: 0;
+}
+
+.reviewPage p{
+    display: block;
+    background-color:rgb(245, 243, 243);
+    font-weight: bold;
+    color: #093d2a;
+    font-size: 20px;
+    padding: 10px;
+}
+
+

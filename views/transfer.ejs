@@ -3,7 +3,7 @@
   <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
 <% } %>
 <section class="container transfer">
-    <h2 class="text-success">First Reliance online Transfer.</h2>
+    <h2 class="text-success">Utopia online Transfer.</h2>
     <h4 class="text-danger text-center">Available Balance : GBP  &dollar;<%= useComma(account.balance) %></h4>
     <form action="/myaccount/transfer/<%= account._id %>"  method="POST">
         <div class="form-floating mb-3">
@@ -13,6 +13,5 @@
         <button type="submit"  class="btn btn-outline-primary btn-lg transferButton">Take Next Step</button>
       </form>
 </section>
-
 
 <%- include('./partials/bankfooter.ejs') %>

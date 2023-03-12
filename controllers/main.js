@@ -151,8 +151,32 @@ module.exports = {
                     balance : -amount
                 }
            })
+
            console.log('updated')
-           res.redirect(`/transfer/${req.params.id}`)
+           const confirmUser = await history.find()
+           const userInfo = confirmUser[confirmUser.length -1]
+           res.redirect(`/user/confirm/${userInfo._id}`)
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    transactionDetails : async (req, res) => {
+        try {
+            const user =  await history.findById(req.params.id)
+            console.log(user)
+            res.render('review.ejs', { title : "Review", user : user})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    getHistory : async (req, res) => {
+            
+        try {
+            const userhistory = await history.findById(req.params.id)
+            console.log(userhistory)
+            res.render('user/editHistory.ejs', { title: 'Edit User', user : userhistory})
         } catch (error) {
             console.error(error)
         }
