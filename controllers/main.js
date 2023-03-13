@@ -164,7 +164,6 @@ module.exports = {
     transactionDetails : async (req, res) => {
         try {
             const user =  await history.findById(req.params.id)
-            console.log(user)
             res.render('review.ejs', { title : "Review", user : user})
         } catch (error) {
             console.error(error)
@@ -180,7 +179,44 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
-    }
+    },
+
+    correctHistory : async (req, res) => {
+        const amount =  req.body.amount
+        const oldaccount =  Number(req.body.former)
+        const newAccount =  Number(req.body.account)
+        console.log(typeof newAccount)
+        try {
+            if(oldaccount === newAccount){
+                await history.findByIdAndUpdate(req.params.id, {
+                    tobank : req.body.name,
+                    toName : req.body.holder,
+                    transferAmount : amount,
+                    description : req.body.description
+                })
+            }else{
+
+                await accounts.find({ accountNumber : oldaccount}, {
+                    
+                    $inc : {
+                        balance : -amount
+                    }
+                }),
+
+                await accounts.find({ accountNumber : newAccount}, {
+                    $inc : {
+                        balance : amount
+                    }
+                })
+            }
+            console.log('transfer updated')
+            const updatedHistory =  await history.findById(req.params.id)
+            res.render('review.ejs', { title : "Review", user : updatedHistory })
+           
+        } catch (error) {
+            console.error(error)
+        }
+    },
 
     
 }

@@ -6,14 +6,14 @@
 
 <section class="reciever">
     <h1 class="text-success text-center">Utopia Edit Transfer</h1>
-    <form action="/myaccount/transfer/reciever/<%= user %>" method="POST">
+    <form action="/transfer/confirm/<%= user._id %>" method="POST">
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingInput" placeholder="firstname" name="name" value="<%= user.tobank %>">
             <label for="Enter firstname">Bank Name</label>
           </div>
 
           <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="floatingInput" placeholder="Middlename" name="account" value="<%= user.toNumber %>">
+            <input type="Number" class="form-control" id="floatingInput" placeholder="Middlename" name="account" value="<%= user.toNumber %>">
             <label for="floatingInput">Account Number</label>
           </div>
 
@@ -23,7 +23,7 @@
           </div>
 
           <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="floatingInput" placeholder="Lastname" name="holder" value="<%= user.transferAmount %>">
+            <input type="number" class="form-control" id="floatingInput" placeholder="Lastname" name="amount" value="<%= user.transferAmount %>">
             <label for="floatingInput">Amount Transferrable</label>
           </div>
 

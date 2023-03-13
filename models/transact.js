@@ -32,7 +32,7 @@ const transactHistory = new mongoose.Schema({
   },
 
   date : {
-    type : Date,
+    type : String,
     required : true,
   },
 
