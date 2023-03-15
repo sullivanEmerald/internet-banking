@@ -75,7 +75,7 @@ module.exports = {
 
     findUser : async (req, res) => {
         try {
-            const user = await accounts.findOne({ accountNumber : req.body.account})
+            const user = await accounts.findOne({ accountNumber : Number(req.body.account)})
             if(!user){
                 res.json({ message : 'Account Not Found'}).status(404)
             }

@@ -1,5 +1,5 @@
 
-const numberInput = document.querySelector('#floatingInput');
+const numberInput = document.querySelector('#depositAmount');
 
 numberInput.addEventListener('input', function(event) {
   // Get the input value and remove any commas
@@ -11,5 +11,3 @@ numberInput.addEventListener('input', function(event) {
   // Set the formatted value back into the input field
   event.target.value = value;
 });
-
-console.log('Amadike Sullivan Chigozie')

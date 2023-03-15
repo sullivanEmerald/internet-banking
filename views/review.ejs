@@ -26,9 +26,13 @@
             <p><%= user.tobank %></p>
         </section>
     </section>
-
     <section>
-        <a href="/edit/history/<%= user._id %>" target="dashboard" class="btn btn-outline-success btn-lg">Edit</a>
+        <% if(!user.status) { %>
+            <a href="/edit/history/<%= user._id %>" target="dashboard" class="btn btn-outline-success btn-lg">Edit Transaction</a>
+            <% } else { %>
+             <a  target="dashboard" class="btn btn-outline-success btn-lg">Delete Transaction</a>
+            <% } %>
+        
         <a href="" class="btn btn-outline-success btn-lg">Confirm</a>
     </section>
 </section>
