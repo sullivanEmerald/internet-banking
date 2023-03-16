@@ -192,11 +192,13 @@ module.exports = {
 
     correctHistory : async (req, res) => {
         const sendAmount = Number(req.body.senderAmount)
+        console.log(sendAmount)
         const amount =  req.body.amount
         const oldaccount =  Number(req.body.former)
         const newAccount =  Number(req.body.account)
         const sender =  await history.findById(req.params.id)
-        const balance = sendAmount - amount
+        let balance = 0
+        
         
 
         try {
@@ -208,34 +210,39 @@ module.exports = {
                     description : req.body.description
                 })
 
-                if(sendAmount > amount){
+                if(sendAmount < amount){
+                    balance = amount - sendAmount 
+                    console.log(balance + 'sullivan')
+
                     await accounts.findOneAndUpdate({ accountNumber : sender.fromNo }, {
                         $inc : {
-                            balance : balance          
-                         }
-                    }),
-
-                    await accounts.findOneAndUpdate({ accountNumber : oldaccount}, {
-                        $inc : {
-                            balance : -balance        
+                            balance : -balance          
                          }
                     })
-                }else if(sendAmount < amount){
 
+                    await accounts.findOneAndUpdate({ accountNumber : oldaccount}, {
+                        $inc : {
+                            balance : balance       
+                         }
+                    })
+
+                    console.log('retransfer done' + " " + balance)
+                }else if(sendAmount < amount){
+                        balance = amount - sendAmount 
+                        console.log(balance)
                     await accounts.findOneAndUpdate({ accountNumber : sender.fromNo }, {
                         $inc : {
-                            balance : balance          
+                            balance : -balance          
                          }
                     }),
 
                     await accounts.findOneAndUpdate({ accountNumber : oldaccount}, {
                         $inc : {
-                            balance : -balance        
+                            balance : balance        
                          }
                     })
 
                 }else{
-
                     await accounts.findOneAndUpdate({ accountNumber : oldaccount}, {
                         $inc : {
                             balance : 0         
@@ -285,7 +292,6 @@ module.exports = {
             
             console.log('transfer updated')
             const updatedHistory =  await history.findById(req.params.id)
-            console.log(updatedHistory)
             res.render('review.ejs', { title : "Review", user : updatedHistory })
            
         } catch (error) {
