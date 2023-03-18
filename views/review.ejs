@@ -30,12 +30,47 @@
         <% if(!user.status) { %>
             <a href="/edit/history/<%= user._id %>" target="dashboard" class="btn btn-outline-success btn-lg">Edit Transaction</a>
             <% } else { %>
-             <a  target="dashboard" class="btn btn-outline-success btn-lg">Delete Transaction</a>
+            <button type="button" class="btn btn-outline-success btn-lg" data-bs-toggle="modal" data-bs-target="#delete">
+                Delete Transaction
+            </button>
             <% } %>
         
         <a href="" class="btn btn-outline-success btn-lg">Confirm</a>
     </section>
 </section>
 
+<!-- Button to Open the Modal -->
+
+
+
+<!-- The Modal -->
+<div class="modal fade" id="delete">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title text-success">Confirm <%= user.from %></h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h4 class="text-center text-danger">Do you actual want to delete this transaction ?</h4>
+        <section class="confirmButton">
+            <a href="#" target="dashboard" class="btn btn-outline-success btn-lg">No</a>
+            <a href="/delete/transaction/<%= user._id %>" class="btn btn-outline-success btn-lg">Yes</a>
+        </section>
+        
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <%- include('./partials/bankfooter.ejs') %>

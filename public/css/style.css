@@ -1019,3 +1019,15 @@ REVIEW PAGE
 }
 
 
+/* 
+***********************************************************
+YES OR NO button on the comfirm transfer modal
+***********************************************************
+*/
+
+
+.confirmButton{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
