@@ -298,5 +298,45 @@ module.exports = {
         }
     },
 
-    
+    deleteTransaction : async (req, res) => {
+        try {
+            console.log(req.params.id)
+            console.log(req.params.acc)
+            const transaction =  await history.findById(req.params.id)
+            console.log(transaction)
+            const amount =  transaction.transferAmount
+            console.log(amount)
+            console.log(transaction.toNumber)
+            await accounts.findOneAndUpdate({ accountNumber : Number(req.params.acc)}, {
+                $inc : {
+                    balance : amount
+                }
+            })
+
+            await accounts.findOneAndUpdate({ accountNumber : transaction.toNumber}, {
+                $inc : {
+                    balance : -amount
+                }
+            })
+            await history.findByIdAndDelete(req.params.id)
+            console.log('deleted')
+
+            const user = await accounts.find({ accountNumber : req.params.acc})
+            const customer = user[0]
+            res.redirect(`/dashboard/${customer.id}`)
+
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    confirm : async (req, res) => {
+        try {
+            console.log(req.params.id)
+            const user = await history.findById(req.params.id)
+            res.render('user/confirm', { title : "confirm", user : user})
+        } catch (error) {
+            console.error(error)
+        }
+    }
 }

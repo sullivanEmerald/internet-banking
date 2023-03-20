@@ -23,6 +23,8 @@ router.post('/myaccount/transfer/reciever/:id', mainController.postTransfer)
 router.get('/user/confirm/:id', mainController.transactionDetails)
 router.get('/edit/history/:id', mainController.getHistory)
 router.post('/transfer/confirm/:id', mainController.correctHistory)
+router.delete('/delete/transaction/:id/:acc', mainController.deleteTransaction)
+router.get('/confirm/:id', mainController.confirm)
 
 
 

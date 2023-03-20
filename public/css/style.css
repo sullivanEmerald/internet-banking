@@ -1031,3 +1031,73 @@ YES OR NO button on the comfirm transfer modal
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
+
+/* 
+***********************************************************
+The preloader styling
+***********************************************************
+*/
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 9999;
+}
+
+#preloader .loader {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/* 
+***********************************************************
+Confirm Page Styling
+***********************************************************
+*/
+
+#main-content{
+    margin: 10% auto;
+    width: 50%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 5px 2px #093d2a;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#main-content > h1{
+   text-align: center;
+   text-decoration: underline;
+   color: crimson;
+   margin-bottom: 10px;
+}
+
+#main-content p{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#main-content span{
+   text-transform: capitalize;
+   color: #093d2a;
+   font-size: 20px;
+   font-weight: bold;
+}

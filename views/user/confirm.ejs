@@ -1,0 +1,22 @@
+<%- include('../partials/banking.ejs') %>
+<% function useComma(price) { %>
+    <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
+
+
+<div id="preloader">
+    <h3>Transaction Processing...</3>
+    <div class="loader"></div>
+</div>
+
+<div id="main-content" style="display:none;">
+    <h1>Transaction Successful</h1>
+    <img src="/images/success.jpeg" alt="">
+    <p>You have Successfully transferred &dollar; <%= user.transferAmount %> to <span><%= user.toName %></span>  </p>
+    <p>Bank Name  :  <%= user.tobank %></p>
+    <p> <%= user.toNumber %></p>
+</div>
+
+
+
+<%- include('../partials/bankfooter.ejs') %>

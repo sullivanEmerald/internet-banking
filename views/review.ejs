@@ -35,7 +35,7 @@
             </button>
             <% } %>
         
-        <a href="" class="btn btn-outline-success btn-lg">Confirm</a>
+        <a href="/confirm/<%= user._id %>" class="btn btn-outline-success btn-lg">Send</a>
     </section>
 </section>
 
@@ -59,7 +59,11 @@
         <h4 class="text-center text-danger">Do you actual want to delete this transaction ?</h4>
         <section class="confirmButton">
             <a href="#" target="dashboard" class="btn btn-outline-success btn-lg">No</a>
-            <a href="/delete/transaction/<%= user._id %>" class="btn btn-outline-success btn-lg">Yes</a>
+
+            <form action="/delete/transaction/<%= user._id %>/<%= user.fromNo %>?_method=DELETE" method="POST">
+              <button type="submit" class="btn btn-outline-success btn-lg">Yes</buttons>
+            </form>
+           
         </section>
         
       </div>
