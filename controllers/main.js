@@ -332,9 +332,19 @@ module.exports = {
 
     confirm : async (req, res) => {
         try {
-            console.log(req.params.id)
             const user = await history.findById(req.params.id)
             res.render('user/confirm', { title : "confirm", user : user})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    gotoTransfer : async (req, res) => {
+        try {
+            const user =  await history.findById(req.params.id)
+            const userBio = await accounts.find({ accountNumber : user.fromNo })
+            const userBalance = userBio[0]
+            res.render('transfer.ejs',  { title :'Transfer' , account : userBalance})
         } catch (error) {
             console.error(error)
         }

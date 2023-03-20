@@ -1074,7 +1074,7 @@ Confirm Page Styling
 */
 
 #main-content{
-    margin: 10% auto;
+    margin: 5% auto;
     width: 50%;
     padding: 20px;
     background-color: #fff;
@@ -1101,3 +1101,10 @@ Confirm Page Styling
    font-size: 20px;
    font-weight: bold;
 }
+
+#main-content section{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+ }
+ 

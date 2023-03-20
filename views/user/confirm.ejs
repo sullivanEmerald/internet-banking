@@ -15,6 +15,11 @@
     <p>You have Successfully transferred &dollar; <%= user.transferAmount %> to <span><%= user.toName %></span>  </p>
     <p>Bank Name  :  <%= user.tobank %></p>
     <p> <%= user.toNumber %></p>
+
+    <section>
+        <a href="/dashboard/<%= user._id %>" class="btn btn-outline-success btn-lg">Okay</a>
+        <a href="/transfer/send/<%= user._id %>" class="btn btn-outline-success btn-lg">New Transfer</a>
+    </section>
 </div>
 
 
