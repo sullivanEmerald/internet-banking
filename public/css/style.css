@@ -1107,4 +1107,90 @@ Confirm Page Styling
     justify-content: space-between;
     flex-wrap: wrap;
  }
- 
+
+ /* 
+***********************************************************
+TRANSACTION SUMMARY ON THE DASHBOARD
+***********************************************************
+*/
+
+.middleLevel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-basis: 10%;
+    
+}
+
+.transactionSummary{
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 15px;
+    border: 1px solid #093d2a;
+    flex-basis: 50%;
+}
+
+.transactionSummary + section {
+    flex-basis: 40%;
+    
+}
+
+.transactionSummary + section strong {
+    text-align: center;
+    font-size: 25px;
+    color: #093d2a;
+}
+
+.transactionSummary + section strong + p{
+    font-size: 17px;
+    word-spacing: 2px;
+}
+
+.transactionSummary h3{
+    text-align: center;
+    text-decoration: underline;
+}
+
+.transactionSummary section {
+    border-bottom: 2px solid #093d2a;
+    padding: 10px;
+}
+
+
+ /* 
+***********************************************************
+TRANSACTION RECEIPT
+***********************************************************
+*/
+hr {
+    color: crimson;
+    width: 40%;
+    border: 3px solid red;
+}
+
+.singleHistory{
+    width: 50%;
+    margin: 50px auto;
+    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.singleHistory > h2 {
+    border-bottom: 2px solid black;
+    padding: 15px;
+    color: #093d2a;
+    font-weight: bold;
+}
+
+.singleHistory h2:first-child{
+    border: none;
+    padding: 0;
+    font-weight: bold;
+    color: black;
+}
+
+.singleHistory p{
+    font-size: 20px;
+    font-weight: bold;
+}

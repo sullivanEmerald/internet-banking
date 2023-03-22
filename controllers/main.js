@@ -95,14 +95,16 @@ module.exports = {
     getdashboard  : async (req, res) => {
         try {
             const userAccount = await accounts.findById(req.params.id)
-            res.render('dashboard.ejs',  { title : userAccount.username , user : userAccount})
+            const summary = await history.find({ $or: [ { fromNo : userAccount.accountNumber}, {toNumber : userAccount.accountNumber}]})
+            console.log(summary)
+            res.render('dashboard.ejs',  { title : userAccount.username , user : userAccount, summary : summary})
         } catch (error) {
             console.error(error)
         }
     },
 
     getTransfer :  async (req, res) => {
-        console.log(req.params.id)
+        console.log(req.params.id) 
         try {
             const account = await accounts.findById(req.params.id)
             res.render('transfer.ejs', { title : 'Transfer', account : account})
@@ -164,7 +166,16 @@ module.exports = {
            console.log('updated')
            const confirmUser = await history.find()
            const userInfo = confirmUser[confirmUser.length -1]
-           res.redirect(`/user/confirm/${userInfo._id}`)
+           console.log(userInfo)
+           if(req.user){
+            await history.findByIdAndUpdate(userInfo._id, {
+                $set : {
+                    type : true
+                }
+            })
+           }
+           
+        res.redirect(`/user/confirm/${userInfo._id}`)
         } catch (error) {
             console.error(error)
         }
@@ -194,11 +205,8 @@ module.exports = {
     
         try {
             const sendAmount = Number(req.body.senderAmount)
-            console.log(sendAmount)
             const amount =  req.body.amount
-            console.log(amount)
             const check = amount - sendAmount
-            console.log(check)
             const oldaccount =  Number(req.body.former)
             const newAccount =  Number(req.body.account)
             const sender =  await history.findById(req.params.id)
@@ -214,7 +222,6 @@ module.exports = {
 
                 if(sendAmount < amount){
 
-                    console.log(check)
                     await accounts.findOneAndUpdate({ accountNumber : oldaccount}, {
                         $inc : {
                             balance : check       
@@ -300,13 +307,8 @@ module.exports = {
 
     deleteTransaction : async (req, res) => {
         try {
-            console.log(req.params.id)
-            console.log(req.params.acc)
             const transaction =  await history.findById(req.params.id)
-            console.log(transaction)
             const amount =  transaction.transferAmount
-            console.log(amount)
-            console.log(transaction.toNumber)
             await accounts.findOneAndUpdate({ accountNumber : Number(req.params.acc)}, {
                 $inc : {
                     balance : amount
@@ -348,5 +350,15 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
+    },
+
+    viewTransaction : async (req, res) => {
+        const userNumber =  req.params.acc
+        try {
+            const fullHistory = await history.findById(req.params.id)
+            res.render('user/history.ejs', { title : 'History', receipt : fullHistory, user: userNumber})
+        } catch (error) {
+            console.error(error)
+        }
     }
-}
+ }

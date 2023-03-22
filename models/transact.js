@@ -47,8 +47,8 @@ const transactHistory = new mongoose.Schema({
   },
 
   type : {
-    type : String,
-    default : ''
+    type : Boolean,
+    default : false,
   },
 
   status: {

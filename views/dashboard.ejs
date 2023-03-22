@@ -47,15 +47,69 @@
         </section>
     </section>
 
-
-    <section>
-        <strong>We’re here to help you!</strong>
-        <p>Ask a question or file a support ticket, manage request, report an issues. Our team support team will get back to you by email.</p>
-        <button class="btn btn-outline-primary btn-lg">Get Support Now</button>
+    <section class="middleLevel">
+        <section class="transactionSummary">
+            <% if(summary.length > 0) { %>
+                <h3>Transaction Summary...</h3>
+                <% for(let i = 0; i < summary.length; i++) { %>
+                        <section>
+                            <% if( summary[i].fromNo === user.accountNumber) { %>
+                                <p class="text-danger"> Amouunt :  &dollar; <%= useComma(summary[i].transferAmount) %></p>
+                            <% } else { %>
+                                <p class="text-info"> Amount &dollar; <%= useComma(summary[i].transferAmount) %></p>
+                            <% } %>
+    
+                            <% if( summary[i].fromNo === user.accountNumber) { %>
+                                <strong> Type : Debit</strong>
+                            <% } else { %>
+                                <strong> Type : Credit</strong>
+                            <% } %>
+                            <p> Reciever : <%= summary[i].from %></p>
+                            <p> Reciever Account Number : <%= summary[i].fromNo %></p>
+                            <p> Remarks : <%= summary[i].description %></p>
+                            <a href="/view/transaction/<%= summary[i]._id %>/<%= user.accountNumber %>" class="btn btn-outline-info">View Details</a>
+                            
+                        </section>              
+                <% } %>
+                <a href="#" class="btn btn-outline-success">View All Transaction</a>
+            <% } else { %>
+            <h1>No Transaction have been made in this account</h1>
+            <% } %>
+        </section>
+        
+        <section>
+            <strong>We’re here to help you!</strong>
+            <p>Ask a question or file a support ticket, manage request, report an issues. Our team support team will get back to you by email.</p>
+            <button class="btn btn-outline-primary btn-lg">Get Support Now</button>
+        </section>
     </section>
+    
 </section>
 
 
 
-
+<!-- The Modal -->
+<div class="modal" id="love">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
 <%- include('./partials/bankfooter.ejs') %>

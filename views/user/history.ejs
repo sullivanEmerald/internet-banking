@@ -1,0 +1,45 @@
+<%- include('../partials/banking.ejs') %>
+<% function useComma(price) { %>
+    <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
+
+<% function maskAccountNumber(accountNumber) { %>
+   <%  const maskedChars = '******'; %>
+    <% const visibleChars = accountNumber.substring(6); %>
+    <% return maskedChars + visibleChars; %>
+  <% } %>
+
+<section class="singleHistory">
+    <h2>Transaction Receipt</h2>
+    <hr>
+    <h2>Transaction Details - </h2>
+    <p> Date : <%= receipt.date %></p>
+    <p> Time : <%= receipt.time %></p>
+    <p> Reference Number : <%= receipt.referenceNo %></p>
+    <% if(!receipt.status) { %>
+    <p> Status : Successful</p>
+    <% } %>
+    <% if( receipt.fromNo != user.accountNumber) { %>
+        <p> Type : Debit</p>
+         <% } else { %>
+        <p>Type : Credit</p>
+        <% } %>
+
+    <% if( receipt.fromNo != user.accountNumber) { %>
+    <p class="text-danger"> Amount :  &dollar; <%= useComma(receipt.transferAmount) %></p>
+    <% } else { %>
+    <p class="text-info"> Amount : &dollar; <%= useComma(receipt.transferAmount) %></p>
+    <% } %>
+    <p> Remarks : <%= receipt.description %></p>
+
+    <h2>Acccounts Details:-</h2>
+    <p>Sender Name : <%= receipt.from.toUpperCase() %></p>
+    <p>Sender Account Number : <%= maskAccountNumber(receipt.fromNo.toString()) %></p>
+    <p>Reciever Name : <%= receipt.toName.toUpperCase() %></p>
+    <p>Reciever Account Number : <%= receipt.toNumber %></p>
+    <button type="button" onclick="history.back()" class="btn btn-outline-success btn-lg"> View Dashoard</button>
+</section>
+
+
+
+<%- include('../partials/bankfooter.ejs') %>
