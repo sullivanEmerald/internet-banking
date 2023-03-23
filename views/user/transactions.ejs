@@ -1,0 +1,69 @@
+<%- include('../partials/banking.ejs') %>
+
+<% function useComma(price) { %>
+    <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
+
+<% function maskAccountNumber(accountNumber) { %>
+   <%  const maskedChars = '******'; %>
+    <% const visibleChars = accountNumber.substring(6); %>
+    <% return maskedChars + visibleChars; %>
+<% } %>
+
+<% if(receipt.length < 1) { %>
+    <p>Welcome <%= user.username %> <%= user.lastname %>, This is no notify you that no transaction have occurred in your account. Thanks for banking with us </p>
+
+<% } else { %>
+    <section class="container receiptButton ">
+        <section class="alert-button">
+            <section>
+                <span></span>
+                <span></span>
+            </section>
+            <section>
+                <p>Credit Alert</p>
+            
+                <p>Debit  Alert</p>
+            </section>
+        </section>
+        <section class="row receiptRow">
+            <% for(let i = 0; i < receipt.length; i++) { %>
+            <section class="col-sm-12 col-md-4 col-lg-4">
+                <section class="clearfix">
+                    <h2>Transaction Receipt</h2>
+                    <hr>
+                    <h2>Transaction Details - </h2>
+                    <p> Date : <%= receipt[i].date %></p>
+                    <p> Time : <%= receipt[i].time %></p>
+                    <p> Reference Number : <%= receipt[i].referenceNo %></p>
+                    <% if(!receipt[i].status) { %>
+                    <p> Status : Successful</p>
+                    <% } %>
+                    <% if( receipt[i].fromNo === user.accountNumber) { %>
+                        <p> Type : Debit</p>
+                         <% } else { %>
+                        <p>Type : Credit</p>
+                        <% } %>
+                
+                    <% if( receipt[i].fromNo === user.accountNumber) { %>
+                    <p class="text-danger"> Amount :  &dollar; <%= useComma(receipt[i].transferAmount) %></p>
+                    <% } else { %>
+                    <p class="text-info"> Amount : &dollar; <%= useComma(receipt[i].transferAmount) %></p>
+                    <% } %>
+                    <p> Remarks : <%= receipt[i].description %></p>
+                
+                    <h2>Acccounts Details:-</h2>
+                    <p>Sender Name : <%= receipt[i].from.toUpperCase() %></p>
+                    <p>Sender Account Number : <%= maskAccountNumber(receipt[i].fromNo.toString()) %></p>
+                    <p>Reciever Name : <%= receipt[i].toName.toUpperCase() %></p>
+                    <p>Reciever Account Number : <%= receipt[i].toNumber %></p>
+                </section>
+            </section>
+            <% } %>
+        </section>
+    </section>
+
+<% } %>
+
+
+<%- include('../partials/bankfooter.ejs') %>

@@ -52,6 +52,9 @@
             <% if(summary.length > 0) { %>
                 <h3>Transaction Summary...</h3>
                 <% for(let i = 0; i < summary.length; i++) { %>
+                    <% if( i === 3) { %>
+                        <% break %>
+                    <% } %>
                         <section>
                             <% if( summary[i].fromNo === user.accountNumber) { %>
                                 <p class="text-danger"> Amouunt :  &dollar; <%= useComma(summary[i].transferAmount) %></p>
@@ -67,11 +70,10 @@
                             <p> Reciever : <%= summary[i].from %></p>
                             <p> Reciever Account Number : <%= summary[i].fromNo %></p>
                             <p> Remarks : <%= summary[i].description %></p>
-                            <a href="/view/transaction/<%= summary[i]._id %>/<%= user.accountNumber %>" class="btn btn-outline-info">View Details</a>
-                            
+                            <a href="/view/transaction/<%= summary[i]._id %>/<%= user.accountNumber %>" class="btn btn-outline-info btn-lg">View Details</a>  
                         </section>              
                 <% } %>
-                <a href="#" class="btn btn-outline-success">View All Transaction</a>
+                <a href="/user/transactions/<%= user.accountNumber %>" id="transact" class="btn btn-outline-success btn-lg">View All Transaction</a>
             <% } else { %>
             <h1>No Transaction have been made in this account</h1>
             <% } %>

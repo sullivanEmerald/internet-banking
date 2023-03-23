@@ -1119,6 +1119,7 @@ TRANSACTION SUMMARY ON THE DASHBOARD
     flex-wrap: wrap;
     justify-content: space-between;
     flex-basis: 10%;
+    margin-top: 40px;
     
 }
 
@@ -1128,6 +1129,21 @@ TRANSACTION SUMMARY ON THE DASHBOARD
     margin-top: 15px;
     border: 1px solid #093d2a;
     flex-basis: 50%;
+}
+
+.transactionSummary a {
+    float: right;
+    margin-top: -50px;
+}
+
+#transact {
+    float: none;
+    margin: 10px auto;
+    display: block;
+    width: 50%;
+}
+.transactionSummary p {
+    font-weight: bold;
 }
 
 .transactionSummary + section {
@@ -1154,6 +1170,7 @@ TRANSACTION SUMMARY ON THE DASHBOARD
 .transactionSummary section {
     border-bottom: 2px solid #093d2a;
     padding: 10px;
+    margin-bottom: 20px;
 }
 
 
@@ -1193,4 +1210,46 @@ hr {
 .singleHistory p{
     font-size: 20px;
     font-weight: bold;
+}
+
+ /* 
+***********************************************************
+ALL TRANSACTIONS RECEIPT PAGE
+***********************************************************
+*/
+.receiptRow > section{
+    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 50px 15px;
+    width: 30%;
+    margin-bottom: 15px;
+}
+
+.receiptButton {
+    margin-top: 50px;
+}
+
+.alert-button p{
+    font-size: 20px;
+    font-weight: bold;
+    color: #093d2a;
+}
+
+.receiptButton span:first-child, .receiptButton span:nth-child(2) {
+    background-color: #00af6f;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: block;
+    margin-bottom: 35px;
+    margin-right: 10px;
+}
+
+.receiptButton span:nth-child(2) {
+    background-color: red;
+}
+
+.alert-button{
+    display: flex;
 }

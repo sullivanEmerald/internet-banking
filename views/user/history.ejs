@@ -9,7 +9,7 @@
     <% return maskedChars + visibleChars; %>
   <% } %>
 
-<section class="singleHistory">
+<section class="singleHistory clearfix">
     <h2>Transaction Receipt</h2>
     <hr>
     <h2>Transaction Details - </h2>
@@ -19,13 +19,13 @@
     <% if(!receipt.status) { %>
     <p> Status : Successful</p>
     <% } %>
-    <% if( receipt.fromNo != user.accountNumber) { %>
+    <% if( receipt.fromNo === user.accountNumber) { %>
         <p> Type : Debit</p>
          <% } else { %>
         <p>Type : Credit</p>
         <% } %>
 
-    <% if( receipt.fromNo != user.accountNumber) { %>
+    <% if( receipt.fromNo === user.accountNumber) { %>
     <p class="text-danger"> Amount :  &dollar; <%= useComma(receipt.transferAmount) %></p>
     <% } else { %>
     <p class="text-info"> Amount : &dollar; <%= useComma(receipt.transferAmount) %></p>

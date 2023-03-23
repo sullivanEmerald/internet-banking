@@ -96,7 +96,6 @@ module.exports = {
         try {
             const userAccount = await accounts.findById(req.params.id)
             const summary = await history.find({ $or: [ { fromNo : userAccount.accountNumber}, {toNumber : userAccount.accountNumber}]})
-            console.log(summary)
             res.render('dashboard.ejs',  { title : userAccount.username , user : userAccount, summary : summary})
         } catch (error) {
             console.error(error)
@@ -357,6 +356,18 @@ module.exports = {
         try {
             const fullHistory = await history.findById(req.params.id)
             res.render('user/history.ejs', { title : 'History', receipt : fullHistory, user: userNumber})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    fetchTransactions  : async (req, res) => {
+        const account =  Number(req.params.id)
+        try {
+            const useracc = await accounts.find({ accountNumber : account})
+            const user = useracc[0]
+            const summary = await history.find({ $or: [ { fromNo : account}, {toNumber : account}]})
+            res.render('user/transactions.ejs',  { title : "Transaction", receipt : summary, user : user})
         } catch (error) {
             console.error(error)
         }
