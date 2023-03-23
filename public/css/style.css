@@ -35,16 +35,19 @@ Nav Bar Setting
 */
 
 .navbar {
-    background-color: #093d2a;
+    background-color: #fff;
  
 }
-
+.navbar-brand {
+    width: 15%;
+    height: 70px;
+}
 .navbar ul li a{
-    color: white;
+    color: #00af6f;
     font-size: 25px;
 }
 .navbar ul li a:hover{
-    color: cornflowerblue;
+    color: crimson;
 }
 
 .navbar-nav{
@@ -56,6 +59,27 @@ Nav Bar Setting
     background-color: #fff;
 }
 
+
+@media screen and (max-width: 480px){
+    .navbar-nav{
+        width: 100%;
+        margin: 10px 10px;
+    }
+
+    .navbar-toggler{
+        background-color: #fff;
+    }
+    
+    .internetButton{
+       margin-bottom: 15px;
+    }
+
+    .navbar-brand {
+        width: 40%;
+        height: 70px;
+    }
+}
+
 /* 
 ***********************************************************
 Carousel Setting
@@ -63,7 +87,7 @@ Carousel Setting
 */
 .carousel-item{
     position: relative;
-        margin-top: 75px;
+     margin-top: 75px;
 }
 
 
@@ -75,9 +99,9 @@ Carousel Setting
     color: #fff;
     text-align: center;
     font-size: 30px;
-    width: 50%;
-    
+    width: 50%;   
 }   
+
 .heroText{
     font-size: 35px;
     font-weight: bold;
@@ -108,12 +132,36 @@ Carousel Setting
 .familyCarousel {
     background: linear-gradient(rgba(40, 58, 90, 0.6), rgba(40, 58, 90, 0.6)), url("/images/vacation.jpg") fixed center center;
     background-size: cover;
-    /* padding: 120px 0; */
     width: 100%;
     height: 670px;  
+    position: relative;
 }
 
+@media screen and (max-width: 480px){
+    .carousel-item > section, .familyCarousel > section{
+        left: 20%;
+        top : 30px;  
+        padding: 15px;
+        text-align: center;
+        font-size: 25px;
+        width: 60%;   
+    }  
 
+    .heroText{
+        font-size: 25px;
+        font-weight: bold;
+        color:azure;
+    }
+
+    .contactButton{
+        bottom : 8%;
+        width: 30%;
+        font-size: 20px;
+        left: 35%;
+    
+    }
+
+}
 /* 
 ***********************************************************
 Services Setting 
@@ -160,6 +208,18 @@ Services Setting
     color: rgb(42, 37, 37);
 }
 
+@media screen and (max-width: 480px){
+    .serviceFlex {
+        flex-direction: column;
+    }
+
+    .serviceFlex section{
+        width: 80%;
+        margin: 10px auto;
+    }
+    
+}
+
 
 /* 
 ***********************************************************
@@ -196,7 +256,25 @@ About Us Setting
     font-weight: bold;    
 }
 
+@media screen and (max-width: 480px){
+    .aboutUsFlex{
+        flex-direction: column;
+    }
 
+    .aboutUsImage img{
+       width: 100%;
+    }
+
+    .aboutUs{
+        
+        padding: 20px ;
+    }
+
+    .aboutUsFlex p {
+        text-align: justify;
+        font-size: 18px;
+    }
+}
 /* 
 ***********************************************************
 Insurance Section 
@@ -217,7 +295,7 @@ Insurance Section
     background-color: #093d2a;
     color: #fff;
     padding: 50px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .subInsurance > section > div {
@@ -257,6 +335,17 @@ Insurance Section
     margin-bottom: 30px;
 }
 
+
+@media screen and (max-width: 480px){
+    .subInsurance{
+        flex-direction: column;
+    }
+
+    .subInsurance > section{
+        width:80%;
+        margin: auto;
+    }
+}
 /* 
 ***********************************************************
     Futuure Section
@@ -298,6 +387,29 @@ Insurance Section
     font-weight: bold;
 }
 
+@media screen and (max-width: 480px){
+    .futureSection > img + div, .futureSection > img{
+        width: 100%;
+        
+    }
+
+    .futureSection > img {
+        border-radius: 0;
+    }
+
+    .futureSection > img + div{
+        bottom: 0px;
+        padding: 30px;  
+    }
+
+    .futureSection {
+        width: 90%;
+        border-radius: 0;
+        height: 400px;
+    }
+}
+
+
 /* 
 ***********************************************************
 FOOTER SECTION
@@ -306,9 +418,9 @@ FOOTER SECTION
 
 footer{
     margin-top: 70px;
-    background-color: #093d2a;
+    background-color: #fff;
     padding: 70px;
-    color: #fff;
+    color: #093d2a;
 }
 
 
@@ -324,6 +436,24 @@ footer > section > section{
 
 footer {
     font-size: 20px;
+}
+
+.footer-brand{
+    width: 60%;
+}
+
+@media screen and (max-width: 480px){
+    footer > section {
+        flex-direction: column;    
+    }
+
+    footer{
+        padding: 20px;
+    }
+
+    .footer-brand{
+        width: 40%;
+    }
 }
 
 
@@ -1237,7 +1367,7 @@ ALL TRANSACTIONS RECEIPT PAGE
 }
 
 .receiptButton span:first-child, .receiptButton span:nth-child(2) {
-    background-color: #00af6f;
+    background-color: cornflowerblue;
     width: 20px;
     height: 20px;
     border-radius: 50%;
