@@ -418,7 +418,7 @@ FOOTER SECTION
 
 footer{
     margin-top: 70px;
-    background-color: #fff;
+    background-color:rgb(240, 239, 239);
     padding: 70px;
     color: #093d2a;
 }
@@ -463,10 +463,16 @@ INVEST PAGE
 ***********************************************************
 */
 
-#investHero{
-    height: 420px;
-    transform: translate(0%, 20%);
 
+
+#investHero{
+    height: 350px;
+    transform: translate(0%, 20%);
+}
+
+#investHero > img {
+    border-radius: 10px;
+    height: 350px;
 }
 
 .investHolder{
@@ -495,14 +501,6 @@ INVEST PAGE
     line-height: 2.0;
 }
 
-#investSection{
-    width: 50%;
-    margin-right: 30px;
-}
-
-#secondColumn{
-    width: 40%;
-}
 
 #secondColumn > img{
     border-radius: 10px;
@@ -513,7 +511,33 @@ INVEST PAGE
     color: #093d2a;
 }
 
-/* SECOND ie HELP SECTION */
+@media screen and (max-width: 480px){
+    #investHero{
+        border-radius: 10px;
+    }
+
+    #investSection{
+    width: 100%;
+    margin-right: 30px;
+    }
+
+    #secondColumn{
+        width: 100%;
+    }
+
+    #secondColumn > img {
+        width: 100%;
+    }
+
+    #investSection {
+        width: 80%;
+        margin: auto;
+    }
+}   
+
+
+
+/********************************* HELP SECTION ********************************/
 
 .helpSection{
     margin-top: 150px;
@@ -530,6 +554,7 @@ INVEST PAGE
     color: gray;
 }
 
+
 .helpSection > section{
     display: flex;
     flex-wrap: wrap;
@@ -542,11 +567,13 @@ INVEST PAGE
     background-color: #fff;
     box-shadow:  3px 5px 6px #ccc;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
 }
 
 .helpSection > section > section > img{
     width: 100%;
+    border-radius: 10%;
 }
 
 .helpSection > section > section > img + div + h2{
@@ -590,6 +617,23 @@ INVEST PAGE
 #helpfont{
     color: #fff;
     font-size: 40px;
+}
+
+
+@media screen and (max-width: 480px){
+    .helpSection > h2 {
+        font-size: 30px;
+    }
+
+    .helpSection > section {
+        flex-direction: column;
+    }
+
+    .helpSection > section > section {
+        width: 80%;
+        margin: auto;
+        margin-bottom: 20px
+    }
 }
 
 
