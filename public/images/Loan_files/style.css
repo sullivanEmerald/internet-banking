@@ -374,7 +374,8 @@ Insurance Section
     position:absolute;
     right: 10px;
     bottom: 140px;
-    padding: 30px;    
+    padding: 30px;
+    
 }
 
 .futureSection > img + div p{
@@ -650,6 +651,9 @@ Loan page
 
 }
 
+.loanSection > * {
+    flex-basis: 30%;
+}
 
 .loanSection > div{
     border: 5px solid #093d2a;
@@ -665,17 +669,7 @@ Loan page
     line-height: 2.0;
     color: gray;
     font-size: 18px;
-    margin-top: 20px;
 }
-
-.loanSection > div + section > span {
-    font-size: 18px;
-    display: inline-block;
-    border-left: 3px solid red;
-    padding-left: 10px;
-    margin: 10px 0;
-}
-
 
 .loanSection > div > img{
     transform: translate(6%, -10%);
@@ -711,7 +705,7 @@ Loan page
 .loanSection > div + section > span + h2{
     font-weight: bold;
     margin: 10px 0;
-    color: coral;
+    color: black;
 }
 
 .loanSection > div + section > span + h2 + p{
@@ -722,57 +716,25 @@ Loan page
 
 .loanSection > div + section > section > section > span{
     font-weight: bold;
-    color: coral;
+    color: black;
 }
 
 @media screen and (max-width: 480px){
     #loadImage{
         width: 100%;
         height: 320px;
-        border-radius: 10px;
     }
 
     #loadSection > div{
-        width: 100%;
-        position:absolute;
-        left: 0;
-        bottom: -30px;
-        padding: 30px;
+        background-color: green;
+        width: 100%; 
+        flex-basis: 100%;
+
     }
-   
+
     #loadSection{
-        width: 90%;
-        margin: auto;
-        margin-top: 130px;
-        border-radius: 10px;
-        height: 450px;
-        box-shadow:  3px 5px 6px #ccc;
-    }
-
-    .loanSection {
-        flex-direction: column;
-        margin: 10px auto;
-    }
-
-    .loanSection > div + section > section {
-        gap: 10px;
-        justify-content: flex-start;
-        padding-left: 10px;
-    }
-
-    .loanSection > div + section > section > section{
-        flex-basis: 45%;
-        
-    }
-
-    .loanSection > div > img{
-        transform: translate(0%, -10%);
         width: 100%;
-        border-radius: 10px;
     }
-
-    
-   
 }
 
 /* 
@@ -848,24 +810,6 @@ SAVE PAGE
 #saveHero{
     margin-top: -30px;
 }
-
-@media screen and (max-width: 480px){
-
-    .saveIntro {
-        text-align: justify;
-        width: 80%;
-    }
-
-    .save {
-        flex-direction: column;
-    }
-
-    .saveSection {
-        flex-direction:column;
-    }
-}
-
-
 
 
 /* vision section on save page */
