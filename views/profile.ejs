@@ -2,6 +2,7 @@
 <% function useComma(price) { %>
     <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
 <% } %>
+
 <section class="profile">
     <section class="profileDirectChild">
         <p>Available Balance</p>
@@ -9,21 +10,61 @@
         <strong>&dollar; <%= useComma(user.balance)  %> GBP</strong>
         <a href="/transfer/<%= user._id %>" target="dashboard" class="btn btn-outline-info btn-lg">Transfer</a>
         <a href="" class="btn btn-outline-info btn-lg">Pay Bills</a>
-        <ul>
-            <li><a href="/dashboard/<%= user._id %>" target="dashboard" class="btn btn-outline-primary btn-lg active">Dashboard</a></li>
-            <li><a class="btn btn-outline-primary btn-lg">My Account</a></li>
-            <li><a href="" class="btn btn-outline-primary btn-lg">Account Summary</a></li>
-            <li><a href="" class="btn btn-outline-primary btn-lg">Send Money</a></li>
-            <li><a href="" class="btn btn-outline-primary btn-lg">International Transfer</a></li>
-            <li><a href="" class="btn btn-outline-primary btn-lg">Deposit Check</a></li>
-            <li><a href="" class="btn btn-outline-primary btn-lg">Pay bills</a></li>
-            <li><a href="" class="btn btn-outline-primary btn-lg">Virtual Card</a></li>
-            <li><a href="" class="btn btn-outline-primary btn-lg">crypto Currency</a></li>
-            <li><a href="" class="btn btn-outline-primary btn-lg">KYC status</a></li>
-            <li><a href="" class="btn btn-outline-primary btn-lg">Loan and crediting Financing</a></li>
-            <li><a href="" class="btn btn-outline-primary btn-lg">Account Setting</a></li>
-            <li><a href="" class="btn btn-outline-primary btn-lg">Support</a></li>
-        </ul>
+
+        <nav class="navbar navbar-expand-sm">
+            <div class="container-fluid">
+                <h2 class="text-success">Hello, <%= user.username %></h2>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a href="/dashboard/<%= user._id %>" target="dashboard" class="btn btn-outline-primary btn-lg active">Dashboard</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="btn btn-outline-primary btn-lg">My Account</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="btn btn-outline-primary btn-lg">Account Summary</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="btn btn-outline-primary btn-lg">Send Money</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="btn btn-outline-primary btn-lg">International Transfer</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="btn btn-outline-primary btn-lg">Deposit Check</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="btn btn-outline-primary btn-lg">Pay bills</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="btn btn-outline-primary btn-lg">Virtual Card</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="btn btn-outline-primary btn-lg">crypto Currency</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="btn btn-outline-primary btn-lg">Virtual Card</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="btn btn-outline-primary btn-lg">KYC status</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="btn btn-outline-primary btn-lg">Loan and crediting Financing</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="btn btn-outline-primary btn-lg">Account Setting</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="btn btn-outline-primary btn-lg">Support</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
         
     </section>
     <section>
@@ -48,5 +89,6 @@
         
         <%- include('./partials/framefooter.ejs') %>
     </section>
+</section>
 
 <%- include('./partials/bankfooter.ejs') %>
