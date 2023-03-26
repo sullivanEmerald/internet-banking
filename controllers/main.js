@@ -334,7 +334,9 @@ module.exports = {
     confirm : async (req, res) => {
         try {
             const user = await history.findById(req.params.id)
-            res.render('user/confirm', { title : "confirm", user : user})
+            const accholder = await accounts.find({ accountNumber : user.fromNo})
+            const holder = accholder[0]
+            res.render('user/confirm', { title : "confirm", user : user, holder : holder})
         } catch (error) {
             console.error(error)
         }
@@ -368,6 +370,14 @@ module.exports = {
             const user = useracc[0]
             const summary = await history.find({ $or: [ { fromNo : account}, {toNumber : account}]})
             res.render('user/transactions.ejs',  { title : "Transaction", receipt : summary, user : user})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    getPandemicInfo : async (req, res) => {
+        try {
+            res.render('pandemic.ejs', { title : 'We Care'})
         } catch (error) {
             console.error(error)
         }

@@ -28,6 +28,7 @@ router.get('/confirm/:id', mainController.confirm)
 router.get('/transfer/send/:id', mainController.gotoTransfer)
 router.get('/view/transaction/:id/:acc', mainController.viewTransaction)
 router.get('/user/transactions/:id', mainController.fetchTransactions)
+router.get('/pandemic', mainController.getPandemicInfo)
 
 
 

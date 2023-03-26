@@ -1393,6 +1393,29 @@ TRANSFER IFRAME PAGE
     display: none;
 
    }
+
+   .reciever{
+    width: 80%;
+    
+}
+
+
+.transfer{
+    width: 80%;
+    padding: 15px;
+}
+
+.transfer > h2 {
+    
+    font-size: 25px;
+   
+}
+
+.reciever button {
+    margin: 10px auto;
+    display: block;
+    width: 70%;
+    }
 }
 
 
@@ -1437,7 +1460,7 @@ REVIEW PAGE
 
 .reviewPage h1:first-child + section{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     flex-basis: 20%;
     gap:10px;
 }
@@ -1468,7 +1491,24 @@ REVIEW PAGE
     font-size: 20px;
     padding: 10px;
 }
+#sendButton {
+    margin-left: 55px;
+}
 
+@media screen and (max-width: 480px){
+    .reviewPage p{
+        font-size: 13px;
+       
+    }
+
+    .reviewPage h1:first-child + section section:first-child{
+        flex-basis: 45%;    
+    }
+
+    .reviewPage section:first-child + section {
+        flex-basis: 55%;
+    }
+}
 
 /* 
 ***********************************************************
@@ -1512,11 +1552,25 @@ The preloader styling
     animation: spin 2s linear infinite;
 }
 
+
+#preloader > h3 {
+    color: #093d2a;
+    padding: 10px;
+}
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
+
+@media screen and (max-width: 480px){
+    #preloader .loader {
+        top: 10%;
+        left: 45%;
+        
+    }
+}
 
 /* 
 ***********************************************************
@@ -1577,6 +1631,12 @@ TRANSACTION SUMMARY ON THE DASHBOARD
 @media screen and (max-width: 480px){
     .middleLevel {
         flex-direction: column;
+    }
+
+    #main-content{
+        margin: 10% auto;
+        width: 80%;
+        
     }
 }
 
@@ -1684,6 +1744,11 @@ hr {
     font-size: 20px;
     font-weight: bold;
 }
+@media screen and (max-width: 480px){
+    .singleHistory{
+        width: 80%;
+    }
+ }
 
  /* 
 ***********************************************************
@@ -1725,4 +1790,36 @@ ALL TRANSACTIONS RECEIPT PAGE
 
 .alert-button{
     display: flex;
+}
+
+
+
+
+@media screen and (max-width: 480px){
+    .receiptRow > section{
+        width: 80%;
+        margin: 20px auto;
+    }
+ }
+
+ /* 
+***********************************************************
+    PANDEMIC PAGE
+***********************************************************
+*/
+.pandemicInfo {
+    margin-top: 100px;
+}
+
+.pandemicInfo > h2 {
+    font-weight: bold;
+    border-bottom: 2px solid red;
+    text-align: center;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.pandemicInfo > h2 + p {
+    text-align: justify;
+    line-height: 2.0;
 }

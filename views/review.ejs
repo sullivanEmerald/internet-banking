@@ -9,9 +9,9 @@
     <section>
         <section>
             <p>Sender Name : </p>
-            <p>Sender Account Number : </p>
+            <p>Sender Number : </p>
             <p>Reciever Name : </p>
-            <p>Reciever Account Number : </p>
+            <p>Reciever Number : </p>
             <p>Description : </p>
             <p>Amount : </p>
             <p>Bank Name : </p>
@@ -28,14 +28,14 @@
     </section>
     <section>
         <% if(!user.status) { %>
-            <a href="/edit/history/<%= user._id %>" target="dashboard" class="btn btn-outline-success btn-lg">Edit Transaction</a>
+            <a href="/edit/history/<%= user._id %>" target="dashboard" class="btn btn-outline-success btn-md">Edit Transaction</a>
             <% } else { %>
-            <button type="button" class="btn btn-outline-success btn-lg" data-bs-toggle="modal" data-bs-target="#delete">
+            <button type="button" class="btn btn-outline-success btn-md" data-bs-toggle="modal" data-bs-target="#delete">
                 Delete Transaction
             </button>
             <% } %>
         
-        <a href="/confirm/<%= user._id %>" class="btn btn-outline-success btn-lg">Send</a>
+        <a href="/confirm/<%= user._id %>" class="btn btn-outline-success btn-md" id="sendButton">Send</a>
         
     </section>
 </section>
