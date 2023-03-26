@@ -1156,9 +1156,12 @@ PROFILE PAGE
     border: 1px solid black;
 }
 
-.profile section.profileDirectChild nav {
-    border: none;
+.profileDirectChild{
+    display: flex;
+    flex-direction: column;
 }
+
+
 
 .profile section.profileDirectChild ul{
     display: block;
@@ -1191,18 +1194,22 @@ PROFILE PAGE
 .profileDirectChild {
     background-color: rgb(249, 248, 247);
     padding: 10px;
+
 }
-
-
 .profileInfo{
     border: 1px dotted black;
     padding: 15px;
 }
 
+.cryptoButton {
+    margin-right: 20px;
+}
+
 .profile nav {
     background-color: rgb(249, 248, 247);
     border: 1px gray solid;
-    padding: 15px;
+    padding: 10px;
+    border: none;
 }
 
 .profile nav p{
@@ -1248,6 +1255,7 @@ PROFILE PAGE
     border-radius: 10px;
     padding: 10px;
     color: #fff;
+
    
 }
 
@@ -1265,6 +1273,27 @@ PROFILE PAGE
     flex-basis: 40%;
 }
 
+.mainSection .mainSectionFirst + section h2{
+    color: #093d2a;
+}
+
+.mainSectionFirst > section {
+    justify-content: space-around;
+}
+
+
+.loansCheck{
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.award {
+    box-shadow:  3px 5px 6px #ccc;
+    padding: 20px;
+    text-align: justify;
+    margin-top: 20px;
+}
+
 .accountCheck{
     background-color: rgb(249, 248, 247);
     border-radius: 10px;
@@ -1272,12 +1301,11 @@ PROFILE PAGE
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 30px;
+    flex-basis: 45%;
 }
 
 @media screen and (max-width: 480px){
-    .profile .profileDirectChild + section {
-        display: none;
-    }
+    
 
     .mainSection {
         flex-direction: column;
@@ -1289,6 +1317,19 @@ PROFILE PAGE
 
     .profile {
         flex-direction: column;
+    }
+
+    .profile section.profileDirectChild{
+        width: 100%; 
+    }
+
+    .profileDirectChild {
+        flex-direction: column-reverse;
+    }
+
+    .profile section.profileDirectChild{
+       
+        border: none;
     }
 
 }
@@ -1346,9 +1387,14 @@ TRANSFER IFRAME PAGE
     margin-bottom: 15px;
 }
 
-.userNav{
-    padding: 10px;
+
+@media screen and (max-width: 480px){
+   .userNav {
+    display: none;
+
+   }
 }
+
 
 #navbarSupportedContent {
     position: absolute;
@@ -1540,18 +1586,22 @@ TRANSACTION SUMMARY ON THE DASHBOARD
     margin-top: 15px;
     border: 1px solid #093d2a;
     flex-basis: 50%;
+    margin-bottom: 20px;
+    
 }
 
-.transactionSummary a {
-    float: right;
-    margin-top: -50px;
+
+.userNav img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
 }
+
 
 #transact {
-    float: none;
     margin: 10px auto;
     display: block;
-    width: 50%;
+    width: 70%;
 }
 .transactionSummary p {
     font-weight: bold;
@@ -1584,7 +1634,19 @@ TRANSACTION SUMMARY ON THE DASHBOARD
     margin-bottom: 20px;
 }
 
+.transactionSummary a {
+    display: block;
+    margin: 10px auto;
+    width: 50%;
+}
 
+
+@media screen and (max-width: 480px){
+    .transactionSummary{
+        margin-bottom: 20px;
+        
+    }
+ }
  /* 
 ***********************************************************
 TRANSACTION RECEIPT
