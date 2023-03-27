@@ -4,13 +4,9 @@
     <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
 <% } %>
 
-<section class="userHeaders">
-    <h2>Account Details</h2>
-    <h2 class="userInfo">User Information</h2>
-    <h2>Next of Kin</h2>
-</section>
 <section class="accountInfo">
     <section class="accDetails">
+        <h2>Account Details</h2>
         <img src="<%= user.ownerImage  %>" class="accImg" alt="">
         <section>
             <section>
@@ -41,11 +37,12 @@
     </section>
 
     <section class="middle"> 
-           <section class="headers">
+        <h2 class="">User Information</h2>
+        <section>
+            <section class="">
                 <p>First Name : </p>  
                 <p>Middle Name : </p>   
-                <p>Last Name : </p>  
-                <p>Date of Birth :</p>  
+                <p>Last Name : </p>   
                 <p>Email : </p>  
                 <p>Mobile : </p>   
                 <p>Gender : </p>   
@@ -59,7 +56,6 @@
                 <p> <%= user.username %></p>
                 <p> <%= user.middlename %></p>
                 <p><%= user.lastname %></p>
-                <p><%= user.dateOfBirth %></p>
                 <p><%= user.email %></p>
                 <p><%= user.mobile %></p>
                 <p><%= user.gender %></p>
@@ -68,22 +64,25 @@
                 <p><%= user.nation %></p>
                 <p><%= user.landmark %></p>
             </section>
+        </section>
     </section>
    <section class="last">
-            <section class="headers">
+        <h2>Next of Kin</h2>
+        <section>
+            <section class="">
                 <p>Next Of Kin : </p>
                 <p>Relationship : </p>
                 <p>Mobile : </p>
                 <p>Address : </p>
-                <p>Date Of Creation :</p>
             </section>
             <section>
                 <p><%= user.kin %></p>
                 <p><%= user.relationship %></p>
                 <p><%= user.kinMobile %></p>
                 <p><%= user.Kinaddress %></p>
-                <p><%= user.createdAt %></p>
             </section>
+        </section>
+            
             
     </section>
 </section>

@@ -26,7 +26,7 @@ module.exports = {
         }
     },
 
-    createAccount  : async (req, res) => {
+    createAccount  : async (req, res) => { 
         try {
             const result = await cloudinary.uploader.upload(req.file.path)
             await accounts.create({
