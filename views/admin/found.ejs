@@ -20,15 +20,15 @@
         </section>
         <section class="userButton">
 
-            <button type="button" class="btn btn-outline-info btn-lg" data-bs-toggle="modal" data-bs-target="#editmodal">
+            <button type="button" id="adminUser" class="btn btn-outline-info btn-lg" data-bs-toggle="modal" data-bs-target="#editmodal">
                 Edit
               </button>
             
             <form action="/admin/delete/user/<%= user._id%>?_method=DELETE" method="POST">
-                <button type="submit" class="btn btn-outline-info btn-lg">Delete</button>
+                <button type="submit" id="adminUser"class="btn btn-outline-info btn-lg">Delete</button>
             </form>
 
-            <button type="button" class="btn btn-outline-info btn-lg" data-bs-toggle="modal" data-bs-target="#editbalance">
+            <button type="button" id="adminUser" class="btn btn-outline-info btn-lg" data-bs-toggle="modal" data-bs-target="#editbalance">
                 Deposit
               </button>
         
