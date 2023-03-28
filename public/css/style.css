@@ -103,7 +103,7 @@ Carousel Setting
 }   
 
 .heroText{
-    font-size: 35px;
+    font-size: 20px;
     font-weight: bold;
     color:azure;
     /* color: #20d492; */
@@ -111,13 +111,13 @@ Carousel Setting
 
 .contactButton{
     position: absolute;
-    left: 45%;
-    bottom : 10%;
+    left: 40%;
+    bottom : 20%;
     padding: 15px;
     text-align: center;
-    width: 12%;
+    width: 20%;
     color: #fff;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .laptopCarousel {
@@ -125,7 +125,7 @@ Carousel Setting
     background-size: cover;
     /* padding: 120px 0; */
     width: 100%;
-    height: 670px;
+    height: 500px;
     
 }
 
@@ -133,7 +133,7 @@ Carousel Setting
     background: linear-gradient(rgba(40, 58, 90, 0.6), rgba(40, 58, 90, 0.6)), url("/images/vacation.jpg") fixed center center;
     background-size: cover;
     width: 100%;
-    height: 670px;  
+    height: 500px;  
     position: relative;
 }
 
@@ -148,13 +148,13 @@ Carousel Setting
     }  
 
     .heroText{
-        font-size: 25px;
+        font-size: 18px;
         font-weight: bold;
         color:azure;
     }
 
     .contactButton{
-        bottom : 8%;
+        bottom : 18%;
         width: 30%;
         font-size: 20px;
         left: 35%;
@@ -173,12 +173,12 @@ Services Setting
     text-align: center;
 }
 .services > h2{
-    font-size: 50px;
+    font-size: 30px;
 }
 
 .services > h2 + p{
     color: gray;
-    font-size: 18px;
+    font-size: 15px;
     display: inline-block;
     margin-bottom: 30px;
 }
@@ -214,7 +214,7 @@ Services Setting
     }
 
     .serviceFlex section{
-        width: 80%;
+        width: 70%;
         margin: 10px auto;
     }
     
@@ -227,9 +227,9 @@ About Us Setting
 ***********************************************************
 */
 .aboutUs{
-    margin-top: 100px;
+    margin-top: 80px;
     background-color: rgb(241, 239, 239);
-    padding: 100px 40px;
+    padding: 70px 20px;
 }
 
 .aboutUsImage{
@@ -238,13 +238,31 @@ About Us Setting
     border-radius: 10px;
 }
 
+.aboutUsFlex {
+    justify-content: flex-start;
+    gap: 10%;
+}
+
+.aboutUsFlex div:first-child {
+    flex-basis: 50%;
+}
+
+.aboutUsImage{
+    background-color: rgb(179, 212, 225);
+    border-radius: 10px;
+    flex-basis: 40%;
+    height: 310px;
+    margin-top: 40px;
+}
+
 .aboutUsImage img{
     border-radius: 10px;
+    width: 100%;
 }
 
 .aboutUsFlex > div > span{
     font-weight: bold;
-    font-size: 20px;
+    font-size: 15px;
     display: inline-block;
     border-left: 3px solid red;
     padding-left: 10px;
@@ -252,10 +270,13 @@ About Us Setting
 }
 
 .aboutUsFlex > div > span + h2{
-    font-size: 40px;
+    font-size: 20px;
     font-weight: bold;    
 }
 
+.aboutUsFlex  p{
+    text-align: justify;    
+}
 @media screen and (max-width: 480px){
     .aboutUsFlex{
         flex-direction: column;
@@ -266,7 +287,6 @@ About Us Setting
     }
 
     .aboutUs{
-        
         padding: 20px ;
     }
 
@@ -296,6 +316,7 @@ Insurance Section
     color: #fff;
     padding: 50px;
     border-radius: 10px;
+    
 }
 
 .subInsurance > section > div {
@@ -359,7 +380,7 @@ Insurance Section
     padding: 0;
     margin-top: 100px;
     border-radius: 10px;
-    height: 320px;
+    height: 257px;
     width: 75%;
     position: relative;
 }
@@ -372,18 +393,21 @@ Insurance Section
 .futureSection > img + div{
     width: 50%;
     position:absolute;
-    right: 10px;
-    bottom: 140px;
-    padding: 30px;    
+    right: 8px;
+    bottom: 120px;
+    padding: 30px;   
+    top : 10%; 
 }
 
 .futureSection > img + div p{
     text-align: right;
     font-weight: bold;
+    font-size: 15px;
 }
 
 .futureSection > img + div > h2{
     font-weight: bold;
+    font-size: 25px;
 }
 
 @media screen and (max-width: 480px){
@@ -465,13 +489,13 @@ INVEST PAGE
 
 
 #investHero{
-    height: 350px;
+    height: 300px;
     transform: translate(0%, 20%);
 }
 
 #investHero > img {
     border-radius: 10px;
-    height: 350px;
+    height: 300px;
 }
 
 .investHolder{
@@ -484,19 +508,22 @@ INVEST PAGE
     font-size: 17px;
     display: inline-block;
     margin-bottom: 20px;
+    border-left: 3px solid red;
+    padding-left: 10px;
 }
 
 #investSection > span + h2{
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bold;
     margin-bottom: 20px;
+    color: #093d2a;
 }
 
 #investSection > span + h2 + p{
     color: gray;
     text-align: justify;
-    font-size: 17px;
-    letter-spacing: 2px;
+    font-size: 15px;
+    letter-spacing: 1px;
     line-height: 2.0;
 }
 
@@ -513,7 +540,12 @@ INVEST PAGE
 @media screen and (max-width: 480px){
     #investHero{
         border-radius: 10px;
+        height: 420px;
     }
+
+    #investHero > div{
+        transform: translate(5%, 63%);
+    } 
 
     #investSection{
     width: 100%;
@@ -646,7 +678,7 @@ Loan page
     display: flex;
     justify-content: space-between; 
     width: 90%; 
-    margin: 200px auto;
+    margin: 50px auto;
 
 }
 
@@ -654,7 +686,7 @@ Loan page
 .loanSection > div{
     border: 5px solid #093d2a;
     flex-basis: 45%;
-    height: 510px;
+    height: 410px;
     border-radius: 10px;
     margin-top: 170px;
    
@@ -685,11 +717,11 @@ Loan page
 
 #loadImage{
     width: 45%;
-    height: 320px;
+    height: 257px;
 }
 
 #loadImage2{
-    height: 320px;
+    height: 260px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
@@ -711,7 +743,7 @@ Loan page
 .loanSection > div + section > span + h2{
     font-weight: bold;
     margin: 10px 0;
-    color: coral;
+    color: #093d2a;
 }
 
 .loanSection > div + section > span + h2 + p{
@@ -722,22 +754,18 @@ Loan page
 
 .loanSection > div + section > section > section > span{
     font-weight: bold;
-    color: coral;
+    color: #093d2a;
 }
 
 @media screen and (max-width: 480px){
     #loadImage{
         width: 100%;
-        height: 320px;
+        height: 300px;
         border-radius: 10px;
     }
 
     #loadSection > div{
-        width: 100%;
-        position:absolute;
-        left: 0;
-        bottom: -30px;
-        padding: 30px;
+        transform: translate(5%, 63%);
     }
    
     #loadSection{
@@ -823,32 +851,43 @@ SAVE PAGE
 }
 
 .saveSection{
-    justify-content:space-between;
-    gap: 100px;
+    justify-content:space-evenly;
+    gap: 20px;
 }
 
 .saveSection > section{
-    flex-basis: 45%;
+    width: 50%;
 }
+
+.saveSection img{
+    width: 100%;
+}
+
+.saveSection > section + section{
+    margin-top: 50px;
+    width: 30%;
+}
+
 
 .saveSection > section h2{
     font-weight: bold;
     margin: 15px 0;
-    color: coral;
+    color: #093d2a;
 }
 
 .saveSection > section p{
     line-height: 2.0;
 }
 
-.saveSection > section + section{
-    margin-top: -80px;
-    flex-basis: 55%;
-}
-
 #saveHero{
     margin-top: -30px;
+    height: 234px;
 }
+
+#saveHero > img {
+    width: 50%;
+}
+
 
 .visionSection > section + section > p {
     display: inline-block;
@@ -856,8 +895,22 @@ SAVE PAGE
     padding-left: 10px;
 }
 
+.visionSection  {
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+.visionSection section:first-child > img {
+    width: 80%;
+}
+
+.visionSection section:first-child  + section{
+    flex-basis: 50%;
+}
+
 .visionSection > section + section > h2 {
-    color: coral;
+    color: #093d2a;
 }
 
 @media screen and (max-width: 480px){
@@ -882,13 +935,23 @@ SAVE PAGE
     }
 
     .saveSection > section + section{
-        margin-top: 10px;
-        flex-basis: 50%;
+        margin-top: 10px auto;
+        flex-basis: 80%;
         
     }
 
     .saveSection > section + section > img{
         width: 100%;
+    }
+
+    .saveSection > section{
+        width: 100%;
+        margin: auto;
+    }
+    
+
+    .saveSection > section + section{
+        width: 80%;
     }
 
     #saveHero{
