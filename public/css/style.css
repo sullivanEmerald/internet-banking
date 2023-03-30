@@ -34,8 +34,11 @@ Nav Bar Setting
 ***********************************************************
 */
 
+
+
 .navbar {
     background-color: #fff;
+    height: 50px;
  
 }
 .navbar-brand {
@@ -44,7 +47,7 @@ Nav Bar Setting
 }
 .navbar ul li a{
     color: #00af6f;
-    font-size: 25px;
+    font-size: 17px;
 }
 .navbar ul li a:hover{
     color: crimson;
@@ -78,6 +81,11 @@ Nav Bar Setting
         width: 40%;
         height: 70px;
     }
+    .navbar {
+     
+        height: 70px;
+     
+    }
 }
 
 /* 
@@ -87,7 +95,7 @@ Carousel Setting
 */
 .carousel-item{
     position: relative;
-     margin-top: 75px;
+     margin-top: 40px;
 }
 
 
@@ -111,11 +119,11 @@ Carousel Setting
 
 .contactButton{
     position: absolute;
-    left: 40%;
-    bottom : 20%;
-    padding: 15px;
+    left: 45%;
+    bottom : 10%;
+    padding: 10px;
     text-align: center;
-    width: 20%;
+    width: 15%;
     color: #fff;
     font-size: 20px;
 }
@@ -125,7 +133,7 @@ Carousel Setting
     background-size: cover;
     /* padding: 120px 0; */
     width: 100%;
-    height: 500px;
+    height: 450px;
     
 }
 
@@ -133,7 +141,7 @@ Carousel Setting
     background: linear-gradient(rgba(40, 58, 90, 0.6), rgba(40, 58, 90, 0.6)), url("/images/vacation.jpg") fixed center center;
     background-size: cover;
     width: 100%;
-    height: 500px;  
+    height: 450px;  
     position: relative;
 }
 
@@ -154,11 +162,14 @@ Carousel Setting
     }
 
     .contactButton{
-        bottom : 18%;
-        width: 30%;
+        position: absolute;
+        left: 30%;
+        bottom : 5%;
+        padding: 10px;
+        text-align: center;
+        width: 40%;
+        color: #fff;
         font-size: 20px;
-        left: 35%;
-    
     }
 
 }
@@ -193,18 +204,20 @@ Services Setting
 .serviceFlex section > img{
     border-radius: 10px;
     width: 100%;
-    height: 300px;
+    height: 130px;
 }
 
 .serviceFlex section > img + h3{
-    font-size: 30px;
+    font-size: 20px;
     padding-top: 10px;
     font-weight: bold;
+    color:#00af6f;
 }
 
 .serviceFlex section > img + h3 + p{
-    font-size: 20px;
+    font-size: 15px;
     padding: 10px;
+    font-weight: bold;
     color: rgb(42, 37, 37);
 }
 
@@ -251,7 +264,7 @@ About Us Setting
     background-color: rgb(179, 212, 225);
     border-radius: 10px;
     flex-basis: 40%;
-    height: 310px;
+    height: 258px;
     margin-top: 40px;
 }
 
@@ -275,7 +288,8 @@ About Us Setting
 }
 
 .aboutUsFlex  p{
-    text-align: justify;    
+    text-align: justify; 
+    
 }
 @media screen and (max-width: 480px){
     .aboutUsFlex{
@@ -292,7 +306,7 @@ About Us Setting
 
     .aboutUsFlex p {
         text-align: justify;
-        font-size: 18px;
+        font-size: 12px;
     }
 }
 /* 
@@ -314,24 +328,25 @@ Insurance Section
     width:30%;
     background-color: #093d2a;
     color: #fff;
-    padding: 50px;
+    padding: 10px;
     border-radius: 10px;
+    box-sizing: border-box;
     
 }
 
 .subInsurance > section > div {
-    width:80px;
-    height: 80px;
+    width:50px;
+    height: 50px;
     border-radius: 100%;
     background-color: red;
-    margin: auto;
-    margin-bottom: 30px;
-    padding:15px;
+    margin:10px auto;
+    padding:10px;
     background-color: #fff;
+
 }
 
  .fontIcon {
-    font-size: 45px;
+    font-size: 25px;
     color: black;
 }
 
@@ -352,8 +367,12 @@ Insurance Section
     display: inline-block;
     width: 60%;
     color: gray;
-    font-size: 17px;
+    font-size: 15px;
     margin-bottom: 30px;
+}
+
+.subInsurance h3 {
+    color: #0ac37f;
 }
 
 
@@ -380,14 +399,14 @@ Insurance Section
     padding: 0;
     margin-top: 100px;
     border-radius: 10px;
-    height: 257px;
+    height: 230px;
     width: 75%;
     position: relative;
 }
 
 .futureSection > img{
     border-radius: 30px;
-    width:50%;
+    width:45%;
 }
 
 .futureSection > img + div{
@@ -421,14 +440,14 @@ Insurance Section
     }
 
     .futureSection > img + div{
-        bottom: 0px;
+        top: 50%;
         padding: 30px;  
     }
 
     .futureSection {
         width: 90%;
         border-radius: 0;
-        height: 400px;
+        height: 300px;
     }
 }
 
@@ -449,7 +468,7 @@ footer{
 
 footer > section > section > h3, .subSection > h2{
     color: #00af6f;
-    font-size: 30px;
+    font-size: 20px;
     
 }
 
@@ -458,12 +477,14 @@ footer > section > section{
 }
 
 footer {
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .footer-brand{
     width: 60%;
 }
+
+
 
 @media screen and (max-width: 480px){
     footer > section {
@@ -486,16 +507,15 @@ INVEST PAGE
 ***********************************************************
 */
 
-
-
 #investHero{
-    height: 300px;
     transform: translate(0%, 20%);
+    height: 270px;
 }
 
 #investHero > img {
-    border-radius: 10px;
-    height: 300px;
+    border-radius: 20px;
+    width: 40%;
+    
 }
 
 .investHolder{
@@ -513,7 +533,7 @@ INVEST PAGE
 }
 
 #investSection > span + h2{
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
     margin-bottom: 20px;
     color: #093d2a;
@@ -522,7 +542,7 @@ INVEST PAGE
 #investSection > span + h2 + p{
     color: gray;
     text-align: justify;
-    font-size: 15px;
+    font-size: 13px;
     letter-spacing: 1px;
     line-height: 2.0;
 }
@@ -530,7 +550,8 @@ INVEST PAGE
 
 #secondColumn > img{
     border-radius: 10px;
-    margin-top: 120px;
+    margin-top: 130px;
+    width: 100%;
 }
 
 #investFont{
@@ -538,14 +559,22 @@ INVEST PAGE
 }
 
 @media screen and (max-width: 480px){
-    #investHero{
-        border-radius: 10px;
-        height: 420px;
+
+    .investHolder{
+        margin-top: 120px;
     }
 
-    #investHero > div{
-        transform: translate(5%, 63%);
-    } 
+    #investHero > img {
+        border-radius: 20px;
+        width: 100%;
+        
+    }
+    #investHero{
+        border-radius: 10px;
+        height: 340px;
+        width: 70%;
+        margin: 60px auto;
+    }
 
     #investSection{
     width: 100%;
@@ -564,6 +593,35 @@ INVEST PAGE
         width: 80%;
         margin: auto;
     }
+
+    #investHero > div {
+        top: 60%;
+        margin-bottom: 10px;
+    }
+
+    #investHero > div > h4 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    #investHero > div > h4 + p{
+        font-size: 14px;
+    }
+
+    #investSection > span + h2{
+        font-size: 20px;
+    }
+
+    #investSection > span + h2 + p{
+        font-size: 12px;
+        letter-spacing: 1px;
+        line-height: 2.0;
+    }
+
+    #secondColumn > img{
+        border-radius: 10px;
+        margin-top: 100px;
+    }
 }   
 
 
@@ -571,18 +629,21 @@ INVEST PAGE
 /********************************* HELP SECTION ********************************/
 
 .helpSection{
-    margin-top: 150px;
+    margin-top: 100px;
     text-align: center;
     
 }
 .helpSection > h2{
     font-weight: bold;
-    font-size: 50px;
+    font-size: 30px;
+    color: #093d2a;
 }
 .helpSection > h2 + p { 
     display: inline-block;
     width: 60%;
     color: gray;
+    font-size: 13px;
+    text-align: justify;
 }
 
 
@@ -685,8 +746,8 @@ Loan page
 
 .loanSection > div{
     border: 5px solid #093d2a;
-    flex-basis: 45%;
-    height: 410px;
+    flex-basis: 40%;
+    height: 360px;
     border-radius: 10px;
     margin-top: 170px;
    
@@ -696,7 +757,7 @@ Loan page
     flex-basis: 50%;
     line-height: 2.0;
     color: gray;
-    font-size: 18px;
+    font-size: 15px;
     margin-top: 20px;
 }
 
@@ -717,17 +778,18 @@ Loan page
 
 #loadImage{
     width: 45%;
-    height: 257px;
+    height: 200px;
 }
 
 #loadImage2{
-    height: 260px;
+    height: 200px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
 
 #loadSection{
     margin-top: 120px;
+    height: 200px;
 }
 
 
@@ -744,6 +806,7 @@ Loan page
     font-weight: bold;
     margin: 10px 0;
     color: #093d2a;
+    font-size: 25px;
 }
 
 .loanSection > div + section > span + h2 + p{
@@ -760,21 +823,32 @@ Loan page
 @media screen and (max-width: 480px){
     #loadImage{
         width: 100%;
-        height: 300px;
+        height: 150px;
         border-radius: 10px;
     }
 
-    #loadSection > div{
-        transform: translate(5%, 63%);
+    .loanSection > div + section{
+        font-size: 10px;
+    }
+
+    #loadSection > div > h2{
+        font-size: 20px;
+        color: #093d2a;
     }
    
     #loadSection{
-        width: 90%;
+        width: 70%;
         margin: auto;
         margin-top: 130px;
         border-radius: 10px;
-        height: 450px;
+        height: 360px;
         box-shadow:  3px 5px 6px #ccc;
+    }
+
+    .loanSection > div > img{
+        transform: translate(0%, -10%);
+        width: 100%;
+        border-radius: 10px;
     }
 
     .loanSection {
@@ -793,13 +867,9 @@ Loan page
         
     }
 
-    .loanSection > div > img{
-        transform: translate(0%, -10%);
-        width: 100%;
-        border-radius: 10px;
+    .save {
+        margin: 10px auto;
     }
-
-    
    
 }
 
@@ -913,6 +983,7 @@ SAVE PAGE
     color: #093d2a;
 }
 
+
 @media screen and (max-width: 480px){
 
     .saveIntro {
@@ -955,7 +1026,15 @@ SAVE PAGE
     }
 
     #saveHero{
-        margin-top: 10px;
+         height: 300px; 
+    }
+
+    #saveHero > img {
+        width: 100%;
+    }
+
+    #saveHero > div {
+        transform: translate(5%,43%);
     }
 
     .visionSection {
@@ -968,6 +1047,10 @@ SAVE PAGE
 
     .visionSection > section > img {
         width: 90%;
+    }
+
+    .saveIntro {
+        font-size: 15px;
     }
 }
 
@@ -983,7 +1066,7 @@ SAVE PAGE
 
 .visionSection > section + section > section{
     flex-wrap: wrap;
-    width: 70%;
+    width: 100%;
     justify-content: flex-start;
 }
 
@@ -1026,7 +1109,7 @@ Contact Page
     justify-content: space-around;
     padding: 30px;
     gap: 10px;
-    margin: 150px auto;
+    margin: 100px auto;
 }
 
 .contactPage > section{
@@ -1555,7 +1638,7 @@ REVIEW PAGE
     padding: 10px;
 }
 #sendButton {
-    margin-left: 55px;
+    margin-left: 65%;
 }
 
 @media screen and (max-width: 480px){
@@ -1570,6 +1653,10 @@ REVIEW PAGE
 
     .reviewPage section:first-child + section {
         flex-basis: 55%;
+    }
+
+    #sendButton {
+        margin-left: 20%;
     }
 }
 
@@ -1604,7 +1691,7 @@ The preloader styling
 
 #preloader .loader {
     position: absolute;
-    top: 30%;
+    top: 15%;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 8px solid #f3f3f3;

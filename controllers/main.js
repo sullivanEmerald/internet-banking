@@ -12,6 +12,14 @@ function generateNums(){
 }
 
 
+function removeCommas(number) {
+    const removed =  number.toString().replace(/,/g, '');
+
+    return +removed
+}
+  
+
+
 module.exports = {
     getIndex  : async (req, res) => {
         try {
@@ -70,13 +78,19 @@ module.exports = {
     },
 
     findUser : async (req, res) => {
+            const validationErrors = [];
         try {
-            const user = await accounts.find({ accountNumber : req.body.account})
+            const user = await accounts.find({ accountNumber : req.body.account, email : req.user.email})
             if(user.length > 0){
                 const userObj = user[0]
                 res.redirect(`/user/profile/${userObj.id}`)
             }else{
-                res.redirect('/search')
+                validationErrors.push({ msg: "Account Number or Email Mismatch" });
+
+                if (validationErrors.length) {
+                    req.flash("errors", validationErrors);
+                    return res.redirect("/search");
+                  }
             }
         } catch (error) {
             console.error(error)
@@ -113,68 +127,99 @@ module.exports = {
     },
 
     transferMoney :  async (req, res) => {
+        const validationErrors = [];
+        const accountBalance = await accounts.findById(req.params.id)
+        console.log(accountBalance)
+        const transferAmount =  removeCommas(req.body.amount)
         try {
-            const transferAmount =  req.body.amount
-            Number(transferAmount)
-            console.log(typeof transferAmount)
-            res.render('reciever.ejs', { title : 'Reciever', amount : transferAmount, user : req.params.id})
+
+            if(transferAmount < 1){
+                validationErrors.push({ msg: "Please Put An Amount To Transfer" });
+            }
+           
+
+            if( transferAmount >= accountBalance.balance){
+                validationErrors.push({ msg: "Insufficient Balance" });
+            }
+
+            if(isNaN(transferAmount)){
+                validationErrors.push({ msg: "Wrong Input, Please Enter Digits" });
+            }
+
+            if (validationErrors.length) {
+                req.flash("errors", validationErrors);
+                return res.redirect(`/transfer/${req.params.id}`);
+              }else{
+                res.render('reciever.ejs', { title : 'Reciever', amount : transferAmount, user : req.params.id})
+              }   
         } catch (error) {
             console.error(error)
         }
     },
 
     postTransfer : async (req, res) => {
-        const amount = req.body.amountTransfer.replace(',', '').replace(',', '').replace(',', '').replace(',','').replace(',','')
+        const amount = removeCommas(req.body.amountTransfer)
         let p = Number(amount)
         const date = new Date();
         const day = date.getDate();
         const month = date.getMonth() + 1; // add 1 because getMonth() returns 0-11 for Jan-Dec
         const year = date.getFullYear();  
         const time = date.toLocaleTimeString();  
-
+        const user = await accounts.findById(req.params.id)
+        const validationErrors = [];
         try {
-           const user = await accounts.findById(req.params.id)
-        //    creating the transaction history
-           await history.create({
-            from : `${user.username} ${user.lastname}`,
-            fromNo : user.accountNumber,
-            toName : req.body.holder,
-            toNumber : req.body.account,
-            tobank : req.body.name,
-            account : req.body.account,
-            description :  req.body.description,
-            referenceNo  : generateNums(),
-            date : `${day}/${month}/${year}`,
-            time : time,
-            transferAmount : p
 
-           })
-
-           await accounts.findByIdAndUpdate(req.params.id, {
-                $inc : {
-                    balance : -p
-                }
-           })
-
-           await accounts.findOneAndUpdate({ accountNumber : req.body.account}, {
-            $inc : {
-                balance : p
+            if(req.body.holder == "" || req.body.account == "" || req.body.name == "" || req.body.description == "" ){
+                validationErrors.push({ msg: "Please, All field msut be filled" });
             }
-       })
 
-           console.log('updated')
-           const confirmUser = await history.find()
-           const userInfo = confirmUser[confirmUser.length -1]
-           console.log(userInfo)
-           if(req.user){
-            await history.findByIdAndUpdate(userInfo._id, {
-                $set : {
-                    type : true
-                }
-            })
-           }
+            if(validationErrors.length){
+                req.flash("errors", validationErrors);
+                return res.render('reciever.ejs', { title : 'Reciever', amount : amount, user : req.params.id});
+            }else{
+                await history.create({
+                    from : `${user.username} ${user.lastname}`,
+                    fromNo : user.accountNumber,
+                    toName : req.body.holder,
+                    toNumber : req.body.account,
+                    tobank : req.body.name,
+                    description :  req.body.description,
+                    referenceNo  : generateNums(),
+                    date : `${day}/${month}/${year}`,
+                    time : time,
+                    transferAmount : p
+        
+                   })
+        
+                   await accounts.findByIdAndUpdate(req.params.id, {
+                        $inc : {
+                            balance : -p
+                        }
+                   })
+        
+                   await accounts.findOneAndUpdate({ accountNumber : req.body.account}, {
+                    $inc : {
+                        balance : p
+                    }
+               })
+        
+                   console.log('updated')
+                   const confirmUser = await history.find()
+                   const userInfo = confirmUser[confirmUser.length -1]
+                   console.log(userInfo)
+                   if(req.user){
+                    await history.findByIdAndUpdate(userInfo._id, {
+                        $set : {
+                            type : true
+                        }
+                    })
+                   }
+                   
+                res.redirect(`/user/confirm/${userInfo._id}`)
+            }
+            
            
-        res.redirect(`/user/confirm/${userInfo._id}`)
+        //    creating the transaction history
         } catch (error) {
             console.error(error)
         }

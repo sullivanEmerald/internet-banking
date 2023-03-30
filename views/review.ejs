@@ -28,15 +28,15 @@
     </section>
     <section>
         <% if(!user.status) { %>
-            <a href="/edit/history/<%= user._id %>" target="dashboard" class="btn btn-outline-success btn-md">Edit Transaction</a>
+            <a href="/edit/history/<%= user._id %>" target="dashboard" class="btn btn-outline-success btn-lg">Edit Transaction</a>
             <% } else { %>
-            <button type="button" class="btn btn-outline-success btn-md" data-bs-toggle="modal" data-bs-target="#delete">
+            <button type="button" class="btn btn-outline-success btn-lg" data-bs-toggle="modal" data-bs-target="#delete">
                 Delete Transaction
             </button>
             <% } %>
         
-        <a href="/confirm/<%= user._id %>" class="btn btn-outline-success btn-md" id="sendButton">Send</a>
-        
+          <a href="/confirm/<%= user._id %>" class="btn btn-outline-success btn-lg" id="sendButton">Send</a>
+            
     </section>
 </section>
 

@@ -1,6 +1,7 @@
 const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const User = require("../models/User");
+const Accounts = require('../models/accounts')
 
 module.exports = function (passport) {
   passport.use(
@@ -39,3 +40,6 @@ module.exports = function (passport) {
     User.findById(id, (err, user) => done(err, user));
   });
 };
+
+
+

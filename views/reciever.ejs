@@ -5,6 +5,16 @@
 <% } %>
 
 <section class="reciever">
+    <% if (locals.messages.errors) { %>
+      <% messages.errors.forEach( el => { %>
+          <div class="alert alert-danger"><%= el.msg %></div>
+      <% }) %>    
+  <% } %>
+  <% if (locals.messages.info) { %>
+      <% messages.info.forEach( el => { %>
+          <div class="alert alert-info"><%= el.msg %></div>
+      <% }) %>    
+  <% } %>
     <h1 class="text-success text-center">Utopia online Transfer</h1>
     <h3 class="text-danger">AMOUNT TO TRANSFER : GPB  &dollar;<%= useComma(amount) %></h3>
     <form action="/myaccount/transfer/reciever/<%= user %>" method="POST">

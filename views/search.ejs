@@ -1,6 +1,16 @@
 <%- include('./partials/nav.ejs') %>
 
 <section class="container account">
+    <% if (locals.messages.errors) { %>
+        <% messages.errors.forEach( el => { %>
+            <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
+    <% if (locals.messages.info) { %>
+        <% messages.info.forEach( el => { %>
+            <div class="alert alert-info"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
     <p class="text-danger">Enter Your Account Number Linked To Your Email </p>
     <form action="/find/user" method="POST">
         <div class="form-floating mb-3">
