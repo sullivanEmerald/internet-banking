@@ -1,8 +1,6 @@
-<%- include('./partials/login.ejs') %>
+<%- include('./partials/nav.ejs') %>
 
-    <main class="container">
-        <div class="row justify-content-center">
-            <section class="col-6 mt-5">
+    <main class="registerForm ">
                 <% if (locals.messages.errors) { %>
                     <% messages.errors.forEach( el => { %>
                         <div class="alert alert-danger"><%= el.msg %></div>
@@ -13,7 +11,7 @@
                         <div class="alert alert-info"><%= el.msg %></div>
                     <% }) %>    
                 <% } %>
-                <form action="/signup" method="POST">
+                <form action="/signup" method="POST" class="">
                     <div class="mb-3">
                         <label for="userName" class="form-label">User Name</label>
                         <input type="text" class="form-control" id="userName" name="userName">
@@ -31,10 +29,8 @@
                         <label for="confirmPassword" class="form-label">Confirm Password</label>
                         <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
                       </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-lg signupButton">Submit</button>
                   </form>
-            </section>
-        </div>
     </main>
 
 

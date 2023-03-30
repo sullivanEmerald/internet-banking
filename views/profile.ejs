@@ -72,9 +72,24 @@
     <section>
         
             <div class="container-fluid userNav" style="position: relative ;">  
-                <a href="/pandemic" target="_blank">Do you know the latest of Covid 2019 ? See World Bank Response to the Global Pandemic</a>    
-                <strong><%= user.username %> <%= user.lastname %> </strong>
-                <img src="<%= user.ownerImage %>" alt="">
+                <a href="/pandemic" target="_blank">Do you know the latest of Covid 2019 ? See World Bank Response to the Global Pandemic</a> 
+                <section class="userDashboard">
+                  <div>
+
+                  </div>
+                  <section class="dropdown">
+                    <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
+                      <%= user.username %> <%= user.lastname %> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/logout">log Out <%= user.username %> <%= user.lastname %></a></li>
+                      <li><a class="dropdown-item" href="#">Link 2</a></li>
+                      <li><a class="dropdown-item" href="#">Link 3</a></li>
+                    </ul>
+                  </section>
+                  <img src="<%= user.ownerImage %>" alt="">
+                </section>   
+                
             </div>
           
 

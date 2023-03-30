@@ -166,4 +166,13 @@ section.last > h2 + section{
         margin-top: 20%;
         
     }
+
+    .accountForm{
+        width: 80%;
+    }
+
+    .accountForm > h1 +  form{
+        flex-direction: column;
+    }
+
  }

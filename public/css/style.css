@@ -1533,11 +1533,28 @@ TRANSFER IFRAME PAGE
     margin-bottom: 15px;
 }
 
+.userNav {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+   }
+
+.userNav div{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #0ac37f;
+    display: inline-block;
+}
+
+.userDashboard > * {
+    display: inline-block;
+    margin-right: 10px;
+}
 
 @media screen and (max-width: 480px){
    .userNav {
     display: none;
-
    }
 
    .reciever{
@@ -1871,7 +1888,7 @@ hr {
 .singleHistory{
     width: 50%;
     margin: 50px auto;
-    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+    box-shadow:  3px 3px 3px 6px #ccc;;
     border-radius: 10px;
     padding: 20px;
 }
@@ -1881,6 +1898,7 @@ hr {
     padding: 15px;
     color: #093d2a;
     font-weight: bold;
+    font-size: 20px;
 }
 
 .singleHistory h2:first-child{
@@ -1891,8 +1909,7 @@ hr {
 }
 
 .singleHistory p{
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 15px;
 }
 @media screen and (max-width: 480px){
     .singleHistory{
@@ -1909,13 +1926,17 @@ ALL TRANSACTIONS RECEIPT PAGE
     box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
     padding: 10px;
     border-radius: 10px;
-    margin: 50px 15px;
-    width: 30%;
-    margin-bottom: 15px;
+    margin: 50px 40px;
+    width: 40%;
 }
 
 .receiptButton {
     margin-top: 50px;
+}
+
+.clearfix h2{
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .alert-button p{
@@ -1972,4 +1993,29 @@ ALL TRANSACTIONS RECEIPT PAGE
 .pandemicInfo > h2 + p {
     text-align: justify;
     line-height: 2.0;
+}
+
+
+.registerForm {
+    margin: 8% auto;
+    width: 70%;
+}
+
+.registerForm form{
+    margin: 5px auto;
+    width: 70%;
+    display: block;
+
+}
+
+.signupButton {
+    display: block;
+    margin: 10px auto;
+}
+
+@media screen and (max-width: 480px){
+    .registerForm {
+        margin: 25% auto;
+        width: 70%;
+    }
 }
