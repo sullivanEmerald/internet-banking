@@ -1303,13 +1303,10 @@ PROFILE PAGE
 }
 
 .profileDirectChild{
-    display: flex;
-    flex-direction: column;
+    display: block;
 }
 
-
-
-.profile section.profileDirectChild ul{
+.profile section.profileDirectChild ul.navbar-nav{
     display: block;
     margin: 0;
 
@@ -1330,7 +1327,8 @@ PROFILE PAGE
 }
 
 .profile ul{
-    list-style: none;  
+    list-style: none; 
+    width: 100%; 
 }
 
 .profile ul li {
@@ -1448,6 +1446,10 @@ PROFILE PAGE
     font-weight: bold;
     margin-bottom: 30px;
     flex-basis: 45%;
+}
+
+.dropdownDiv {
+    margin-top: 15px;
 }
 
 @media screen and (max-width: 480px){
@@ -2012,6 +2014,17 @@ ALL TRANSACTIONS RECEIPT PAGE
     display: block;
     margin: 10px auto;
 }
+.accountactions {
+    display: flex;
+}
+
+.typeTransfer{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+
 
 @media screen and (max-width: 480px){
     .registerForm {

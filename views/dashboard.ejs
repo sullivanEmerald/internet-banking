@@ -9,9 +9,17 @@
             <h1>Welcome, <%= user.username %> <%= user.lastname %> </h1>
             <p>Account Summary</p>
         </section>
-        <section>
+        <section class="accountactions">
             <button class="btn  btn-outline-info btn-lg cryptoButton">Crypto</button>
-            <a href="/transfer/<%= user._id %>" target="dashboard" class="btn btn-outline-info btn-lg">Transfer</a> 
+            <div class="dropdown">
+                <button type="button" class="btn btn-outline-info btn-lg dropdown-toggle" data-bs-toggle="dropdown">
+                  Transfer
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" target="dashboard" href="/transfer/<%= user._id %>">Local Transfer</a></li>
+                  <li><a class="dropdown-item" target="dashboard" href="#">International Transfer</a></li>
+                </ul>
+              </div>
         </section>
     </section>    
     <section class="mainSection">
@@ -48,6 +56,8 @@
             </section>
         </section>
     </section>
+
+     
 
     <section class="middleLevel">
         <section class="transactionSummary">
