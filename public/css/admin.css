@@ -108,8 +108,10 @@ section.last > h2 + section{
     font-size: 15px;
 }
 
-#adminUser {
-    margin-right: 10px;
+.userButton{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .accountInfo h2 {
@@ -147,6 +149,9 @@ section.last > h2 + section{
     color: #093d2a;
     text-decoration: underline;
     margin-left: 30% ;
+}
+.statusinfo li {
+    padding: 15px;
 }
 
 @media screen and (max-width: 480px){

@@ -23,7 +23,7 @@ function removeCommas(number) {
 module.exports = {
     getIndex  : async (req, res) => {
         try {
-            res.render('index.ejs', { title : 'Home Page'})
+            res.render('index.ejs', { title : 'Home Page', user : req.user})
         } catch (error) {
             console.error(error)
         }
@@ -31,7 +31,7 @@ module.exports = {
 
     getIvest :  async (req, res) => {
         try {
-            res.render('invest.ejs', { title : "Invest In Us"})
+            res.render('invest.ejs', { title : "Invest In Us", user : req.user})
         } catch (error) {
             console.error(error)
         }
@@ -39,7 +39,7 @@ module.exports = {
 
     getLoan :  async (req, res) => {
         try {
-            res.render('loan.ejs', { title : "Loan"})
+            res.render('loan.ejs', { title : "Loan", user : req.user})
         } catch (error) {
             console.error(error)
         }
@@ -47,7 +47,7 @@ module.exports = {
 
     getInsurance : async (req, res) => {
         try {
-            res.render('insurance.ejs', { title : "Insurance Policy"})
+            res.render('insurance.ejs', { title : "Insurance Policy" , user : req.user})
         } catch (error) {
             console.error(error)
         }
@@ -55,7 +55,7 @@ module.exports = {
 
     getSave : async (req, res) => {
         try {
-            res.render('save.ejs', { title : "Save"})
+            res.render('save.ejs', { title : "Save", user : req.user})
         } catch (error) {
             console.error(error)
         }
@@ -63,7 +63,7 @@ module.exports = {
 
     getContact : async (req, res) => {
         try {
-            res.render('contact.ejs', { title : "Contact Us"})
+            res.render('contact.ejs', { title : "Contact Us", user : req.user})
         } catch (error) {
             console.error(error)
         }
@@ -71,7 +71,7 @@ module.exports = {
 
     getUser : async (req, res) => {
         try {
-            res.render('search.ejs', { title : "Find Account"})
+            res.render('search.ejs', { title : "Find Account", user : req.user})
         } catch (error) {
             console.error(error)
         }

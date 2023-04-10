@@ -101,6 +101,11 @@ const acountSchema = new mongoose.Schema({
         require : true
     },
 
+    active : {
+        type : String,
+        required : true
+    },
+
     createdAt : {
         type : Date,
         default : Date.now

@@ -31,6 +31,28 @@
             <button type="button" id="adminUser" class="btn btn-outline-info btn-lg" data-bs-toggle="modal" data-bs-target="#editbalance">
                 Deposit
               </button>
+            
+              <form action="/admin/updatestatus/<% user._id %>" method="post">
+                <label for="actions">Choose Account Status</label>
+                <select name="status" id="actions">
+                    <option value="active">Active</option>
+                    <option value="dormant">Dormant</option>
+                    <option value="closed">Closed</option>
+                    <option value="disabled">Diabled</option>
+                    <option value="disabled">Suspend</option>
+                  </select>
+                  <button type="submit" class="btn btn-outline-info">Set Status</button>
+              </form>
+              <ul type="circle" class="statusinfo">
+                <li><strong>Active</strong> <br> This means that the client can access all functions within his/her account</li>
+                <li><strong>Dormant</strong> <br> A notice that the account is Dormant/Inactive will be shown on the client's dashboard. Also, he/she will not be able to make any transfers.</li>
+                <li><strong>Closed</strong>  <br> When the account is set to Closed, it brings up a message when the client tries to log in, saying that the account no longer exist</li>
+                <li><strong>Disabled</strong><br> A client will be notified when they try logging in that their account has been disabled due to violation of terms. He will be advised to contact the customer care to rectify the issue.</li>
+                <li>
+                    <strong>Suspend</strong> <br> A client will be notified when they try logging in that their account has been disabled due to violation of terms. He will be advised to contact the customer care to rectify the issue.
+                </li>
+
+            </ul>
         
         </section>
          

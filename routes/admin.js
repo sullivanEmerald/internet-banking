@@ -13,6 +13,7 @@ router.get('/account/user/:id', ensureAdmin, adminController.getAccount)
 router.delete('/delete/user/:id', ensureAdmin, adminController.deleteAccount)
 router.post('/account/editAccount/:id', ensureAdmin, adminController.editAccount)
 router.post('/deposit/user/:id', ensureAdmin, adminController.updateBalance)
-
+router.put('/deactivate/:id', ensureAdmin, adminController.deactivate)
+router.put('/activate/:id', ensureAdmin, adminController.activate)
 
 module.exports = router

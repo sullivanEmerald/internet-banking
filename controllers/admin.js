@@ -49,7 +49,8 @@ module.exports = {
                 balance  : req.body.depoist,
                 ownerImage : result.secure_url,
                 cloudinaryId : result.public_id,
-                accountNumber : getAccount()
+                accountNumber : getAccount(),
+                active  : 'active'
             })
             console.log('successfully uploaded')
 
@@ -143,6 +144,34 @@ module.exports = {
             res.redirect(`/admin/account/user/${req.params.id}`)
         } catch (error) {
             console.log(error)
+        }
+    },
+
+    deactivate : async (req, res) => {
+        try {
+            await accounts.findByIdAndUpdate(req.params.id, {
+                $set : {
+                    active : false
+                }
+            })
+            console.log('account have been deactivated')
+            res.redirect(`/admin/account/user/${req.params.id}`)
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    activate : async (req, res) => {
+        try {
+            await accounts.findByIdAndUpdate(req.params.id, {
+                $set : {
+                    active : true
+                }
+            })
+            console.log('account have been activated')
+            res.redirect(`/admin/account/user/${req.params.id}`)
+        } catch (error) {
+            console.error(error)
         }
     }
  }

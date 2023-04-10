@@ -4,10 +4,10 @@ const User = require("../models/User");
 
 exports.getLogin = (req, res) => {
   if (req.user) {
-    return res.render("login.ejs" , { title : "Sign Up"});
+    return res.render("login.ejs" , { title : "Log In"});
   }
   res.render("login", {
-    title: "Login",
+    title: "Login", user :  req.user
   });
 };
 

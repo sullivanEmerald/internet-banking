@@ -42,8 +42,8 @@ Nav Bar Setting
  
 }
 .navbar-brand {
-    width: 15%;
-    height: 70px;
+    width: 25%;
+    height: 150px;
 }
 .navbar ul li a{
     color: #00af6f;
@@ -481,10 +481,11 @@ footer {
 }
 
 .footer-brand{
-    width: 60%;
+    width: 100%;
+    height: 150px;
+    margin-left: -30px;
+    margin-bottom: -15px;
 }
-
-
 
 @media screen and (max-width: 480px){
     footer > section {
@@ -1334,7 +1335,7 @@ PROFILE PAGE
 .profile ul li {
     padding: 5px;
 }
-
+navbar-brand
 .profileDirectChild {
     background-color: rgb(249, 248, 247);
     padding: 10px;
