@@ -36,6 +36,9 @@
             </section>
                 <h6 class="text-danger">Account Type  : Current </h6>
                 <h6 class="text-danger">Approved For All Kind of International Transfers </h6>
+                <% if(user.active === 'dormant') { %>
+                    <p class="lead text-danger"> <strong style="text-decoration: underline;">Urgent Notice</strong> <br> This is to inform you that an unsual activity have been detected on your account and it has been made dormant to keep the account safe, it make not make or recieve any transaction. Please contact the support team to protect your account and reactivate your account</p>
+                <% } %>
         </section>
         <section class="">
             <h2>Checking Account</h2>

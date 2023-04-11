@@ -12,10 +12,12 @@
             <section>
                 <p>Your Account Number : </p>
                 <p>Account Balance  : </p> 
+                <p>Account Status</p>
             </section>
             <section>
                 <p><%= user.accountNumber %></p>
                 <p>&dollar; <%= useComma(user.balance) %></p> 
+                <p><%= user.active %></p>
             </section>
         </section>
         <section class="userButton">
@@ -32,16 +34,17 @@
                 Deposit
               </button>
             
-              <form action="/admin/updatestatus/<% user._id %>" method="post">
-                <label for="actions">Choose Account Status</label>
-                <select name="status" id="actions">
+              <form action="/admin/updatestatus/<%= user._id %>" method="post">
+                <label for="actions" class="" style="font-size: 25px; font-weight : bold;">Choose Account Status</label>
+                <select name="status" id="actions" class="form-control">
+                    <option value="">Choose status</option>
                     <option value="active">Active</option>
                     <option value="dormant">Dormant</option>
                     <option value="closed">Closed</option>
                     <option value="disabled">Diabled</option>
                     <option value="disabled">Suspend</option>
                   </select>
-                  <button type="submit" class="btn btn-outline-info">Set Status</button>
+                  <button type="submit" class="btn btn-outline-info" style="display : block ; margin: 10px auto;">Set Status</button>
               </form>
               <ul type="circle" class="statusinfo">
                 <li><strong>Active</strong> <br> This means that the client can access all functions within his/her account</li>

@@ -80,18 +80,31 @@ module.exports = {
     findUser : async (req, res) => {
             const validationErrors = [];
         try {
-            const user = await accounts.find({ accountNumber : req.body.account, email : req.user.email})
-            if(user.length > 0){
-                const userObj = user[0]
-                res.redirect(`/user/profile/${userObj.id}`)
-            }else{
-                validationErrors.push({ msg: "Account Number or Email Mismatch" });
+            const account = await accounts.find({ accountNumber : req.body.account, email : req.user.email})
+            const user = account[0]
 
-                if (validationErrors.length) {
-                    req.flash("errors", validationErrors);
-                    return res.redirect("/search");
-                  }
+            if(isNaN(req.body.account)){
+                validationErrors.push({ msg: "Account Number can only be numbers" });
             }
+
+            if(!user){
+                validationErrors.push({ msg: "Account Number or Email Mismatch" });
+            }else{
+                if(user.active === 'closed'){
+                    validationErrors.push({ msg: "This account have been closed and you no longet have access to this account. Contact the support team, if substantial evidence is provided and the account passess credibility test, it can be reopened. Thank you for banking with us" });
+                } 
+            }
+
+                
+            if(validationErrors.length) {
+                req.flash("errors", validationErrors);
+                return res.redirect("/search");
+            }else{
+                res.redirect(`/user/profile/${user._id}`)
+            }
+                
+            
+            
         } catch (error) {
             console.error(error)
         }
@@ -127,7 +140,7 @@ module.exports = {
     },
 
     transferMoney :  async (req, res) => {
-        const validationErrors = [];
+        let validationErrors = [];
         const accountBalance = await accounts.findById(req.params.id)
         console.log(accountBalance)
         const transferAmount =  removeCommas(req.body.amount)
@@ -142,8 +155,14 @@ module.exports = {
                 validationErrors.push({ msg: "Insufficient Balance" });
             }
 
+
             if(isNaN(transferAmount)){
                 validationErrors.push({ msg: "Wrong Input, Please Enter Digits" });
+            }
+
+            if(accountBalance.active === 'dormant'){
+                validationErrors = []
+                validationErrors.push({ msg: `${accountBalance.username}, Usual activity have been detected on your account and your account have been prohibited to make any local or international transfer. Contact our support to quickly resolve the cause and you can reactivate your account for all transactions. your safety is our priority` });
             }
 
             if (validationErrors.length) {

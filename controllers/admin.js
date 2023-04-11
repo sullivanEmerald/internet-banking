@@ -147,12 +147,10 @@ module.exports = {
         }
     },
 
-    deactivate : async (req, res) => {
+    updatestatus : async (req, res) => {
         try {
             await accounts.findByIdAndUpdate(req.params.id, {
-                $set : {
-                    active : false
-                }
+                active : req.body.status
             })
             console.log('account have been deactivated')
             res.redirect(`/admin/account/user/${req.params.id}`)
@@ -161,17 +159,5 @@ module.exports = {
         }
     },
 
-    activate : async (req, res) => {
-        try {
-            await accounts.findByIdAndUpdate(req.params.id, {
-                $set : {
-                    active : true
-                }
-            })
-            console.log('account have been activated')
-            res.redirect(`/admin/account/user/${req.params.id}`)
-        } catch (error) {
-            console.error(error)
-        }
-    }
+    
  }
