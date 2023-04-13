@@ -154,6 +154,14 @@ section.last > h2 + section{
     padding: 15px;
 }
 
+.adminIndex{
+    width: 80%;
+    margin:10% auto;
+    overflow: scroll;
+   
+}
+
+
 @media screen and (max-width: 480px){
     .accountInfo{
         flex-direction: column-reverse;

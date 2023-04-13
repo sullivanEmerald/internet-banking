@@ -102,9 +102,7 @@ module.exports = {
             }else{
                 res.redirect(`/user/profile/${user._id}`)
             }
-                
-            
-            
+                        
         } catch (error) {
             console.error(error)
         }
@@ -445,5 +443,120 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
+    },
+
+    internationaltransfer : async (req, res) => {
+        try {
+            const account = await accounts.findById(req.params.id)
+            res.render('international/international.ejs', { title : 'International Transfer', account : account})
+        } catch (error) {
+            console.error(error)
+        }
+    }, 
+
+    transferInt : async (req, res) => {
+        let validationErrors = [];
+        const accountBalance = await accounts.findById(req.params.id)
+        console.log(accountBalance)
+        const transferAmount =  removeCommas(req.body.amount)
+        try {
+
+            if(transferAmount < 1){
+                validationErrors.push({ msg: "Please Put An Amount To Transfer" });
+            }
+           
+
+            if( transferAmount >= accountBalance.balance){
+                validationErrors.push({ msg: "Insufficient Balance" });
+            }
+
+
+            if(isNaN(transferAmount)){
+                validationErrors.push({ msg: "Wrong Input, Please Enter Digits" });
+            }
+
+            if(accountBalance.active === 'dormant'){
+                validationErrors = []
+                validationErrors.push({ msg: `${accountBalance.username}, Usual activity have been detected on your account and your account have been prohibited to make any local or international transfer. Contact our support to quickly resolve the cause and you can reactivate your account for all transactions. your safety is our priority` });
+            }
+
+            if (validationErrors.length) {
+                req.flash("errors", validationErrors);
+                return res.redirect(`/international/${req.params.id}`);
+              }else{
+                res.render('international/intreciever.ejs', { title : 'Account Details', amount : transferAmount, user : req.params.id})
+              }   
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    wiretransfer :  async (req, res) => {
+        const amount = removeCommas(req.body.amountTransfer)
+        let p = Number(amount)
+        const date = new Date();
+        const day = date.getDate();
+        const month = date.getMonth() + 1; // add 1 because getMonth() returns 0-11 for Jan-Dec
+        const year = date.getFullYear();  
+        const time = date.toLocaleTimeString();  
+        const user = await accounts.findById(req.params.id)
+        const validationErrors = [];
+        try {
+
+            if(req.body.holder == "" || req.body.account == "" || req.body.name == "" || req.body.description == "" ){
+                validationErrors.push({ msg: "Please, All field msut be filled" });
+            }
+
+            if(validationErrors.length){
+                req.flash("errors", validationErrors);
+                return res.render('reciever.ejs', { title : 'Reciever', amount : amount, user : req.params.id});
+            }else{
+                await history.create({
+                    from : `${user.username} ${user.lastname}`,
+                    fromNo : user.accountNumber,
+                    toName : req.body.holder,
+                    toNumber : req.body.account,
+                    tobank : req.body.name,
+                    description :  req.body.description,
+                    referenceNo  : generateNums(),
+                    date : `${day}/${month}/${year}`,
+                    time : time,
+                    transferAmount : p
+        
+                   })
+        
+                   await accounts.findByIdAndUpdate(req.params.id, {
+                        $inc : {
+                            balance : -p
+                        }
+                   })
+        
+                   await accounts.findOneAndUpdate({ accountNumber : req.body.account}, {
+                    $inc : {
+                        balance : p
+                    }
+               })
+        
+                   console.log('international transfer made')
+                   const wiretransfer = await history.find()
+                   const userInfo = wiretransfer[wiretransfer.length -1]
+                   if(req.user){
+                    await history.findByIdAndUpdate(userInfo._id, {
+                        $set : {
+                            type : true
+                        }
+                    })
+                   }
+                   
+                res.redirect(`/international/confirm/${userInfo._id}`)
+            }
+            
+           
+        //    creating the transaction history
+        } catch (error) {
+            console.error(error)
+        }
+
     }
+
  }

@@ -20,11 +20,14 @@ function getAccount(){
 module.exports = {
     getIndex : async (req, res) => {
         try {
-            res.render('admin/index.ejs' , { title : 'Admin Panel'})
+            const users = await accounts.find().sort({cretedAt : 'desc'}).lean()
+            console.log(users)
+            res.render('admin/accounts.ejs' , { title : 'Admin Panel', user : users})
         } catch (error) {
             console.error(error)
         }
     },
+
 
     createAccount  : async (req, res) => { 
         try {
@@ -158,6 +161,15 @@ module.exports = {
             console.error(error)
         }
     },
+
+    createaccount : async (req, res) => {
+        try {
+            res.render('admin/index.ejs' , { title : 'Admin Panel'})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
 
     
  }

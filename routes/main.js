@@ -23,7 +23,7 @@ router.get('/user/profile/:id', ensureAuth, mainController.getProfie )
 router.get('/dashboard/:id', ensureAuth, mainController.getdashboard)
 router.get('/transfer/:id', ensureAuth, mainController.getTransfer)
 router.post('/myaccount/transfer/:id', ensureAuth, mainController.transferMoney)
-router.post('/myaccount/transfer/reciever/:id', ensureAuth, mainController.postTransfer)
+router.post('/transfer/:id', ensureAuth, mainController.postTransfer)
 router.get('/user/confirm/:id', ensureAuth, mainController.transactionDetails)
 router.get('/edit/history/:id', ensureAuth, mainController.getHistory)
 router.post('/transfer/confirm/:id', ensureAuth, mainController.correctHistory)
@@ -33,7 +33,9 @@ router.get('/transfer/send/:id', ensureAuth, mainController.gotoTransfer)
 router.get('/view/transaction/:id/:acc', ensureAuth, mainController.viewTransaction)
 router.get('/user/transactions/:id', ensureAuth, mainController.fetchTransactions)
 router.get('/pandemic', ensureAuth, mainController.getPandemicInfo)
-
+router.get('/international/:id', ensureAuth, mainController.internationaltransfer)
+router.post('/international/:id', ensureAuth, mainController.transferInt)
+router.post('/international/transfer/:id', ensureAuth, mainController.wiretransfer)
 
 
 // Routes for login and Sign up

@@ -1,0 +1,64 @@
+
+<%- include('../partials/admin/nav.ejs') %>
+ 
+<section class="adminIndex">
+    <h2 class="text-center text-info">All Customers Account</h2>
+    <% if(!user.length) { %>
+        <p>No Account Have been created.</p>
+      <% } else { %>    
+        <% let counter = 1; %>   
+            
+                <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                      <th>S/N</th>  
+                        <th>First Name</th>
+                        <th>middlename</th>
+                        <th>lastname</th>
+                        <th class="text-danger">Account Number</th>
+                        <th>Mobile</th>
+                        <th>Mail</th>
+                        <th>Gender</th>
+                        <th>Occupation</th>
+                        <th>Address</th>
+                        <th>Nationality</th>
+                        <th>State</th>
+                        <th>landmark</th>
+                        <th>Next Kin</th>
+                        <th>Kin Mobile</th>
+                        <th>Account Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% user.forEach((item) => { %>
+                          <tr>
+                              <td><%= counter++ %></td>
+                              <td><%= item.username %></td>
+                              <td><%= item.middlename %></td>
+                              <td><%= item.lastname %></td>
+                              <td><%= item.accountNumber %></td>
+                              <td><%= item.mobile %></td>
+                              <td><%= item.email %></td>
+                              <td><%= item.gender %></td>
+                              <td><%= item.occupation %></td>
+                              <td><%= item.address %></td>
+                              <td><%= item.nation %></td>
+                              <td><%= item.state %></td>
+                              <td><%= item.landmark %></td>
+                              <td><%= item.kin %></td>
+                              <td><%= item.kinMobile %></td>
+                              <td><%= item.active %></td>
+                              <td><a href="/admin/account/user/<%= item._id %>" class="btn btn-outline-danger btn-lg">Edit</a></td>
+                          </tr>
+                      <% }) %>
+                    </tbody>
+                  </table>
+         
+          
+        <% } %> 
+</section>
+
+<%- include('../partials/admin/modal.ejs') %>
+
+<%- include('../partials/admin/footer.ejs') %>
+

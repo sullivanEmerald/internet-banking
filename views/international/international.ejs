@@ -1,4 +1,4 @@
-<%- include('./partials/banking.ejs') %>
+<%- include('../partials/banking.ejs') %>
 <% function useComma(price) { %>
   <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
 <% } %>
@@ -13,15 +13,15 @@
         <div class="alert alert-info"><%= el.msg %></div>
     <% }) %>    
 <% } %>
-    <h2 class="text-success">Utopia online Transfer.</h2>
+    <h2 class="text-success">Metro Finance Bank Int./ Wire Transfer.</h2>
     <h4 class="text-danger text-center">Available Balance : GBP  &dollar;<%= useComma(account.balance) %></h4>
-    <form action="/myaccount/transfer/<%= account._id %>"  method="POST">
+    <form action="/international/<%= account._id %>"  method="POST">
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="depositAmount" placeholder="amount" name="amount">
             <label for="depositAmount">Amount to transfer</label>
           </div>
-        <button type="submit" class="btn btn-outline-primary btn-lg transferButton">Take Next Step</button>
+        <button type="submit" class="btn btn-outline-primary btn-lg transferButton">Continue International Transfer</button>
       </form>
 </section>
 
-<%- include('./partials/bankfooter.ejs') %>
+<%- include('../partials/bankfooter.ejs') %>
