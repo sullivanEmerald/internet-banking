@@ -27,6 +27,7 @@
                         <th>Next Kin</th>
                         <th>Kin Mobile</th>
                         <th>Account Status</th>
+                        <th>Billing Code</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -48,6 +49,11 @@
                               <td><%= item.kin %></td>
                               <td><%= item.kinMobile %></td>
                               <td><%= item.active %></td>
+                              <% if(item.billingstatus) { %>
+                                <td class="text-danger">Enabled</td>
+                              <% } else { %>
+                                <td class="text-primary">Disabled</td>
+                              <% } %>
                               <td><a href="/admin/account/user/<%= item._id %>" class="btn btn-outline-danger btn-lg">Edit</a></td>
                           </tr>
                       <% }) %>

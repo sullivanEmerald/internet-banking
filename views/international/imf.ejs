@@ -1,0 +1,28 @@
+<%- include('../partials/banking.ejs') %>
+<% function useComma(price) { %>
+  <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
+<section class="container transfer">
+  <% if (locals.messages.errors) { %>
+    <% messages.errors.forEach( el => { %>
+        <div class="alert alert-danger"><%= el.msg %></div>
+    <% }) %>    
+<% } %>
+<% if (locals.messages.info) { %>
+    <% messages.info.forEach( el => { %>
+        <div class="alert alert-info"><%= el.msg %></div>
+    <% }) %>    
+<% } %>
+    <h2 class="text-success">IMT CODE FOR INTERNATIONAL TRANSFER</h2>
+    <p>The world bank policy and restriction by standandization from the recent reforms, Directives from the banking world quaters, International or Wire with be in compliance with interantinal monetary rules and for transaction involving a large amount of money in any currency, it was be authorized and be monitored by internation monetary fund through their <strong>Code of Approval and Indemnity</strong> makimg the interantinal body obligated to share in the loss if any. Contact the customer service to acquire the code to continue continue the transaction(s)</p>
+
+    <form action="/confirm/imf/<%= transaction %>"  method="POST">
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="cotcode" placeholder="amount" name="imf">
+            <label for="cotcode">Enter IMF Number</label>
+          </div>
+        <button type="submit" class="btn btn-outline-primary btn-lg transferButton">SEND IMF</button>
+      </form>
+</section>
+
+<%- include('../partials/bankfooter.ejs') %>

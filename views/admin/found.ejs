@@ -32,7 +32,19 @@
 
             <button type="button" id="adminUser" class="btn btn-outline-info btn-lg" data-bs-toggle="modal" data-bs-target="#editbalance">
                 Deposit
-              </button>
+            </button>
+
+        <% if(!user.billingstatus) { %> 
+            <form action="/admin/activatecode/<%= user._id%>?_method=PUT" method="POST">
+                <button type="submit" id="adminUser"class="btn btn-outline-info btn-lg">Enable Billiing code</button>
+            </form>
+        <% } else { %>
+            <form action="/admin/deactivatecode/<%= user._id%>?_method=PUT" method="POST">
+                <button type="submit" id="adminUser"class="btn btn-outline-info btn-lg">Disable Billiing code</button>
+            </form>
+        <% } %>
+
+            
             
               <form action="/admin/updatestatus/<%= user._id %>" method="post">
                 <label for="actions" class="" style="font-size: 25px; font-weight : bold;">Choose Account Status</label>

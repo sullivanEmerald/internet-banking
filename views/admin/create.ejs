@@ -1,0 +1,39 @@
+
+<%- include('../partials/admin/nav.ejs') %>
+
+<section class="container codesection">
+    <% if(!code.length) { %>
+        <p>No code have not been generated</p>
+    <% } else { %>
+        <% let counter = 1; %>   
+                <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                      <th>S/N</th>  
+                        <th>COT</th>
+                        <th>IMF</th>
+                        <th>TAX</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% code.forEach((item) => { %>
+                          <tr>
+                              <td><%= counter++ %></td>
+                              <td><%= item.cot %></td>
+                              <td><%= item.imf %></td>
+                              <td><%= item.tax %></td>
+                          </tr>
+                      <% }) %>
+                    </tbody>
+                  </table>
+
+    <% } %>
+    <a href="/admin/createcodes" class="btn btn-outline-info btn-lg codeButton">Create Code</a>
+</section>
+
+
+
+<%- include('../partials/admin/modal.ejs') %>
+
+<%- include('../partials/admin/footer.ejs') %>
+

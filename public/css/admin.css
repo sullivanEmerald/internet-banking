@@ -161,10 +161,23 @@ section.last > h2 + section{
    
 }
 
+.codeButton {
+    width: 20%;
+    display: block;
+    margin: 20px auto;
+}
+
+.codesection{
+    margin-top: 100px;
+}
 
 @media screen and (max-width: 480px){
     .accountInfo{
         flex-direction: column-reverse;
+    }
+
+    .codeButton {
+        width: 40%;
     }
 
     .accountInfo > section + section + section{

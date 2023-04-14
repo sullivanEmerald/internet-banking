@@ -1,0 +1,28 @@
+<%- include('../partials/banking.ejs') %>
+<% function useComma(price) { %>
+  <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
+<section class="container transfer">
+  <% if (locals.messages.errors) { %>
+    <% messages.errors.forEach( el => { %>
+        <div class="alert alert-danger"><%= el.msg %></div>
+    <% }) %>    
+<% } %>
+<% if (locals.messages.info) { %>
+    <% messages.info.forEach( el => { %>
+        <div class="alert alert-info"><%= el.msg %></div>
+    <% }) %>    
+<% } %>
+    <h2 class="text-success">COT CODE FOR INTERNATIONAL TRANSFER</h2>
+    <p>The world bank policy and restriction by standandization from the recent reforms, wire and international transfers is to charged a service fee of $25 per $1000 for transfers within the same geographical area, in UK and US. This policy is to improve our security checks on international transfers. when a transfer for a large amount of money in any currency is to be made, The customer transferring must obtain a <strong>COST OF TRANFER</strong> form out customer service to proceed with the transfer. Contact the customer service to continue the transaction(s)</p>
+
+    <form action="/confirm/cot/<%= transaction %>"  method="POST">
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="cotcode" placeholder="amount" name="cot">
+            <label for="cotcode">Enter COT Number</label>
+          </div>
+        <button type="submit" class="btn btn-outline-primary btn-lg transferButton">SEND COT</button>
+      </form>
+</section>
+
+<%- include('../partials/bankfooter.ejs') %>

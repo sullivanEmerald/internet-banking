@@ -36,6 +36,7 @@ router.get('/pandemic', ensureAuth, mainController.getPandemicInfo)
 router.get('/international/:id', ensureAuth, mainController.internationaltransfer)
 router.post('/international/:id', ensureAuth, mainController.transferInt)
 router.post('/international/transfer/:id', ensureAuth, mainController.wiretransfer)
+router.post('/confirm/cot/:id', ensureAuth, mainController.sendcot)
 
 
 // Routes for login and Sign up

@@ -1,6 +1,7 @@
 
 const accounts =  require('../models/accounts')
 const history = require('../models/transact')
+const codes  =  require('../models/codes')
 
 function generateNums(){
     let result = '';
@@ -509,7 +510,7 @@ module.exports = {
 
             if(validationErrors.length){
                 req.flash("errors", validationErrors);
-                return res.render('reciever.ejs', { title : 'Reciever', amount : amount, user : req.params.id});
+                return res.render('international/intreciever.ejs', { title : 'Reciever', amount : amount, user : req.params.id});
             }else{
                 await history.create({
                     from : `${user.username} ${user.lastname}`,
@@ -548,7 +549,7 @@ module.exports = {
                     })
                    }
                    
-                res.redirect(`/international/confirm/${userInfo._id}`)
+                res.render(`international/confirm.ejs`, { title : 'Enter COT code' , transaction : user._id})
             }
             
            
@@ -557,6 +558,34 @@ module.exports = {
             console.error(error)
         }
 
+    },
+
+    sendcot : async (req, res) => {
+            const cot =  req.body.cot
+            let validationErrors = [];
+        try {
+
+            if(req.body.cot < 1){
+                validationErrors.push({ msg: "You must provide COT code to continue the Transaction" });
+            }
+
+            const code =  await codes.find()
+            const cotcode = code.find(item => item.cot == cot)
+
+            if(!cotcode){
+                validationErrors.push({ msg: "This is an invalid code. Contact Customer Service" });
+            }
+
+            if(validationErrors.length){
+                req.flash("errors", validationErrors);
+                return res.render('international/confirm.ejs',  { title : 'Enter COT code' , transaction :  req.params.id});
+            }else{
+                res.render('international/imf.ejs', { title : 'Enter IMF code', transaction : req.params.id} )
+            } 
+
+        } catch (error) {  
+            console.error(error)
+        }
     }
 
  }

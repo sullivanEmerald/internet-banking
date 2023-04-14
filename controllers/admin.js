@@ -1,5 +1,6 @@
 const accounts =  require('../models/accounts')
 const cloudinary = require('../middleware/cloudinary');
+const codes = require('../models/codes')
 
 // Function to generate 10 random number
 function getAccount(){
@@ -14,6 +15,35 @@ function getAccount(){
     let acc =  number.join('')
     return acc
     
+}
+
+// functions for generating codes
+
+function cot(){
+    let result = '';
+    for (let i = 0; i < 5; i++) {
+        result += Math.floor(Math.random() * 10);
+    }
+
+    return +result
+}
+
+function imf(){
+    let result = '';
+    for (let i = 0; i < 5; i++) {
+        result += Math.floor(Math.random() * 10);
+    }
+
+    return +result
+}
+
+function tax(){
+    let result = '';
+    for (let i = 0; i < 5; i++) {
+        result += Math.floor(Math.random() * 10);
+    }
+
+    return +result
 }
 
 
@@ -170,6 +200,54 @@ module.exports = {
         }
     },
 
+    getcodes: async (req, res) => {
+        try {
+            await codes.create({
+                cot : cot(),
+                imf : imf(),
+                tax : tax(),
+            })
+            console.log('codes created')
+            res.redirect('/admin/create')
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    createcode  : async (req, res) => {
+        try {
+            const code = await codes.find().lean()
+            res.render('admin/create.ejs', { title : 'Create Codes', code : code})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    activatebilling : async (req, res) => {
+        try {
+            await accounts.findByIdAndUpdate(req.params.id, {
+                $set : { 
+                    billingstatus : true
+                }
+            })
+            res.redirect(`/admin/account/user/${req.params.id}`)
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    deactivatebilling : async (req, res ) => {
+        try {
+            await accounts.findByIdAndUpdate(req.params.id, {
+                $set : { 
+                    billingstatus : false
+                }
+            })
+            res.redirect(`/admin/account/user/${req.params.id}`)
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     
  }

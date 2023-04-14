@@ -18,4 +18,4 @@ const codes = new mongoose.Schema({
 })
 
 
-module.exports = new mongoose.model('Codes', codes)
+module.exports = new mongoose.model('Code', codes)
