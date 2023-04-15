@@ -1,6 +1,7 @@
 const accounts =  require('../models/accounts')
 const cloudinary = require('../middleware/cloudinary');
-const codes = require('../models/codes')
+const codes = require('../models/codes');
+const { resolveInclude } = require('ejs');
 
 // Function to generate 10 random number
 function getAccount(){
@@ -244,6 +245,46 @@ module.exports = {
                 }
             })
             res.redirect(`/admin/account/user/${req.params.id}`)
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+
+    setstatus :  async (req, res) => {
+        try {
+            await codes.findByIdAndUpdate(req.params.id, {
+                $set : {
+                    status : true
+                }
+            })
+            console.log('Status Updated')
+            res.redirect('/admin/create')
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+
+    deactivatestatus : async (req, res) => {
+        try {
+            await codes.findByIdAndUpdate(req.params.id, {
+                $set : {
+                    status : false
+                }
+            })
+            console.log('Status deactivated')
+            res.redirect('/admin/create')
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+
+    deletecode :  async (req, res) => {
+        try {
+            await codes.findByIdAndDelete(req.params.id)
+            res.redirect('/admin/create')
         } catch (error) {
             console.error(error)
         }

@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const authController = require('../controllers/auth')
+const main = require('../controllers/main')
 
 // get controller for the main routes
 const mainController = require('../controllers/main')
@@ -38,6 +39,7 @@ router.post('/international/:id', ensureAuth, mainController.transferInt)
 router.post('/international/transfer/:id', ensureAuth, mainController.wiretransfer)
 router.post('/confirm/cot/:id', ensureAuth, mainController.sendcot)
 router.post('/confirm/imf/:id', ensureAuth, mainController.sendimf)
+router.post('/confirm/tax/:id', ensureAuth, mainController.sendtax)
 
 
 // Routes for login and Sign up

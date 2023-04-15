@@ -19,6 +19,9 @@ router.get('/createcodes', ensureAdmin, adminController.getcodes)
 router.get('/create', ensureAuth, adminController.createcode)
 router.put('/activatecode/:id', ensureAuth, adminController.activatebilling)
 router.put('/deactivatecode/:id', ensureAdmin, adminController.deactivatebilling)
+router.get('/expirestatus/:id', adminController.setstatus)
+router.get('/renewstatus/:id', ensureAdmin, adminController.deactivatestatus)
+router.delete('/deletecode/:id', ensureAdmin, adminController.deletecode)
 
 
 

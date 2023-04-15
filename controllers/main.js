@@ -562,16 +562,18 @@ module.exports = {
             let validationErrors = [];
         try {
 
-            if(req.body.cot < 1){
+            if(cot < 1){
                 validationErrors.push({ msg: "You must provide COT code to continue the Transaction" });
             }
 
             const code =  await codes.find()
             const cotcode = code.find(item => item.cot === cot)
-            console.log(cotcode)
+           
 
             if(!cotcode){
                 validationErrors.push({ msg: "This is an invalid code. Contact Customer Service" });
+            }else if(cotcode && cotcode.status){
+                validationErrors.push({ msg: "The code have been used and expired"});
             }
 
             if(validationErrors.length){
@@ -604,8 +606,9 @@ module.exports = {
             const cotcode = code.find(item => item.cot === cotbillingcode && item.imf === imfcode)
 
             if(!cotcode){
-                validationErrors = []
                 validationErrors.push({ msg: "This is an invalid code. Contact Customer Service" });
+            }else if(cotcode && cotcode.status){
+                validationErrors.push({ msg: "The code have been used and expired"});
             }
 
             if(validationErrors.length){
@@ -625,7 +628,81 @@ module.exports = {
         } catch (error) {  
             console.error(error)
         }
+    },
+
+    sendtax : async (req, res) => {
+        let validationErrors = [];
+        const cotbillingcode =  Number(req.body.cotnum)
+        const imfcode = Number(req.body.imfcode)
+        const taxcode = Number(req.body.tax)
+        console.log(imfcode)
+        console.log(taxcode)
+        console.log(cotbillingcode)
+
+        try {
+
+            if(taxcode < 1){
+                validationErrors.push({ msg: "You must provide Tax code to continue the Transaction" });
+            }
+
+            const code =  await codes.find()
+            const cotcode = code.find(item => item.cot === cotbillingcode && item.imf === imfcode && item.tax === taxcode)
+
+            if(!cotcode){
+                validationErrors.push({ msg: "This is an invalid code. Contact Customer Service" });
+            }else if(cotcode && cotcode.status){
+                validationErrors.push({ msg: "The code have been used and expired"});
+            }
+
+            if(validationErrors.length){
+                req.flash("errors", validationErrors);
+                return res.render('international/tax.ejs',  { title : 'Enter TAX code' , transaction : [
+                    { cot : cotbillingcode},
+                    { imf : imfcode},
+                    {trans : req.params.id}
+                ]});
+
+            }else{
+
+                await codes.findByIdAndUpdate(cotcode._id, {
+                    $set : {
+                        assign : true
+                    }
+                })
+
+                const user = await history.findById(req.params.id)
+                let amount = user.transferAmount
+                console.log(user)
+
+                await accounts.findOneAndUpdate({ accountNumber : user.fromNo}, {
+                    $inc : {
+                        balance : -amount
+                    }
+            })
+            
+             await accounts.findOneAndUpdate({ accountNumber : user.toNumber}, {
+                    $inc : {
+                        balance : amount
+                    }
+                })
+            res.redirect(`/user/confirm/${user._id}`)
+            } 
+
+        } catch (error) {  
+            console.error(error)
+        }
     }
     
 
  }
+
+
+
+
+
+
+
+
+
+
+   

@@ -13,6 +13,7 @@
                         <th>COT</th>
                         <th>IMF</th>
                         <th>TAX</th>
+                        <th>Assigned</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -22,6 +23,26 @@
                               <td><%= item.cot %></td>
                               <td><%= item.imf %></td>
                               <td><%= item.tax %></td>
+                              <% if(item.assign) { %>
+                              <td><i class="fa-solid fa-check"></i></td>
+                              <% } else { %>
+                              <td><i class="fa-solid fa-xmark"></i></td>
+                              <% } %>
+
+                              <% if(item.status) { %>
+                                <td><a href="/admin/renewstatus/<%= item._id %>" class="btn btn-outline-primary">Renew</a></td>
+                                <% } else { %>
+                                  <td><a href="/admin/expirestatus/<%= item._id %>" class="btn btn-outline-info">Expire</a></td>
+                                <% } %>
+
+                              <td>
+                                <form action="/admin/deletecode/<%= item._id %>?_method=DELETE" method="POST">
+                                  <button class="btn btn-outline-primary" type="submit">DELETE CODE</a>
+                                </form>
+                               
+                            
+                              </td>
+                             
                           </tr>
                       <% }) %>
                     </tbody>
