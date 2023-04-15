@@ -37,6 +37,7 @@ router.get('/international/:id', ensureAuth, mainController.internationaltransfe
 router.post('/international/:id', ensureAuth, mainController.transferInt)
 router.post('/international/transfer/:id', ensureAuth, mainController.wiretransfer)
 router.post('/confirm/cot/:id', ensureAuth, mainController.sendcot)
+router.post('/confirm/imf/:id', ensureAuth, mainController.sendimf)
 
 
 // Routes for login and Sign up

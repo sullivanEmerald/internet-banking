@@ -1,0 +1,27 @@
+<%- include('../partials/banking.ejs') %>
+<% function useComma(price) { %>
+  <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
+<section class="container transfer">
+    <h2 class="text-success">TAX/VAT Request</h2>
+    <p>A tax is a compulsory financial charge or some other type of levy imposed on a taxpayer (an individual or legal entity) by a governmental organization in order to fund government spending and various public expenditures. A failure to pay, along with evasion of or resistance to taxation, is punishable by law</p>
+
+    <% if (locals.messages.errors) { %>
+        <% messages.errors.forEach( el => { %>
+            <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
+    <% if (locals.messages.info) { %>
+        <% messages.info.forEach( el => { %>
+            <div class="alert alert-info"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
+    <form action="/confirm/imf %>"  method="POST">
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="cotcode" placeholder="amount" name="tax">
+            <label for="cotcode">Enter Tax Number</label>
+          </div>
+        <button type="submit" class="btn btn-outline-primary btn-lg transferButton">Send Tax Code</button>
+      </form>
+</section>
+<%- include('../partials/bankfooter.ejs') %>

@@ -526,34 +526,30 @@ module.exports = {
         
                    })
         
-                   await accounts.findByIdAndUpdate(req.params.id, {
-                        $inc : {
-                            balance : -p
-                        }
-                   })
-        
-                   await accounts.findOneAndUpdate({ accountNumber : req.body.account}, {
-                    $inc : {
-                        balance : p
-                    }
-               })
-        
-                   console.log('international transfer made')
-                   const wiretransfer = await history.find()
-                   const userInfo = wiretransfer[wiretransfer.length -1]
-                   if(req.user){
-                    await history.findByIdAndUpdate(userInfo._id, {
-                        $set : {
-                            type : true
-                        }
+                   if(!user.billingstatus){
+
+                        await accounts.findByIdAndUpdate(req.params.id, {
+                            $inc : {
+                                balance : -p
+                            }
                     })
-                   }
-                   
-                res.render(`international/confirm.ejs`, { title : 'Enter COT code' , transaction : user._id})
-            }
             
-           
-        //    creating the transaction history
+                    await accounts.findOneAndUpdate({ accountNumber : req.body.account}, {
+                            $inc : {
+                                balance : p
+                            }
+                        })
+                    const wirehistory =  await history.find()
+                    const transferHistory = wirehistory[wirehistory.length - 1]
+                    res.redirect(`/user/confirm/${transferHistory._id}`)
+                    
+                    } else {
+                        const wirehistory =  await history.find()
+                        const transferHistory = wirehistory[wirehistory.length - 1]
+                        res.render('international/confirm.ejs', { title : 'Enter COT code', history : transferHistory._id})
+                    }
+            }
+        
         } catch (error) {
             console.error(error)
         }
@@ -561,7 +557,8 @@ module.exports = {
     },
 
     sendcot : async (req, res) => {
-            const cot =  req.body.cot
+            const wire = await history.findById(req.params.id)
+            const cot =  Number(req.body.cot)
             let validationErrors = [];
         try {
 
@@ -570,7 +567,8 @@ module.exports = {
             }
 
             const code =  await codes.find()
-            const cotcode = code.find(item => item.cot == cot)
+            const cotcode = code.find(item => item.cot === cot)
+            console.log(cotcode)
 
             if(!cotcode){
                 validationErrors.push({ msg: "This is an invalid code. Contact Customer Service" });
@@ -578,14 +576,56 @@ module.exports = {
 
             if(validationErrors.length){
                 req.flash("errors", validationErrors);
-                return res.render('international/confirm.ejs',  { title : 'Enter COT code' , transaction :  req.params.id});
+                return res.render('international/confirm.ejs',  { title : 'Enter COT code' , history :  req.params.id});
             }else{
-                res.render('international/imf.ejs', { title : 'Enter IMF code', transaction : req.params.id} )
+                res.render('international/imf.ejs', { title : 'Enter IMF code', transaction : [
+                    { cot : cot},
+                    {trans : wire._id}
+                ]})
+            } 
+
+        } catch (error) {  
+            console.error(error)
+        }
+    },
+
+    sendimf : async (req, res) => {
+        let validationErrors = [];
+        const cotbillingcode =  Number(req.body.cotnum)
+        const imfcode = Number(req.body.imf)
+
+        try {
+
+            if(imfcode < 1){
+                validationErrors.push({ msg: "You must provide IMF code to continue the Transaction" });
+            }
+
+            const code =  await codes.find()
+            const cotcode = code.find(item => item.cot === cotbillingcode && item.imf === imfcode)
+
+            if(!cotcode){
+                validationErrors = []
+                validationErrors.push({ msg: "This is an invalid code. Contact Customer Service" });
+            }
+
+            if(validationErrors.length){
+                req.flash("errors", validationErrors);
+                return res.render('international/imf.ejs',  { title : 'Enter IMF code' , transaction : [
+                    { cot : cotbillingcode},
+                    {trans : req.params.id}
+                ]});
+            }else{
+                res.render('international/tax.ejs', { title : 'Enter Tax code', transaction : [
+                    { cot : cotbillingcode},
+                    {imf : imfcode},
+                    {trans : req.params.id}
+                ]})
             } 
 
         } catch (error) {  
             console.error(error)
         }
     }
+    
 
  }
