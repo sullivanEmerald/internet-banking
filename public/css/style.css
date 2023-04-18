@@ -2040,11 +2040,11 @@ ALL TRANSACTIONS RECEIPT PAGE
 ***********************************************************
 */
 
-.accountprofile{
+.profileuser{
     display: flex;
 }
 
-.accountprofile > img {
+.profileuser > img {
     border-radius: 50%;
     width: 70px;
     height: 70px;
@@ -2057,7 +2057,7 @@ ALL TRANSACTIONS RECEIPT PAGE
 
 }
 
-.accountInfo > section, .accountprofile > section > section {
+.accountprofile > section > section {
     line-height: 2.0px;
 }
 
@@ -2065,6 +2065,6 @@ ALL TRANSACTIONS RECEIPT PAGE
     margin-left: 10px;
 }
 
-.accountInfo > section p:first-child{
+.infoprofile > section p:first-child{
     color: #3498db;
 }

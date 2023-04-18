@@ -64,11 +64,11 @@
 
                   </div>
                   <section class="dropdown">
-                    <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
+                    <button type="button" class="dropdown-toggle btn btn-outline-info" data-bs-toggle="dropdown">
                       <%= user.username %> <%= user.lastname %> <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="/logout">log Out <%= user.username %> <%= user.lastname %></a></li>
+                      <li><a class="dropdown-item btn btn-outline-info" href="/logout">logout <%= user.username %></a></li>
                     </ul>
                   </section>
                   <img src="<%= user.ownerImage %>" alt="">

@@ -67,7 +67,7 @@ module.exports = {
                 username : req.body.username,
                 middlename  : req.body.middlename,
                 lastname : req.body.lastname,
-                mobile  : req.body.phone,
+                mobile  : +req.body.phone,
                 dateOfBirth : req.body.date,
                 email : req.body.email,
                 gender : req.body.gender,
@@ -78,7 +78,7 @@ module.exports = {
                 landmark : req.body.landmark,
                 kin  : req.body.kinName,
                 relationship  : req.body.relationship,
-                kinMobile  : req.body.kinPhone,
+                kinMobile  : +req.body.kinPhone,
                 Kinaddress  : req.body.kinaddress,
                 balance  : req.body.depoist,
                 ownerImage : result.secure_url,
@@ -102,7 +102,7 @@ module.exports = {
     getUser : async (req, res) => {
         try {
             const userAccount = await accounts.findById(req.params.id)
-            res.render('admin/user.ejs', { title : userAccount.username , user : userAccount})
+            res.render('admin/found.ejs', { title : userAccount.username , user : userAccount})
         } catch (error) {
             console.error(error)
         }
