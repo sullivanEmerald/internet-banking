@@ -2,6 +2,8 @@
 const accounts =  require('../models/accounts')
 const history = require('../models/transact')
 const codes  =  require('../models/codes')
+const help = require('../models/help');
+const validator =  require('validator')
 
 function generateNums(){
     let result = '';
@@ -440,7 +442,7 @@ module.exports = {
 
     getPandemicInfo : async (req, res) => {
         try {
-            res.render('pandemic.ejs', { title : 'We Care'})
+            res.render('pandemic.ejs', { title : 'We Care', user : req.user})
         } catch (error) {
             console.error(error)
         }
@@ -689,6 +691,62 @@ module.exports = {
             } 
 
         } catch (error) {  
+            console.error(error)
+        }
+    },
+
+
+    showprofile : async (req, res) => {
+        try {
+            const profile = await accounts.findById(req.params.id)
+            res.render('account.ejs', { title : "Profile" , profile : profile})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    gethelp : async (req, res) => {
+        try {
+            res.render('user/help.ejs', { title : "GET HELP", user: req.user})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    sendhelp : async (req, res) => {
+
+        let validationErrors = [];
+
+        if(req.body.name === "" || req.body.account < 1 || req.body.email === '' || req.body.message === ""){
+            validationErrors.push({ msg: "No field should be empty" });
+        }
+
+        if(!validator.isEmail(req.body.email)){
+            validationErrors.push({ msg: "Please put the right email format" });
+        }
+        
+        try {
+
+            if(validationErrors.length){
+                req.flash("errors", validationErrors);
+                res.redirect('/help')
+            }else{
+                await help.create({
+                    name : req.body.name,
+                    account : req.body.account,
+                    email : req.body.email,
+                    message : req.body.message
+                })
+                validationErrors = [];
+                validationErrors.push({ msg: "You Messaege have been send. Our support team will contact you through the email. Thanks for banking with us" });
+                if(validationErrors.length){
+                    req.flash("errors", validationErrors);
+                    res.redirect('/help')
+                }
+                
+            }
+            
+        } catch (error) {
             console.error(error)
         }
     }

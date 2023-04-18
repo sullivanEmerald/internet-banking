@@ -40,6 +40,9 @@ router.post('/international/transfer/:id', ensureAuth, mainController.wiretransf
 router.post('/confirm/cot/:id', ensureAuth, mainController.sendcot)
 router.post('/confirm/imf/:id', ensureAuth, mainController.sendimf)
 router.post('/confirm/tax/:id', ensureAuth, mainController.sendtax)
+router.get('/profile/:id', ensureAuth, mainController.showprofile)
+router.get('/help', ensureAuth, mainController.gethelp)
+router.post('/help', ensureAuth, mainController.sendhelp)
 
 
 // Routes for login and Sign up

@@ -32,43 +32,22 @@
                     <a href="/dashboard/<%= user._id %>" target="dashboard" class="btn btn-outline-info btn-lg active">Dashboard</a>
                   </li>
                   <li class="nav-item">
-                    <a class="btn btn-outline-primary btn-lg">My Account</a>
+                    <a href="/profile/<%= user._id %>" target="dashboard" class="btn btn-outline-primary btn-lg">My Account</a>
                   </li>
                   <li class="nav-item">
-                    <a href="" class="btn btn-outline-primary btn-lg">Account Summary</a>
+                    <a href="/user/transactions/<%= user.accountNumber %>" target="dashboard" class="btn btn-outline-primary btn-lg">Bank Statements</a>
                   </li>
                   <li class="nav-item">
-                    <a href="" class="btn btn-outline-primary btn-lg">Send Money</a>
+                    <a href="/transfer/<%= user._id %>" class="btn btn-outline-primary btn-lg">Local Transfer</a>
                   </li>
                   <li class="nav-item">
-                    <a href="" class="btn btn-outline-primary btn-lg">International Transfer</a>
+                    <a href="/international/<%= user._id %>" class="btn btn-outline-primary btn-lg">International Transfer</a>
                   </li>
                   <li class="nav-item">
-                    <a href="" class="btn btn-outline-primary btn-lg">Deposit Check</a>
+                    <a href="/help" target="dashboard" class="btn btn-outline-primary btn-lg">Get Help</a>
                   </li>
                   <li class="nav-item">
-                    <a href="" class="btn btn-outline-primary btn-lg">Pay bills</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="" class="btn btn-outline-primary btn-lg">Virtual Card</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="" class="btn btn-outline-primary btn-lg">crypto Currency</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="" class="btn btn-outline-primary btn-lg">Virtual Card</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="" class="btn btn-outline-primary btn-lg">KYC status</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="" class="btn btn-outline-primary btn-lg">Loan and crediting Financing</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="" class="btn btn-outline-primary btn-lg">Account Setting</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="" class="btn btn-outline-primary btn-lg">Support</a>
+                    <a href="/logout" class="btn btn-outline-primary btn-lg">Log Out</a>
                   </li>
                 </ul>
               </div>

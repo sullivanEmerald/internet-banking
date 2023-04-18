@@ -1,0 +1,42 @@
+<%- include('../partials/banking.ejs') %>
+<% function useComma(price) { %>
+  <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
+<section class="container transfer">
+    <% if (locals.messages.errors) { %>
+        <% messages.errors.forEach( el => { %>
+            <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
+    <% if (locals.messages.info) { %>
+        <% messages.info.forEach( el => { %>
+            <div class="alert alert-info"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
+    <h2 class="text-success">Contact Us immediately</h2>
+    <form action="/help" method="POST">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="firstname" name="name">
+            <label for="Enter firstname">Name</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" placeholder="Middlename" name="account">
+            <label for="floatingInput">Account Number</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="Lastname" name="email">
+            <label for="floatingInput">email</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <p class="text-primary lead">Message</p>
+            <textarea name="message" id="" class="form-control" cols="40" rows="10" placeholder="Message"></textarea>
+          </div>
+        <button type="submit" class="btn btn-outline-primary btn-lg">Send</button>
+      </form>
+    
+</section>
+
+<%- include('../partials/bankfooter.ejs') %>

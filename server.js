@@ -11,6 +11,7 @@ const adminRoute = require('./routes/admin')
 const mongoose = require('mongoose')
 const connectDB =  require('./config/database')
 
+
 require('dotenv').config({ path : './config/.env'})
 
 require('./config/passport')(passport)
@@ -26,7 +27,6 @@ app.use(express.urlencoded( { extended : true}))
 app.use(express.json())
 app.use(logger("dev"))
 app.use(methodOveride('_method'))
-
 
 app.use(session({
     secret : 'keyboard cat',

@@ -2032,3 +2032,39 @@ ALL TRANSACTIONS RECEIPT PAGE
         width: 70%;
     }
 }
+
+
+ /* 
+***********************************************************
+    ACCOUNT PROFILE PAGE
+***********************************************************
+*/
+
+.accountprofile{
+    display: flex;
+}
+
+.accountprofile > img {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+}
+
+.accountInfo > div  {
+    background-color: #093d2a;
+    color: #fff;
+    padding: 5px;
+
+}
+
+.accountInfo > section, .accountprofile > section > section {
+    line-height: 2.0px;
+}
+
+.accountprofile > section {
+    margin-left: 10px;
+}
+
+.accountInfo > section p:first-child{
+    color: #3498db;
+}

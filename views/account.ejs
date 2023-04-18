@@ -1,0 +1,68 @@
+<%- include('./partials/banking.ejs') %>
+<% function useComma(price) { %>
+  <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
+<section class="container transfer">
+    <h2 class="text-success">My Profile</h2>
+    <section class="accountprofile">
+        <img src="<%= profile.ownerImage%>" alt="">
+        <section>
+           <section>
+                <p>fullname</p>
+                <p class="lead"><%= profile.username %> <%= profile.middlename %> <%= profile.lastname %></p>
+           </section>
+           <br>
+           <section>
+                <p>Phone Number</p>
+                <p><%= profile.mobile %></p>
+           </section>
+        </section>
+    </section>
+    <br>
+    <section class="accountInfo">
+        <div>Basic Information</div><br>
+        <section>
+            <p>first Name</p>
+            <p class="lead"><%= profile.username %></p>
+        </section><br>
+        <section>
+            <p>Middle Name</p>
+            <p class="lead"><%= profile.middlename %></p>
+        </section><br>
+        <section>
+            <p>Last Name</p>
+            <p class="lead"><%= profile.lastname %></p>
+        </section><br>
+        <section>
+            <p>fullname</p>
+            <p class="lead"><%= profile.username %> <%= profile.middlename %> <%= profile.lastname %></p>
+        </section><br>
+        <div>Contact Information</div><br>
+        <section>
+            <p>Email</p>
+            <p class="lead"><%= profile.email %></p>
+        </section><br>
+        <section>
+            <p>Mobile Number</p>
+            <p class="lead"><%= profile.mobile %></p>
+        </section><br>
+        <div>Address</div><br>
+        <section>
+            <p>Location</p>
+            <p class="lead"><%= profile.address %></p>
+        </section><br>
+        <section>
+            <p>State</p>
+            <p class="lead"><%= profile.state %></p>
+        </section><br>
+        <section>
+            <p>Landmark</p>
+            <p class="lead"><%= profile.landmark %></p>
+        </section>
+
+        <br>
+    </section>
+   
+</section>
+
+<%- include('./partials/bankfooter.ejs') %>
