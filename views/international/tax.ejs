@@ -18,15 +18,20 @@
     <% } %>
 
     <div id="preloader">
-        <h3>Verifying IMF code with International Monetary Fund.. Please wait</3>
-        <div class="loader"></div>
+        <h3 class="text-info">Verifying IMF code... Please wait</h3>
+		<div class="loader"></div>
+		<div id="progress-bar">
+			<div id="progress-bar-fill">
+				<div id="progress-bar-text" class="text-danger"></div>
+			</div>
+		</div>
     </div>
     
-    <div id="main-content" style="display:none;">
+    <div id="content" style="display:none;">
         <form action="/confirm/tax/<%= transaction[2].trans %>"  method="POST">
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="cotcode" placeholder="amount" name="tax">
-                <label for="cotcode">Enter Tax Number</label>
+                <input type="number" class="form-control" id="tax" placeholder="amount" name="tax">
+                <label for="tax">Enter Tax Number</label>
               </div>
               <input type="hidden" name="cotnum" value="<%= transaction[0].cot %>">
               <input type="hidden" name="imfcode" value="<%= transaction[1].imf %>">
