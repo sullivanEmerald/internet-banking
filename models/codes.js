@@ -16,6 +16,11 @@ const codes = new mongoose.Schema({
         required : true
     },
 
+    upp : {
+        type : Number, 
+        required : true
+    },
+
     assign : {
         type : Boolean, 
         default : false

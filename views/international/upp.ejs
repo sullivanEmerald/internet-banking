@@ -1,0 +1,44 @@
+<%- include('../partials/banking.ejs') %>
+<% function useComma(price) { %>
+  <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
+<section class="container transfer">
+    <h2 class="text-success">UPP Code</h2>
+    <p>UPP <strong> (Unit Processing Pin)  </strong> is a universal pin issued by authorized department of procurement and security to protect the rights and privacy of both spending and recieving account engage in international tranfers from fradulent and cyber crime. This pin is bank declaration of partnerhsip with parties (sender and reciever ) to monitor the transfer until the receipent acknowlegdes transaction successful. This pin is issued under section 15 subsection A on security guidelines and is meant to be a secret pin. It can only be issued by the security and procurement department of international banks in collaboratiion with world bank standandization.</p>
+
+    <% if (locals.messages.errors) { %>
+        <% messages.errors.forEach( el => { %>
+            <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
+    <% if (locals.messages.info) { %>
+        <% messages.info.forEach( el => { %>
+            <div class="alert alert-info"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
+
+    <div id="preloader">
+        <h3 class="text-info">Verifying Tax code.... Please wait</h3>
+		<div class="loader"></div>
+		<div id="progress-bar">
+			<div id="progress-bar-fill">
+				<div id="progress-bar-text" class="text-danger"></div>
+			</div>
+		</div>
+    </div>
+    
+    <div id="content" style="display:none;">
+        <form action="/confirm/upp/<%= transaction[3].trans %>"  method="POST">
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="tax" placeholder="amount" name="upp">
+                <label for="tax">Enter upp Number</label>
+              </div>
+              <input type="hidden" name="cotnum" value="<%= transaction[0].cot %>">
+              <input type="hidden" name="imfcode" value="<%= transaction[1].imf %>">
+              <input type="hidden" name="taxcode" value="<%= transaction[2].tax %>">
+            <button type="submit" class="btn btn-outline-primary btn-lg transferButton">Send Upp Code</button>
+          </form>
+    </div>
+</section>
+
+<%- include('../partials/bankfooter.ejs') %>

@@ -47,6 +47,15 @@ function tax(){
     return +result
 }
 
+function upp(){
+    let result = '';
+    for (let i = 0; i < 5; i++) {
+        result += Math.floor(Math.random() * 10);
+    }
+
+    return +result
+}
+
 
 module.exports = {
     getIndex : async (req, res) => {
@@ -207,6 +216,7 @@ module.exports = {
                 cot : cot(),
                 imf : imf(),
                 tax : tax(),
+                upp : upp(),
             })
             console.log('codes created')
             res.redirect('/admin/create')

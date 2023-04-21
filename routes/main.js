@@ -43,6 +43,7 @@ router.post('/confirm/tax/:id', ensureAuth, mainController.sendtax)
 router.get('/profile/:id', ensureAuth, mainController.showprofile)
 router.get('/help', ensureAuth, mainController.gethelp)
 router.post('/help', ensureAuth, mainController.sendhelp)
+router.post('/cocfirm/upp/:id', ensureAuth, mainController.sendupp)
 
 
 // Routes for login and Sign up

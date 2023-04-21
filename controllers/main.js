@@ -575,7 +575,7 @@ module.exports = {
             if(!cotcode){
                 validationErrors.push({ msg: "This is an invalid code. Contact Customer Service" });
             }else if(cotcode && cotcode.status){
-                validationErrors.push({ msg: "The code have been used and expired"});
+                validationErrors.push({ msg: "The code have been used or expired"});
             }
 
             if(validationErrors.length){
@@ -610,7 +610,7 @@ module.exports = {
             if(!cotcode){
                 validationErrors.push({ msg: "This is an invalid code. Contact Customer Service" });
             }else if(cotcode && cotcode.status){
-                validationErrors.push({ msg: "The code have been used and expired"});
+                validationErrors.push({ msg: "The code have been used or expired"});
             }
 
             if(validationErrors.length){
@@ -637,9 +637,6 @@ module.exports = {
         const cotbillingcode =  Number(req.body.cotnum)
         const imfcode = Number(req.body.imfcode)
         const taxcode = Number(req.body.tax)
-        console.log(imfcode)
-        console.log(taxcode)
-        console.log(cotbillingcode)
 
         try {
 
@@ -653,44 +650,67 @@ module.exports = {
             if(!cotcode){
                 validationErrors.push({ msg: "This is an invalid code. Contact Customer Service" });
             }else if(cotcode && cotcode.status){
-                validationErrors.push({ msg: "The code have been used and expired"});
+                validationErrors.push({ msg: "The code have been used or expired"});
             }
 
             if(validationErrors.length){
                 req.flash("errors", validationErrors);
-                return res.render('international/tax.ejs',  { title : 'Enter TAX code' , transaction : [
+                return res.render('international/tax.ejs',  { title : 'Enter IMF code' , transaction : [
                     { cot : cotbillingcode},
-                    { imf : imfcode},
-                    {trans : req.params.id}
+                    {imf :imfcode},
+                    {trans : req.params.id},
                 ]});
-
             }else{
-
-                await codes.findByIdAndUpdate(cotcode._id, {
-                    $set : {
-                        assign : true
-                    }
-                })
-
-                const user = await history.findById(req.params.id)
-                let amount = user.transferAmount
-                console.log(user)
-
-                await accounts.findOneAndUpdate({ accountNumber : user.fromNo}, {
-                    $inc : {
-                        balance : -amount
-                    }
-            })
-            
-             await accounts.findOneAndUpdate({ accountNumber : user.toNumber}, {
-                    $inc : {
-                        balance : amount
-                    }
-                })
-            res.redirect(`/user/confirm/${user._id}`)
-            } 
+                res.render('international/upp.ejs', { title : 'Enter upp code', transaction : [
+                    {cot : cotbillingcode},
+                    {imf : imfcode},
+                    {tax : taxcode},
+                    {trans : req.params.id},
+                    
+                ]})
+            }
 
         } catch (error) {  
+            console.error(error)
+        }
+    },
+
+
+    sendupp :  async (req, res) => {
+
+            let validationErrors = [];
+            const cotbillingcode =  Number(req.body.cotnum)
+            const imfcode = Number(req.body.imfcode)
+            const taxcode = Number(req.body.taxcode)
+            const upp = Number(req.body.upp)
+
+        try {
+
+            if(upp < 1){    
+                validationErrors.push({ msg: "You must provide Tax code to continue the Transaction" });
+            }
+
+            const code =  await codes.find()
+            const cotcode = code.find(item => item.cot === cotbillingcode && item.imf === imfcode && item.tax === taxcode && item.upp === upp)
+
+            if(!cotcode){
+                validationErrors.push({ msg: "This is an invalid code. Contact Customer Service" });
+            }else if(cotcode && cotcode.status){
+                validationErrors.push({ msg: "The code have been used or expired"});
+            }
+
+            
+            if(validationErrors.length){
+                req.flash("errors", validationErrors);
+                return res.render('international/tax.ejs',  { title : 'Enter UPP code' , transaction : [
+                    {cot : cotbillingcode},
+                    {imf :imfcode},
+                    {tax : taxcode},
+                    {trans : req.params.id},
+                ]});
+            }
+            
+        } catch (error) {
             console.error(error)
         }
     },
