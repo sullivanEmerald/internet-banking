@@ -1747,7 +1747,7 @@ Confirm Page Styling
 ***********************************************************
 */
 
-#main-content{
+.confirm{
     margin: 5% auto;
     width: 50%;
     padding: 20px;
@@ -1757,26 +1757,26 @@ Confirm Page Styling
     text-align: center;
 }
 
-#main-content > h1{
+.confirm > h1{
    text-align: center;
    text-decoration: underline;
    color: crimson;
    margin-bottom: 10px;
 }
 
-#main-content p{
+.confirm p{
     font-size: 20px;
     font-weight: bold;
 }
 
-#main-content span{
+.confirm span{
    text-transform: capitalize;
    color: #093d2a;
    font-size: 20px;
    font-weight: bold;
 }
 
-#main-content section{
+.confirm section{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -1802,7 +1802,7 @@ TRANSACTION SUMMARY ON THE DASHBOARD
         flex-direction: column;
     }
 
-    #main-content{
+    .confirm{
         margin: 10% auto;
         width: 80%;
         
