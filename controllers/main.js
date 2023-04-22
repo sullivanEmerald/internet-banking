@@ -708,6 +708,29 @@ module.exports = {
                     {tax : taxcode},
                     {trans : req.params.id},
                 ]});
+            }else{
+                await codes.findByIdAndUpdate(cotcode._id, {
+                    $set : {
+                        assign : true
+                    }
+                })
+
+                const user = await history.findById(req.params.id)
+                let amount = user.transferAmount
+                console.log(user)
+
+                await accounts.findOneAndUpdate({ accountNumber : user.fromNo}, {
+                    $inc : {
+                        balance : -amount
+                    }
+            })
+            
+             await accounts.findOneAndUpdate({ accountNumber : user.toNumber}, {
+                    $inc : {
+                        balance : amount
+                    }
+                })
+            res.redirect(`/user/confirm/${user._id}`)
             }
             
         } catch (error) {
