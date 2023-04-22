@@ -1,24 +1,53 @@
 
+	<script>
+		var progressBar = document.getElementById("progressBar");
+		var progressBarWrapper = document.getElementById("progressBarWrapper");
+		var content = document.getElementById("content");
+
+		// Start the progress bar at 0%
+		progressBar.style.width = "0%";
+
+		// Set a timeout to simulate the progress
+		setTimeout(function() {
+		// When the progress is complete, show the content and hide the progress bar
+		progressBarWrapper.style.display = "none";
+		content.style.display = "block";
+		}, 6000);
+
+		// Update the progress bar every 100ms
+		var interval = setInterval(function() {
+		// Increase the progress bar by 1% every 100ms
+		progressBar.style.width = parseInt(progressBar.style.width) + 1 + "%";
+		// Update the text inside the progress bar to show the current progress
+		progressBar.innerText = progressBar.style.width;
+		// When the progress bar reaches 100%, clear the interval
+		if (progressBar.style.width === "100%") {
+			clearInterval(interval);
+		}
+		}, 50);
+
+
+	</script>
     <script>
 		// Set timeout function to simulate preloader
 		setTimeout(function() {
 			document.getElementById("preloader").style.display = "none";
-			document.getElementById("content").style.display = "block";
-		}, 7000);
+			document.getElementById("main-content").style.display = "block";
+		}, 5000);
 
 		// Update progress bar with progressive percentage
-		var progressBarFill = document.getElementById("progress-bar-fill");
-		var progressBarText = document.getElementById("progress-bar-text");
-		var percentage = 0;
-		var interval = setInterval(function() {
-			if (percentage < 100) {
-				percentage++;
-				progressBarFill.style.width = percentage + "%";
-				progressBarText.innerHTML = percentage + "%";
-			} else {
-				clearInterval(interval);
-			}
-		}, 50);
+		// var progressBarFill = document.getElementById("progress-bar-fill");
+		// var progressBarText = document.getElementById("progress-bar-text");
+		// var percentage = 0;
+		// var interval = setInterval(function() {
+		// 	if (percentage < 100) {
+		// 		percentage++;
+		// 		progressBarFill.style.width = percentage + "%";
+		// 		progressBarText.innerHTML = percentage + "%";
+		// 	} else {
+		// 		clearInterval(interval);
+		// 	}
+		// }, 50);
 	</script>
 
 <script src="/js/main.js"></script>

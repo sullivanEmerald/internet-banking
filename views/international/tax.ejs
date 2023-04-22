@@ -2,7 +2,13 @@
 <% function useComma(price) { %>
   <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
 <% } %>
-<section class="container transfer">
+
+<div id="progressBarWrapper">
+	<div id="progressBar"></div>
+	<p class="text-info text-center">confirming IMF code.... PLease wait</p>
+</div>
+
+<section id="content" style="display:none;" class="container transfer">
     <h2 class="text-success">TAX/VAT Request</h2>
     <p>A tax is a compulsory financial charge or some other type of levy imposed on a taxpayer (an individual or legal entity) by a governmental organization in order to fund government spending and various public expenditures. A failure to pay, along with evasion of or resistance to taxation, is punishable by law</p>
 
@@ -16,18 +22,8 @@
             <div class="alert alert-info"><%= el.msg %></div>
         <% }) %>    
     <% } %>
-
-    <div id="preloader">
-        <h3 class="text-info">Verifying IMF code... Please wait</h3>
-		<div class="loader"></div>
-		<div id="progress-bar">
-			<div id="progress-bar-fill">
-				<div id="progress-bar-text" class="text-danger"></div>
-			</div>
-		</div>
-    </div>
     
-    <div id="content" style="display:none;">
+    <div>
         <form action="/confirm/tax/<%= transaction[2].trans %>"  method="POST">
             <div class="form-floating mb-3">
                 <input type="number" class="form-control" id="tax" placeholder="amount" name="tax">

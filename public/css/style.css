@@ -1747,7 +1747,7 @@ Confirm Page Styling
 ***********************************************************
 */
 
-.confirm{
+#main-content{
     margin: 5% auto;
     width: 50%;
     padding: 20px;
@@ -1757,26 +1757,26 @@ Confirm Page Styling
     text-align: center;
 }
 
-.confirm > h1{
+#main-content > h1{
    text-align: center;
    text-decoration: underline;
    color: crimson;
    margin-bottom: 10px;
 }
 
-.confirm p{
+#main-content p{
     font-size: 20px;
     font-weight: bold;
 }
 
-.confirm span{
+#main-content span{
    text-transform: capitalize;
    color: #093d2a;
    font-size: 20px;
    font-weight: bold;
 }
 
-.confirm section{
+#main-content section{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -1802,7 +1802,7 @@ TRANSACTION SUMMARY ON THE DASHBOARD
         flex-direction: column;
     }
 
-    .confirm{
+    #main-content{
         margin: 10% auto;
         width: 80%;
         
@@ -2097,7 +2097,7 @@ ALL TRANSACTIONS RECEIPT PAGE
         100% { transform: rotate(360deg); }
     }
     /* Progress bar styles */
-    #progress-bar {
+    /* #progress-bar {
         position: absolute;
         top: 10%;
         left: 50%;
@@ -2123,4 +2123,25 @@ ALL TRANSACTIONS RECEIPT PAGE
         color: #3498db;
         font-weight: bold;
         font-size: 14px;
-    }
+    } */
+
+    /* Progress Bar Preloader Styling */
+    #progressBarWrapper {
+        width: 50%;
+        height: 30px;
+        background-color: #ddd;
+        margin-bottom: 20px;
+        margin: 20px auto;
+        border-radius: 10px;
+      }
+      
+      #progressBar {
+        height: 100%;
+        background-color: #007bff;
+        width: 0%;
+        transition: width 0.5s ease;
+        text-align: center;
+        line-height: 30px;
+        color: #fff;
+      }
+      

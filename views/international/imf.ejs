@@ -2,7 +2,14 @@
 <% function useComma(price) { %>
   <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
 <% } %>
-<section class="container transfer">
+
+
+<div id="progressBarWrapper">
+	<div id="progressBar"></div>
+	<p class="text-info text-center">confirming COT code.... PLease wait</p>
+</div>
+
+<section id="content" style="display:none;" class="container transfer">
     <h2 class="text-success">International Monetary Fund</h2>
     <p>The world bank policy and restriction by standandization from the recent reforms, Directives from the banking world quaters, International or Wire with be in compliance with interantinal monetary rules and for transaction involving a large amount of money in any currency, it was be authorized and be monitored by internation monetary fund through their <strong>Code of Approval and Indemnity</strong> makimg the interantinal body obligated to share in the loss if any. Contact the customer service to acquire the code to continue continue the transaction(s)</p>
 
@@ -16,26 +23,20 @@
             <div class="alert alert-info"><%= el.msg %></div>
         <% }) %>    
     <% } %>
-
-    <div id="preloader">
-        <h3 class="text-info">Verifying COT code... Please wait</h3>
-		<div class="loader"></div>
-		<div id="progress-bar">
-			<div id="progress-bar-fill">
-				<div id="progress-bar-text" class="text-danger"></div>
-			</div>
-		</div>
-	</div>
-	<div id="content" style="display:none;">
-		<form action="/confirm/imf/<%= transaction[1].trans %>"  method="POST">
-			<div class="form-floating mb-3">
-				<input type="number" class="form-control" id="cotcode" placeholder="amount" name="imf">
-				<label for="cotcode">Enter IMF Number</label>
-			</div>
-			<input type="hidden" name="cotnum" value="<%= transaction[0].cot %>">
-			<button type="submit" class="btn btn-outline-primary btn-lg transferButton">SEND IMF</button>
+	
+	  <div>
+		<form action="/confirm/imf/<%= transaction[1].trans %>" method="POST">
+		  <div class="form-floating mb-3">
+			<input type="number" class="form-control" id="cotcode" placeholder="amount" name="imf">
+			<label for="cotcode">Enter IMF Number</label>
+		  </div>
+		  <input type="hidden" name="cotnum" value="<%= transaction[0].cot %>">
+		  <button type="submit" class="btn btn-outline-primary btn-lg transferButton">SEND IMF</button>
 		</form>
-	</div>
+	  </div>
+ 	
+</section>
+	  
 	
 
 
