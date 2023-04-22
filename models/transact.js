@@ -60,7 +60,16 @@ const transactHistory = new mongoose.Schema({
     type : String,
     required : true,
   },
+
+  router : {
+    type : String,
+    required : false,
+  },
   
+  switch : {
+    type : String,
+    required : false,
+  },
 })
 
 

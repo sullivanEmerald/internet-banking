@@ -506,7 +506,7 @@ module.exports = {
         const validationErrors = [];
         try {
 
-            if(req.body.holder == "" || req.body.account == "" || req.body.name == "" || req.body.description == "" ){
+            if(req.body.holder == "" || req.body.account == "" || req.body.name == "" || req.body.description == "" || req.body.router == "" || req.body.switch == ""){
                 validationErrors.push({ msg: "Please, All field msut be filled" });
             }
 
