@@ -95,7 +95,13 @@ module.exports = {
             }else{
                 if(user.active === 'closed'){
                     validationErrors.push({ msg: "This account have been closed and you no longet have access to this account. Contact the support team, if substantial evidence is provided and the account passess credibility test, it can be reopened. Thank you for banking with us" });
-                } 
+                }
+
+
+                if(user.active === 'disabled'){
+                    validationErrors.push({ msg: "This is to inform that due to violation of banking principles and or rules which have the power to defame our good reputation, your account have been diabled and you lack access it. please contact our support team and provide the necessary information, if satistactory, you will regain access to your account with all its contents in full. Thanks for banking with us" });
+                }
+
             }
 
                 
@@ -460,7 +466,6 @@ module.exports = {
     transferInt : async (req, res) => {
         let validationErrors = [];
         const accountBalance = await accounts.findById(req.params.id)
-        console.log(accountBalance)
         const transferAmount =  removeCommas(req.body.amount)
         try {
 
