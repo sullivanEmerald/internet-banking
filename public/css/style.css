@@ -39,8 +39,8 @@ Nav Bar Setting
 .navbar {
     background-color: #fff;
     height: 50px;
- 
 }
+
 .navbar-brand {
     width: 25%;
     height: 150px;
@@ -54,12 +54,12 @@ Nav Bar Setting
 }
 
 .navbar-nav{
-    width: 50%;
-    margin: auto;
+    width: 70%;
 }
 
 .internetButton{
     background-color: #fff;
+    margin-left: 10%;
 }
 
 
@@ -75,17 +75,31 @@ Nav Bar Setting
     
     .internetButton{
        margin-bottom: 15px;
+       margin-left: 5px;
     }
 
     .navbar-brand {
-        width: 40%;
-        height: 70px;
+        width: 60%;
+        height: 100px;
     }
     .navbar {
-     
         height: 70px;
-     
     }
+    
+
+    #collapsibleNavbar{
+        background-color: cornflowerblue;
+        color: #fff;
+        margin-top: -10px;
+        border-radius: 10px;
+    }
+
+    .navbar ul li a{
+        color: #fff;
+        
+    }
+
+    
 }
 
 /* 
@@ -148,12 +162,17 @@ Carousel Setting
 @media screen and (max-width: 480px){
     .carousel-item > section, .familyCarousel > section{
         left: 20%;
-        top : 30px;  
+        top : 50px;  
         padding: 15px;
         text-align: center;
         font-size: 25px;
         width: 60%;   
     }  
+
+    .carousel-item, .familyCarousel {
+        margin-top: 90px;
+    }
+
 
     .heroText{
         font-size: 18px;
@@ -170,7 +189,11 @@ Carousel Setting
         width: 40%;
         color: #fff;
         font-size: 20px;
+        margin-bottom: 20px;
     }
+
+
+
 
 }
 /* 
