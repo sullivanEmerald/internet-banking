@@ -129,7 +129,7 @@ module.exports = {
     getdashboard  : async (req, res) => {
         try {
             const userAccount = await accounts.findById(req.params.id)
-            const summary = await history.find({ $or: [ { fromNo : userAccount.accountNumber}, {toNumber : userAccount.accountNumber}]})
+            const summary = await history.find({ $or: [ { fromNo : userAccount.accountNumber}, {toNumber : userAccount.accountNumber}]}).sort({ time : 1})
             res.render('dashboard.ejs',  { title : userAccount.username , user : userAccount, summary : summary})
         } catch (error) {
             console.error(error)
@@ -439,7 +439,7 @@ module.exports = {
         try {
             const useracc = await accounts.find({ accountNumber : account})
             const user = useracc[0]
-            const summary = await history.find({ $or: [ { fromNo : account}, {toNumber : account}]})
+            const summary = await history.find({ $or: [ { fromNo : account}, {toNumber : account}]}).sort({ time : -1})
             res.render('user/transactions.ejs',  { title : "Transaction", receipt : summary, user : user})
         } catch (error) {
             console.error(error)

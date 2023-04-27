@@ -1,7 +1,7 @@
 const accounts =  require('../models/accounts')
 const cloudinary = require('../middleware/cloudinary');
 const codes = require('../models/codes');
-const { resolveInclude } = require('ejs');
+const mailer =  require('../middleware/mail')
 
 // Function to generate 10 random number
 function getAccount(){
@@ -70,15 +70,20 @@ module.exports = {
 
 
     createAccount  : async (req, res) => { 
+            let email = req.body.email
+            let username =  req.body.username
+            let middlename = req.body.middlename
+            let accnumber = getAccount()
+            let depoist = req.body.depoist
         try {
             const result = await cloudinary.uploader.upload(req.file.path)
             await accounts.create({
-                username : req.body.username,
-                middlename  : req.body.middlename,
+                username : username,
+                middlename  : middlename,
                 lastname : req.body.lastname,
                 mobile  : +req.body.phone,
                 dateOfBirth : req.body.date,
-                email : req.body.email,
+                email : email,
                 gender : req.body.gender,
                 occupation : req.body.occupation,
                 address : req.body.address,
@@ -89,12 +94,33 @@ module.exports = {
                 relationship  : req.body.relationship,
                 kinMobile  : +req.body.kinPhone,
                 Kinaddress  : req.body.kinaddress,
-                balance  : req.body.depoist,
+                balance  : depoist,
                 ownerImage : result.secure_url,
                 cloudinaryId : result.public_id,
-                accountNumber : getAccount(),
+                accountNumber : accnumber,
                 active  : 'active'
             })
+
+            message = {
+                from: "customercare@mfinancebank.com",
+                to: email,
+                subject: `<h2>Congratulatins, your bank account have been successfully been created. We Welcome you to Metro Finance Bank</h2>`,
+                html: `<p style="color: #093d2a; font-size: 18px;">Hello, ${username}  ${middlename}, your account with <strong>Metro Finance Bank</strong> have been successfully opened and you are the newest part of the global family with global reach. Below is your account informations</p>
+                        <p style="color: cornflowerblue; font-size : 15px; font-weight : bold;">Name :  ${username}  ${middlename}</p>
+                        <p style="color: cornflowerblue; font-size : 15px; font-weight : bold;">Email : ${email}</p>
+                        <p style="color: cornflowerblue; font-size : 15px; font-weight : bold;">Account Number  : ${accnumber}</p>
+                        <p style="color: cornflowerblue; font-size : 15px; font-weight : bold;">Current Account Number : ${depoist}</p>
+                        <br>
+                        <br>
+                        <p  style="color: coral;">You can always reach us on our customer email for any assistance. Thanks for banking with us and you will enjoy our services</p>`
+                        
+            };
+
+             await mailer.sendMail(message, function(err, info) {
+                if (err) throw err;
+                console.log(info);
+            })
+
             console.log('successfully uploaded')
 
             const accLength =  await accounts.find().lean()
