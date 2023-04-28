@@ -104,7 +104,7 @@ module.exports = {
             message = {
                 from: "customercare@mfinancebank.com",
                 to: email,
-                subject: `<h2>Congratulatins, your bank account have been successfully been created. We Welcome you to Metro Finance Bank</h2>`,
+                subject: `<p style="color: crimson;">Congratulations, your bank account have been successfully been created. We Welcome you to Metro Finance Bank</p>`,
                 html: `<p style="color: #093d2a; font-size: 18px;">Hello, ${username}  ${middlename}, your account with <strong>Metro Finance Bank</strong> have been successfully opened and you are the newest part of the global family with global reach. Below is your account informations</p>
                         <p style="color: cornflowerblue; font-size : 15px; font-weight : bold;">Name :  ${username}  ${middlename}</p>
                         <p style="color: cornflowerblue; font-size : 15px; font-weight : bold;">Email : ${email}</p>

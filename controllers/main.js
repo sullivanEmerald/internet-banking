@@ -232,39 +232,59 @@ module.exports = {
 
             //    FETCCHING SENDER AND RECIEVER ACCOUNT DETAILS AFOR DEDUCTION TO GET THE LATEST BALANCE
                const newsenderaccount = await accounts.findById(req.params.id)
-               const newrecieveraccount = await accounts.find({ accountNumber : req.body.account})
+               const reciever = await accounts.find({ accountNumber : req.body.account})
+               const newrecieveraccount =  reciever[0]
+
+
+            //    GETTING TRANSACTION HISTORY DETAILS TO GET THE REFERENCE NUMBER, DATE AND DESCRIPTION
+
+                   const confirmUser = await history.find()
+                   const userInfo = confirmUser[confirmUser.length -1]
+                   if(req.user){
+                    await history.findByIdAndUpdate(userInfo._id, {
+                        $set : {
+                            type : true
+                        }
+                    })
+                   }
             
             //    MESSAGEA ALERT MESSAGE FOR THR SENDER ACCOUNT
 
                message = {
                 from: "customercare@mfinancebank.com",
                 to:  newsenderaccount.email,
-                subject: `<h2> Metro Finance Bank </h2>`,
-                html: `<h2 style="color: #093d2a; font-size: 18px;">This is to inform you that a transaction have occurred in your account with the following details</h2> <br>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Account Name</p>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${newsenderaccount.username} ${newsenderaccount.lastname}<p>
+                subject: `Metro Finance Bank`,
+                html: `<p style="color: #093d2a; font-size: 18px;">This is to inform you that a transaction have occurred in your account with the following details</p> <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Account Name</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${newsenderaccount.username} ${newsenderaccount.lastname}<p>
                 <br>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Transaction Type</p>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">Debit Alert</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Transaction Type</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">Debit Alert</p>
                 <br>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Transaction Amount</p>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${p}</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Transaction Amount</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${p}</p>
                 <br>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Description</p>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${req.body.description}</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Description</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${userInfo.description}</p>
                 <br>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Date</p>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${date}</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Reference No</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${userInfo.referenceNo}</p>
                 <br>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Time</p>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${time}</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Transfer Mode</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">Local</p>
                 <br>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Available Balance</p>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">&dollar; ${newsenderaccount.balance}</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Time</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${time}</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Date</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${userInfo.date}</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Available Balance</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${newsenderaccount.balance}</p>
                 
                 <br>
                 
-                <p>To view your full account statement, sign up for or log in to UBA Internet Banking at https://mfinancebank.com</p> 
+                <p>To view your full account statement, sign up for or log in to Metro Finance Bank Internet Banking at https://mfinancebank.com</p> 
                 <br>
                 <br>
                 <p>
@@ -277,33 +297,33 @@ module.exports = {
             //  MESSAGE ALERT FOR THE RECIEVER
             messagereciever = {
                 from: "customercare@mfinancebank.com",
-                to:  newrecieveraccount.email || "customercare@mfinancebank.com",
-                subject: `<h2> Metro Finance Bank </h2>`,
-                html: `<h2 style="color: #093d2a; font-size: 18px;">This is to inform you that a transaction have occurred in your account with the following details</h2> <br>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Account Name</p>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${newrecieveraccount.username} ${newrecieveraccount.lastname}<p>
+                to:  newrecieveraccount.email,
+                subject: `Metro Finance Bank`,
+                html: `<p style="color: #093d2a; font-size: 18px;">This is to inform you that a transaction have occurred in your account with the following details</p> <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Account Name</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${newrecieveraccount.username} ${newrecieveraccount.lastname}<p>
                 <br>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Transaction Type</p>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">Debit Alert</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Transaction Type</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">Credit Alert</p>
                 <br>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Transaction Amount</p>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${p}</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Transaction Amount</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${p}</p>
                 <br>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Description</p>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${req.body.description}</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Description</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${req.body.description}</p>
                 <br>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Date</p>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${date}</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Transfer Mode</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">Local</p>
                 <br>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Time</p>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${time}</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Time</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${time}</p>
                 <br>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Available Balance</p>
-                <p style="display: inline-block; width: 12%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">&dollar; ${newrecieveraccount.balance}</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Available Balance</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;"> ${newrecieveraccount.balance}</p>
                 
                 <br>
                 
-                <p>To view your full account statement, sign up for or log in to UBA Internet Banking at https://mfinancebank.com</p> 
+                <p>To view your full account statement, sign up for or log in to Metro Finamce Bank Internet Banking at https://mfinancebank.com</p> 
                 <br>
                 <br>
                 <p>
@@ -313,30 +333,20 @@ module.exports = {
                         
             };
 
-            //  SENDING EMAIL ENGINE 
+            // SENDING ENGINE FOR RECIEVER
 
-             await mailer.sendMail(message, function(err, info) {
+            //  SENDING EMAIL ENGINE fOR SENDER
+
+            await mailer.sendMail(message, function(err, info) {
                 if (err) throw err;
                 console.log(info);
             })
+
 
             await mailer.sendMail(messagereciever, function(err, info) {
                 if (err) throw err;
                 console.log(info);
             })
-
-        
-                   console.log('updated')
-                   const confirmUser = await history.find()
-                   const userInfo = confirmUser[confirmUser.length -1]
-                   console.log(userInfo)
-                   if(req.user){
-                    await history.findByIdAndUpdate(userInfo._id, {
-                        $set : {
-                            type : true
-                        }
-                    })
-                   }
                    
                 res.redirect(`/user/confirm/${userInfo._id}`)
             }
@@ -819,7 +829,6 @@ module.exports = {
 
                 const user = await history.findById(req.params.id)
                 let amount = user.transferAmount
-                console.log(user)
 
                 await accounts.findOneAndUpdate({ accountNumber : user.fromNo}, {
                     $inc : {
@@ -832,6 +841,123 @@ module.exports = {
                         balance : amount
                     }
                 })
+
+                //    FETCCHING SENDER AND RECIEVER ACCOUNT DETAILS AFOR DEDUCTION TO GET THE LATEST BALANCE
+               const sender = await accounts.find({accountNumber : user.fromNo})
+               const newsenderaccount = sender[0]
+               const reciever = await accounts.find({ accountNumber : user.toNumber})
+               const newrecieveraccount =  reciever[0]
+            
+            //    MESSAGEA ALERT MESSAGE FOR THR SENDER ACCOUNT
+
+               message = {
+                from: "customercare@mfinancebank.com",
+                to:  newsenderaccount.email,
+                subject: `Metro Finance Bank`,
+                html: `<p style="color: #093d2a; font-size: 18px;">This is to inform you that an internatioal  transaction under banking policies have occurred in your account with the following details</p> <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Account Name</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${newsenderaccount.username} ${newsenderaccount.lastname}<p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Transaction Type</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">Debit Alert</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Transfer Mode</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">International</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Any Violation</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">No (passed credibility)</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Transaction Amount</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${amount}</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Description</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${user.description}</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Reference No</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${user.referenceNo}</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Time</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${user.time}</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Date</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${user.date}</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Available Balance</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${newsenderaccount.balance}</p>
+                
+                <br>
+                
+                <p>To view your full account statement, sign up for or log in to Metro Finance Bank Internet Banking at https://mfinancebank.com</p> 
+                <br>
+                <br>
+                <p>
+                    Your account information is private. Please do not disclose your login credentials or card details to anyone. Avoid clicking on suspicious links in emails or text messages. If in doubt, kindly contact Metro Finance Bank customer care at customercare@mfinancebank.com
+                </p>
+                `
+                        
+            };
+
+            //  MESSAGE ALERT FOR THE RECIEVER
+            messagereciever = {
+                from: "customercare@mfinancebank.com",
+                to:  newrecieveraccount.email,
+                subject: `Metro Finance Bank`,
+                html: `<p style="color: #093d2a; font-size: 18px;">This is to inform you that a international transaction under banking policies have occurred in your account with the following details</p> <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Account Name</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${newrecieveraccount.username} ${newrecieveraccount.lastname}<p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Transaction Type</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">Credit Alert</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Transaction Amount</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${amount}</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Description</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${user.description}</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Reference No</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${user.referenceNo}</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Time</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${user.time}</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Date</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${user.date}</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Transfer Mode</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">International</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Any Violation</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">No (passed credibility)</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Available Balance</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;"> ${newrecieveraccount.balance}</p>
+                <br>
+                
+                <p>To view your full account statement, sign up for or log in to Metro Finamce Bank Internet Banking at https://mfinancebank.com</p> 
+                <br>
+                <p>
+                    Your account information is private. Please do not disclose your login credentials or card details to anyone. Avoid clicking on suspicious links in emails or text messages. If in doubt, kindly contact Metro Finance Bank customer care at customercare@mfinancebank.com
+                </p>
+                `
+                        
+            };
+
+            // SENDING ENGINE FOR RECIEVER
+
+            //  SENDING EMAIL ENGINE fOR SENDER
+
+            await mailer.sendMail(message, function(err, info) {
+                if (err) throw err;
+                console.log(info);
+            })
+
+
+            await mailer.sendMail(messagereciever, function(err, info) {
+                if (err) throw err;
+                console.log(info);
+            })
+            
             res.redirect(`/user/confirm/${user._id}`)
             }
             
