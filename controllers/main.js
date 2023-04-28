@@ -310,13 +310,19 @@ module.exports = {
                 <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${p}</p>
                 <br>
                 <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Description</p>
-                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${req.body.description}</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${userInfo.description}</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Description</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${userInfo.description}</p>
                 <br>
                 <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Transfer Mode</p>
                 <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">Local</p>
                 <br>
                 <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Time</p>
-                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${time}</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${userInfo.time}</p>
+                <br>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Date</p>
+                <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;">${userInfo.date}</p>
                 <br>
                 <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Available Balance</p>
                 <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : rgb(127, 146, 183); color: #fff;"> ${newrecieveraccount.balance}</p>
