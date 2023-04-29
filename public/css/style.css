@@ -50,7 +50,7 @@ Nav Bar Setting
     font-size: 17px;
     font-weight: bold;
     color: #00af6f;
-    margin-right: 10%;
+    margin-right: 5%;
 }
 
 .navbar ul li a{
@@ -62,12 +62,13 @@ Nav Bar Setting
 }
 
 .navbar-nav{
-    width: 70%;
+    width: 80%;
 }
 
 .internetButton{
     background-color: #fff;
-    margin-left: 10%;
+    margin-left:5%;
+    width: 20%;
 }
 
 
@@ -84,6 +85,7 @@ Nav Bar Setting
     .internetButton{
        margin-bottom: 15px;
        margin-left: 5px;
+       width: 40%;
     }
 
     .navbar {

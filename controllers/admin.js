@@ -109,7 +109,7 @@ module.exports = {
                         <p style="color: cornflowerblue; font-size : 15px; font-weight : bold;">Name :  ${username}  ${middlename}</p>
                         <p style="color: cornflowerblue; font-size : 15px; font-weight : bold;">Email : ${email}</p>
                         <p style="color: cornflowerblue; font-size : 15px; font-weight : bold;">Account Number  : ${accnumber}</p>
-                        <p style="color: cornflowerblue; font-size : 15px; font-weight : bold;">Current Account Number : ${depoist}</p>
+                        <p style="color: cornflowerblue; font-size : 15px; font-weight : bold;">Current Account Balance : ${depoist}</p>
                         <br>
                         <br>
                         <p  style="color: coral;">You can always reach us on our customer email for any assistance. Thanks for banking with us and you will enjoy our services</p>`

@@ -85,8 +85,18 @@ module.exports = {
             const validationErrors = [];
         try {
 
+            // checking if an email has been associated with an account
+            const mailcheck = await accounts.find({email : req.user.email})
+            const completecheck = mailcheck[0]
+
+            if(!completecheck){
+                validationErrors.push({ msg: "You have not opened any account with us with this email. Join us today and enjoy our numerious services to all our users" });
+            }
+
+            // checking if account email used in loggin in is assocaited with the account
             const account = await accounts.find({ accountNumber : req.body.account, email : req.user.email})
             const user = account[0]
+
 
             if(isNaN(req.body.account)){
                 validationErrors.push({ msg: "Account Number can only be numbers" });
