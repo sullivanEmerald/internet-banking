@@ -84,6 +84,7 @@ module.exports = {
     findUser : async (req, res) => {
             const validationErrors = [];
         try {
+
             const account = await accounts.find({ accountNumber : req.body.account, email : req.user.email})
             const user = account[0]
 
@@ -1026,8 +1027,7 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
-    }
-    
+    },
 
  }
 
