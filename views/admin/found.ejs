@@ -34,6 +34,11 @@
                 Deposit
             </button>
 
+            
+            <button type="button" id="adminUser" class="btn btn-outline-danger btn-lg" data-bs-toggle="modal" data-bs-target="#debitbalance">
+              Debit
+          </button>
+
         <% if(!user.billingstatus) { %> 
             <form action="/admin/activatecode/<%= user._id%>?_method=PUT" method="POST">
                 <button type="submit" id="adminUser"class="btn btn-outline-info btn-lg">Enable Billiing code</button>
@@ -231,6 +236,40 @@
       </div>
     </div>
   </div>
+
+
+  <!-- debit modal -->
+     <!-- The Modal -->
+     <div class="modal" id="debitbalance">
+      <div class="modal-dialog">
+        <div class="modal-content">
+    
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Enter Amount to debit</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          
+  
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form action="/admin/debit/user/<%= user._id %>" method="POST">
+              <div class="form-floating mb-3">
+                  <input type="number" class="form-control" id="floatingInput" placeholder="debit amount" name="debitamount">
+                  <label for="floatingInput">Amount</label>
+                </div>
+                <button type="submit" class="btn btn-outline-info">Debit Account</button>
+            </form>
+          </div>
+    
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          </div>
+    
+        </div>
+      </div>
+    </div>
 
 <%- include('../partials/admin/modal.ejs') %>
 

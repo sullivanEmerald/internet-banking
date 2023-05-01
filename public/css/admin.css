@@ -161,6 +161,10 @@ section.last > h2 + section{
    
 }
 
+.adminnav{
+    margin: auto;
+}
+
 .codeButton {
     width: 20%;
     display: block;
@@ -200,5 +204,15 @@ section.last > h2 + section{
     .accountForm > h1 +  form{
         flex-direction: column;
     }
+    .adminnavbody{
+        background-color: cornflowerblue;
+        color: #fff;
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+   #findAccountButton{
+        color: #fff;
+   }
 
  }

@@ -2,6 +2,8 @@ const accounts =  require('../models/accounts')
 const cloudinary = require('../middleware/cloudinary');
 const codes = require('../models/codes');
 const mailer =  require('../middleware/mail')
+const history = require('../models/transact');
+const { assign } = require('nodemailer/lib/shared');
 
 // Function to generate 10 random number
 function getAccount(){
@@ -321,6 +323,40 @@ module.exports = {
         try {
             await codes.findByIdAndDelete(req.params.id)
             res.redirect('/admin/create')
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    debitaccount : async (req, res) => {
+        const accId =  req.params.id
+        const debitamount =  Number(req.body.debitamount)
+        try {
+            await accounts.findByIdAndUpdate(accId, {
+                $inc : {
+                    balance : -debitamount
+                }
+            })
+            console.log('account debited')
+            res.redirect(`/admin/account/user/${accId}`)
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    fetchtransactions : async (req, res) => {
+        try {
+            const alert =  await history.find().sort({ time : -1}).lean()
+            res.render('admin/transactions.ejs', { title : 'All transactions', alert : alert })
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    reversetransactioon : async (req, res) => {
+        try {
+            const reversetransact = await history.findById(req.params.id)
+            console.log(reversetransact)
         } catch (error) {
             console.error(error)
         }

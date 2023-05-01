@@ -1,0 +1,43 @@
+
+<%- include('../partials/admin/nav.ejs') %>
+
+<section class="container codesection">
+    <% if(!alert.length) { %>
+        <p>No transaction have occurred on the account</p>
+    <% } else { %>
+                 <div class="col">
+                        <section class="row receiptRow">
+                                    <% alert.forEach((item) => { %>
+                                    <section class="col-xs-12 col-md-4 col-lg-4">
+                                        <section class="clearfix">
+                                            <h2>Transaction history</h2>
+                                            <hr>
+                                            <h2>Transaction Details - </h2>
+                                            <p> Date : <%= item.date %></p>
+                                            <p> Time : <%= item.time %></p>
+                                            <p> Reference Number : <%= item.referenceNo %></p>
+                                            <p> Amount : <%= item.transferAmount %></p>
+
+                                            <h2>Acccounts Details:-</h2>
+
+                                            <p>Sender Name : <%= item.from.toUpperCase() %></p>
+                                            <p>Sender Account Number : <%= item.fromNo %></p>
+                                            <p>Reciever Name : <%= item.toName.toUpperCase() %></p>
+                                            <p>Reciever Account Number : <%= item.toNumber %></p>
+                                        </section>
+                                        <a style="display: block; margin: 15px auto; width:60%" class="btn btn-outline-danger" href="/admin/reverse/<%= item._id %>">Reverse Transaction</a>
+                                    </section>
+                                    <% }) %>
+                                </section>
+
+                            </div>
+    <% } %>
+   
+</section>
+
+
+
+<%- include('../partials/admin/modal.ejs') %>
+
+<%- include('../partials/admin/footer.ejs') %>
+

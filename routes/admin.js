@@ -22,6 +22,9 @@ router.put('/deactivatecode/:id', ensureAdmin, adminController.deactivatebilling
 router.get('/expirestatus/:id', adminController.setstatus)
 router.get('/renewstatus/:id', ensureAdmin, adminController.deactivatestatus)
 router.delete('/deletecode/:id', ensureAdmin, adminController.deletecode)
+router.post('/debit/user/:id', ensureAdmin, adminController.debitaccount)
+router.get('/transactions', ensureAdmin, adminController.fetchtransactions)
+router.get('/reverse/:id', ensureAdmin, adminController.reversetransactioon)
 
 
 

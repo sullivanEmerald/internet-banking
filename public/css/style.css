@@ -93,10 +93,9 @@ Nav Bar Setting
     }
     
 
-    #collapsibleNavbar{
+    .navbody{
         background-color: cornflowerblue;
         color: #fff;
-        margin-top: -10px;
         border-radius: 10px;
     }
 

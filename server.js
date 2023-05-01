@@ -19,6 +19,8 @@ require('./config/passport')(passport)
 connectDB()
 
 
+
+
 // SETTING APP MIDDLEWARES
 
 app.set('view engine', 'ejs')
@@ -27,6 +29,7 @@ app.use(express.urlencoded( { extended : true}))
 app.use(express.json())
 app.use(logger("dev"))
 app.use(methodOveride('_method'))
+
 
 app.use(session({
     secret : 'keyboard cat',

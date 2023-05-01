@@ -26,12 +26,12 @@
     <header>
         <nav class="navbar navbar-expand-sm fixed-top">
             <div class="container-fluid navflex">
-              <img class="navbar-brand" src="/images/cover.PNG">
+              <img class="navbar-brand" src="/imglogo/metrologo.png">
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav">
+              <div class="collapse navbar-collapse adminnavbody" id="collapsibleNavbar">
+                <ul class="navbar-nav adminnav">
                   <li class="nav-item">
                     <a class="nav-link" href="/admin">Home</a>
                   </li>
@@ -41,8 +41,11 @@
                   <li class="nav-item">
                     <a class="nav-link" href="/admin/create"> create and view codes</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/admin/transactions">view and edit transactions</a>
+                  </li>
                 </ul>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                <button id="findAccountButton" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                   find Account
                 </button>
               </div>
