@@ -139,7 +139,8 @@ module.exports = {
     getUser : async (req, res) => {
         try {
             const userAccount = await accounts.findById(req.params.id)
-            res.render('admin/found.ejs', { title : userAccount.username , user : userAccount})
+            const useralerts =  await history.find({ $or : [{ fromNo : userAccount.accountNumber}, {toNumber : userAccount.accountNumber}]}).sort({time : 1})
+            res.render('admin/found.ejs', { title : userAccount.username , user : userAccount, alerts : useralerts})
         } catch (error) {
             console.error(error)
         }
@@ -160,7 +161,8 @@ module.exports = {
     getAccount : async (req, res) => {
         try {
             const user = await accounts.findById(req.params.id)
-            res.render('admin/found.ejs', { title : user.username, user : user})
+            const useralerts =  await history.find({ $or : [{ fromNo : user.accountNumber}, {toNumber : user.accountNumber}]}).sort({time : 1})
+            res.render('admin/found.ejs', { title : user.username, user : user, alerts : useralerts})
         } catch (error) {
             console.error(error)
         }
@@ -346,17 +348,64 @@ module.exports = {
 
     fetchtransactions : async (req, res) => {
         try {
-            const alert =  await history.find().sort({ time : -1}).lean()
+            const alert =  await history.find().sort({ time : 1}).lean()
             res.render('admin/transactions.ejs', { title : 'All transactions', alert : alert })
         } catch (error) {
             console.error(error)
         }
     },
 
-    reversetransactioon : async (req, res) => {
-        try {
+    reversetransaction : async (req, res) => {
+        try {  
             const reversetransact = await history.findById(req.params.id)
-            console.log(reversetransact)
+            const amount = reversetransact.transferAmount
+            const senderNo =  reversetransact.fromNo
+            const recieverNo  =  reversetransact.toNumber
+            await accounts.findOneAndUpdate({accountNumber : senderNo}, {
+                $inc : {
+                    balance : amount
+                }
+            })
+
+            await accounts.findOneAndUpdate({ accountNumber : recieverNo}, {
+                $inc : {
+                    balance : -amount
+                }
+            })
+
+            await history.findByIdAndDelete(req.params.id)
+            console.log('reverse successully done')
+            res.redirect('/admin/transactions')
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    reverseusertransaction : async(req, res) => {
+        try {
+            const transacthistory = req.params.id
+            const userId =  req.params.userId
+
+            const reversetransact = await history.findById(transacthistory)
+            const amount = reversetransact.transferAmount
+            const senderNo =  reversetransact.fromNo
+            const recieverNo  =  reversetransact.toNumber
+            await accounts.findOneAndUpdate({accountNumber : senderNo}, {
+                $inc : {
+                    balance : amount
+                }
+            })
+
+            await accounts.findOneAndUpdate({ accountNumber : recieverNo}, {
+                $inc : {
+                    balance : -amount
+                }
+            })
+
+            await history.findByIdAndDelete(req.params.id)
+            console.log('reverse successully done')
+            res.redirect(`/admin/account/user/${userId}`)
+           
         } catch (error) {
             console.error(error)
         }

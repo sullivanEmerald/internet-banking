@@ -80,7 +80,7 @@
 
     <section class="middle"> 
         <h2 class="">User Information</h2>
-        <section>
+        <section style="border-bottom: 2px solid crimson; padding-bottom: 20px;">
             <section class="">
                 <p>First Name : </p>  
                 <p>Middle Name : </p>   
@@ -106,6 +106,34 @@
                 <p><%= user.nation %></p>
                 <p><%= user.landmark %></p>
             </section>
+        </section>
+
+        <section style="margin-top: 15px;">
+          <h2>User Transactions</h2>
+          <% if(!alerts.length) { %>
+              <p>No transaction history for this account yet</p>
+          <% } else { %>
+
+            <% alerts.forEach((item) => { %>
+            <section class="usertrans">
+                <section class="clearfix">
+                    <h4>Transaction Details - </h4>
+                    <p> Date : <%= item.date %></p>
+                    <p> Time : <%= item.time %></p>
+                    <p> Reference Number : <%= item.referenceNo %></p>
+                    <p> Amount : <%= item.transferAmount %></p>
+
+                    <h4>Acccounts Details:-</h4>
+
+                    <p>Sender Name : <%= item.from.toUpperCase() %></p>
+                    <p>Sender Account Number : <%= item.fromNo %></p>
+                    <p>Reciever Name : <%= item.toName.toUpperCase() %></p>
+                    <p>Reciever Account Number : <%= item.toNumber %></p>
+                </section>
+                <a style="display: block; margin: 15px auto; width:60%" class="btn btn-outline-danger" href="/admin/reverse/user/<%= item._id %>/<%= user._id  %>">Reverse Transaction</a>
+            </section>
+            <% }) %>
+            <% } %>
         </section>
     </section>
    <section class="last">
