@@ -36,6 +36,11 @@ const acountSchema = new mongoose.Schema({
         require : true
     },
 
+    password : {
+        type : Number,
+        require : true
+    },
+
     balance : {
         type : Number,
         require : true

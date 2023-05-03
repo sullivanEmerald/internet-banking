@@ -3,7 +3,6 @@ const cloudinary = require('../middleware/cloudinary');
 const codes = require('../models/codes');
 const mailer =  require('../middleware/mail')
 const history = require('../models/transact');
-const { assign } = require('nodemailer/lib/shared');
 
 // Function to generate 10 random number
 function getAccount(){
@@ -21,6 +20,15 @@ function getAccount(){
 }
 
 // functions for generating codes
+
+function password(){
+    let result = '';
+    for (let i = 0; i < 7; i++) {
+        result += Math.floor(Math.random() * 10);
+    }
+
+    return +result
+}
 
 function cot(){
     let result = '';
@@ -100,7 +108,8 @@ module.exports = {
                 ownerImage : result.secure_url,
                 cloudinaryId : result.public_id,
                 accountNumber : accnumber,
-                active  : 'active'
+                active  : 'active',
+                password : password()
             })
 
             message = {

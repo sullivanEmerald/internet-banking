@@ -84,17 +84,11 @@ module.exports = {
     findUser : async (req, res) => {
             const validationErrors = [];
         try {
-
-            // checking if an email has been associated with an account
-            const mailcheck = await accounts.find({email : req.user.email})
-            const completecheck = mailcheck[0]
-
-            if(!completecheck){
-                validationErrors.push({ msg: "You have not opened any account with us with this email. Join us today and enjoy our numerious services to all our users" });
-            }
+            let accNo = Number(req.body.account)
+            let password =  Number(req.body.password)
 
             // checking if account email used in loggin in is assocaited with the account
-            const account = await accounts.find({ accountNumber : req.body.account, email : req.user.email})
+            const account = await accounts.find({ accountNumber : accNo, password : password})
             const user = account[0]
 
 
@@ -103,7 +97,7 @@ module.exports = {
             }
 
             if(!user){
-                validationErrors.push({ msg: "Account Number or Email Mismatch" });
+                validationErrors.push({ msg: "Wrong account number or password. Contact the customer care with customercare@mfinancebank.com with your account numbr on the email to enable resolve the the problem and respond to you" });
             }else{
                 if(user.active === 'closed'){
                     validationErrors.push({ msg: "This account have been closed and you no longet have access to this account. Contact the support team, if substantial evidence is provided and the account passess credibility test, it can be reopened. Thank you for banking with us" });
