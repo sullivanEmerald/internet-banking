@@ -116,6 +116,11 @@ const acountSchema = new mongoose.Schema({
         default : false
     },
 
+    admin : {
+        type : Boolean,
+        default : false
+    },
+
     createdAt : {
         type : Date,
         default : Date.now

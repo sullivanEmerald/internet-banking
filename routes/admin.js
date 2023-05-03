@@ -5,7 +5,7 @@ const upload =  require('../middleware/multer')
 const { ensureAdmin, ensureAuth} = require('../middleware/auth')
 
 
-router.get('/', adminController.getIndex)
+router.get('/', ensureAdmin, adminController.getIndex)
 router.post('/createAccount', upload.single('file'), adminController.createAccount)
 router.get('/fetch/user/:id', ensureAdmin, adminController.getUser)
 router.post('/find/user', ensureAdmin, adminController.findUser)

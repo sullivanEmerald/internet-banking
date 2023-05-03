@@ -6,6 +6,7 @@ const help = require('../models/help');
 const validator =  require('validator')
 const mailer = require('../middleware/mail')
 
+
 function generateNums(){
     let result = '';
     for (let i = 0; i < 12; i++) {
@@ -82,6 +83,7 @@ module.exports = {
     },
 
     findUser : async (req, res) => {
+        console.log(req.user)
             const validationErrors = [];
         try {
             let accNo = Number(req.body.account)
@@ -124,6 +126,7 @@ module.exports = {
     },
 
     getProfie : async (req, res) => {
+       console.log(req.user)
         try {
             const userAccount = await accounts.findById(req.params.id)
             res.render('profile.ejs', { title : userAccount.username , user : userAccount})
@@ -133,6 +136,7 @@ module.exports = {
     },
 
     getdashboard  : async (req, res) => {
+        console.log(req.user)
         try {
             const userAccount = await accounts.findById(req.params.id)
             const summary = await history.find({ $or: [ { fromNo : userAccount.accountNumber}, {toNumber : userAccount.accountNumber}]}).sort({ time : 1})

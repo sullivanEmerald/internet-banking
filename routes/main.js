@@ -2,6 +2,9 @@ const express = require('express')
 const router = express.Router()
 const authController = require('../controllers/auth')
 const main = require('../controllers/main')
+const passport = require('passport');
+require('../config/passport')(passport);
+
 
 // get controller for the main routes
 const mainController = require('../controllers/main')
@@ -19,7 +22,7 @@ router.get('/insurance', mainController.getInsurance)
 router.get('/save', mainController.getSave)
 router.get('/contact', mainController.getContact)
 router.get('/search',   mainController.getUser)
-router.post('/find/user',  mainController.findUser)
+router.post('/find/user', passport.authenticate('local', { failureRedirect: '/search' }), mainController.findUser)
 router.get('/user/profile/:id',  mainController.getProfie )
 router.get('/dashboard/:id',  mainController.getdashboard)
 router.get('/transfer/:id', ensureAuth, mainController.getTransfer)

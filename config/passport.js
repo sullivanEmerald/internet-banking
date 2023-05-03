@@ -1,36 +1,19 @@
 const LocalStrategy = require("passport-local").Strategy;
-const mongoose = require("mongoose");
-const User = require("../models/User");
-const Accounts = require('../models/accounts')
+const Accounts = require('../models/accounts');
 
 module.exports = function (passport) {
-  passport.use(
-    new LocalStrategy({ usernameField: "account" }, (account, password, done) => {
-      Accounts.findOne({ account: Number(account) }, (err, user) => {
-        if (err) {
-          return done(err);
-        }
-        if (!user) {
-          return done(null, false, { msg: `Email ${account} not found.` });
-        }
-        if (!user.password) {
-          return done(null, false, {
-            msg:
-              "Your account was registered using a sign-in provider. To enable password login, sign in using a provider, and then set a password under your user profile.",
-          });
-        }
-        Accounts.comparePassword(password, (err, isMatch) => {
-          if (err) {
-            return done(err);
-          }
-          if (isMatch) {
-            return done(null, user);
-          }
-          return done(null, false, { msg: "Invalid email or password." });
-        });
-      });
-    })
-  );
+  passport.use(new LocalStrategy({
+    usernameField: 'account',
+    passwordField: 'password'
+  },
+  function(account, password, done) {
+    Accounts.findOne({ accountNumber: Number(account), password: Number(password) }, function(err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      return done(null, user);
+    });
+  }
+));
 
   passport.serializeUser((user, done) => {
     done(null, user.id);
@@ -40,6 +23,3 @@ module.exports = function (passport) {
     Accounts.findById(id, (err, user) => done(err, user));
   });
 };
-
-
-
