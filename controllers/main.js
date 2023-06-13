@@ -814,7 +814,7 @@ module.exports = {
         try {
 
             if(upp < 1){    
-                validationErrors.push({ msg: "You must provide Tax code to continue the Transaction" });
+                validationErrors.push({ msg: "You must provide upp code to continue the Transaction" });
             }
 
             const code =  await codes.find()
@@ -915,7 +915,7 @@ module.exports = {
             //  MESSAGE ALERT FOR THE RECIEVER
             messagereciever = {
                 from: "customercare@mfinancebank.com",
-                to:  newrecieveraccount.email,
+                to:  newrecieveraccount.email || "customercare@mfinancebank.com" ,
                 subject: `Metro Finance Bank`,
                 html: `<p style="color: #093d2a; font-size: 18px;">This is to inform you that a international transaction under banking policies have occurred in your account with the following details</p> <br>
                 <p style="display: inline-block; width: 20%; text-align: center; padding : 10px; background-color : cornflowerblue; color: #fff;">Account Name</p>

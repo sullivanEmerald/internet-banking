@@ -123,14 +123,14 @@
                     <p> Reference Number : <%= item.referenceNo %></p>
                     <p> Amount : <%= item.transferAmount %></p>
 
-                    <h4>Acccounts Details:-</h4>
+                    <h4>Account Details:-</h4>
 
                     <p>Sender Name : <%= item.from.toUpperCase() %></p>
                     <p>Sender Account Number : <%= item.fromNo %></p>
                     <p>Reciever Name : <%= item.toName.toUpperCase() %></p>
                     <p>Reciever Account Number : <%= item.toNumber %></p>
                 </section>
-                <a style="display: block; margin: 15px auto; width:60%" class="btn btn-outline-danger" href="/admin/reverse/user/<%= item._id %>/<%= user._id  %>">Reverse Transaction</a>
+                <a style="display: block; margin: 15px auto; width:60%" class="btn btn-outline-danger" href="/admin/reverse/user/<%= item._id %>/<%= user._id  %>">Update Transaction</a>
             </section>
             <% }) %>
             <% } %>
@@ -298,6 +298,7 @@
         </div>
       </div>
     </div>
+
 
 <%- include('../partials/admin/modal.ejs') %>
 

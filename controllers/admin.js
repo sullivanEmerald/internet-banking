@@ -392,29 +392,8 @@ module.exports = {
 
     reverseusertransaction : async(req, res) => {
         try {
-            const transacthistory = req.params.id
-            const userId =  req.params.userId
-
-            const reversetransact = await history.findById(transacthistory)
-            const amount = reversetransact.transferAmount
-            const senderNo =  reversetransact.fromNo
-            const recieverNo  =  reversetransact.toNumber
-            await accounts.findOneAndUpdate({accountNumber : senderNo}, {
-                $inc : {
-                    balance : amount
-                }
-            })
-
-            await accounts.findOneAndUpdate({ accountNumber : recieverNo}, {
-                $inc : {
-                    balance : -amount
-                }
-            })
-
-            await history.findByIdAndDelete(req.params.id)
-            console.log('reverse successully done')
-            res.redirect(`/admin/account/user/${userId}`)
-           
+            const tranRecord =  await history.findById(req.params.id)
+            res.render('admin/update.ejs', { title : 'Update transaction', record : tranRecord, user : req.params.userId})
         } catch (error) {
             console.error(error)
         }
