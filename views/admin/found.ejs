@@ -4,6 +4,21 @@
     <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
 <% } %>
 
+
+<div style="margin: 5% auto; width: 70%">
+  <% if (locals.messages.errors) { %>
+    <% messages.errors.forEach( el => { %>
+        <div class="alert alert-danger"><%= el.msg %></div>
+    <% }) %>    
+<% } %>
+<% if (locals.messages.info) { %>
+    <% messages.info.forEach( el => { %>
+        <div class="alert alert-info"><%= el.msg %></div>
+    <% }) %>    
+<% } %>
+</div>
+
+
 <section class="accountInfo">
     <section class="accDetails">
         <h2>Account Details</h2>
@@ -110,6 +125,7 @@
 
         <section style="margin-top: 15px;">
           <h2>User Transactions</h2>
+
           <% if(!alerts.length) { %>
               <p>No transaction history for this account yet</p>
           <% } else { %>
@@ -130,7 +146,8 @@
                     <p>Reciever Name : <%= item.toName.toUpperCase() %></p>
                     <p>Reciever Account Number : <%= item.toNumber %></p>
                 </section>
-                <a style="display: block; margin: 15px auto; width:60%" class="btn btn-outline-danger" href="/admin/reverse/user/<%= item._id %>/<%= user._id  %>">Update Transaction</a>
+                <a style="margin: 10px; width: 40%" class="btn btn-outline-danger" href="/admin/update/user/<%= item._id %>/<%= user._id  %>">Update</a>
+                <a style="margin: 10px; width: 40%" class="btn btn-outline-danger" href="/admin/reverse/<%= item._id %>/<%= user._id  %>">Reverse</a>
             </section>
             <% }) %>
             <% } %>

@@ -24,8 +24,12 @@ router.get('/renewstatus/:id', ensureAdmin, adminController.deactivatestatus)
 router.delete('/deletecode/:id', ensureAdmin, adminController.deletecode)
 router.post('/debit/user/:id', ensureAdmin, adminController.debitaccount)
 router.get('/transactions', ensureAdmin, adminController.fetchtransactions)
-router.get('/reverse/:id', ensureAdmin, adminController.reversetransaction)
-router.get('/reverse/user/:id/:userId', ensureAdmin, adminController.reverseusertransaction)
+router.get('/generalreverse/:id', ensureAdmin, adminController.reversetransaction)
+router.get('/generalupdate/:id', ensureAdmin, adminController.updateAllForm)
+router.post('/updateone/:id', ensureAdmin, adminController.updateOne)
+router.get('/update/user/:id/:userId', ensureAdmin, adminController.reverseusertransaction)
+router.post('/reverse/:id', ensureAdmin, adminController.updatetransaction)
+router.get('/reverse/:id/:userId', ensureAdmin, adminController.restoreTransaction)
 
 
 

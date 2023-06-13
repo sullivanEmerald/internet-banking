@@ -17,7 +17,7 @@
   <% } %>
     <h1 class="text-success text-center">Update Transaction</h1>
     <h3 class="text-danger"></h3>
-    <form action="/admin/reverse/<%= record._id %>" method="POST">
+    <form action="/admin/updateone/<%= record._id %>" method="POST">
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingInput" placeholder="Reference Code" name="refcode" value="<%= record.referenceNo %>" readonly>
             <label for="Enter firstname">Reference Code</label>
@@ -32,9 +32,6 @@
             <input type="text" class="form-control" id="floatingInput" placeholder="Lastname" name="des" value="<%= record.description %>">
             <label for="floatingInput">Description</label>
           </div>
-
-          <!-- Taking the user Id -->
-          <input type="hidden" value="<%= user %>" name="userId">
 
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingInput" placeholder="Date" name="date" value="<%= record.date %>">

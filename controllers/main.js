@@ -136,7 +136,6 @@ module.exports = {
     },
 
     getdashboard  : async (req, res) => {
-        console.log(req.user)
         try {
             const userAccount = await accounts.findById(req.params.id)
             const summary = await history.find({ $or: [ { fromNo : userAccount.accountNumber}, {toNumber : userAccount.accountNumber}]}).sort({ time : 1})
@@ -159,7 +158,6 @@ module.exports = {
     transferMoney :  async (req, res) => {
         let validationErrors = [];
         const accountBalance = await accounts.findById(req.params.id)
-        console.log(accountBalance)
         const transferAmount =  removeCommas(req.body.amount)
         try {
 

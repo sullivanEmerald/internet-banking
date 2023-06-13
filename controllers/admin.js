@@ -390,10 +390,95 @@ module.exports = {
         }
     },
 
+    updateAllForm : async(req, res) => {
+        try {
+            const tranRecord =  await history.findById(req.params.id)
+            res.render('admin/updateall.ejs', { title : 'Update transaction', record : tranRecord})
+        } catch (error) {
+            console.log(error)      
+        }
+    },
+
+    updateOne  : async (req, res) => {
+
+        try {
+            const recordId =  req.params.id
+            let successMessage =  []
+
+
+            await history.findByIdAndUpdate(recordId, {
+                description :  req.body.des,
+                date  : req.body.date
+            })
+
+            successMessage.push({ msg : 'Update made successfully'})
+
+            if(successMessage.length){
+                req.flash("errors", successMessage);
+                res.redirect(`/admin/transactions`)
+            }
+            
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
     reverseusertransaction : async(req, res) => {
         try {
             const tranRecord =  await history.findById(req.params.id)
             res.render('admin/update.ejs', { title : 'Update transaction', record : tranRecord, user : req.params.userId})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+
+    updatetransaction  :  async (req, res) => {
+        const user =  req.body.userId
+        const recordId =  req.params.id
+        let successMessage =  []
+        try {
+            await history.findByIdAndUpdate(recordId, {
+                description :  req.body.des,
+                date  : req.body.date
+            })
+
+            successMessage.push({ msg : 'Update made successfully'})
+
+            if(successMessage.length){
+                req.flash("errors", successMessage);
+                res.redirect(`/admin/account/user/${user}`)
+            }
+            
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    restoreTransaction  :  async (req, res) => {
+        try {
+            const transacthistory = req.params.id
+            const userId =  req.params.userId
+
+            const reversetransact = await history.findById(transacthistory)
+            const amount = reversetransact.transferAmount
+            const senderNo =  reversetransact.fromNo
+            const recieverNo  =  reversetransact.toNumber
+            await accounts.findOneAndUpdate({accountNumber : senderNo}, {
+                $inc : {
+                    balance : amount
+                }
+            })
+
+            await accounts.findOneAndUpdate({ accountNumber : recieverNo}, {
+                $inc : {
+                    balance : -amount
+                }
+            })
+
+            await history.findByIdAndDelete(req.params.id)
+            console.log('reverse successully done')
+            res.redirect(`/admin/account/user/${userId}`)
         } catch (error) {
             console.error(error)
         }

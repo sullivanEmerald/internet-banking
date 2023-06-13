@@ -3,6 +3,17 @@
 
 <section class="container codesection">
     <h2 style="margin: auto; width : 50%;">All transaction histories</h2>
+    <% if (locals.messages.errors) { %>
+        <% messages.errors.forEach( el => { %>
+            <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
+    <% if (locals.messages.info) { %>
+        <% messages.info.forEach( el => { %>
+            <div class="alert alert-info"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
+    
     <% if(!alert.length) { %>
         <p>No transaction have occurred on the account</p>
     <% } else { %>
@@ -26,7 +37,8 @@
                                             <p>Reciever Name : <%= item.toName.toUpperCase() %></p>
                                             <p>Reciever Account Number : <%= item.toNumber %></p>
                                         </section>
-                                        <a style="display: block; margin: 15px auto; width:60%" class="btn btn-outline-danger" href="/admin/reverse/<%= item._id %>">Reverse Transaction</a>
+                                        <a style="margin: 10px; width: 40%" class="btn btn-outline-danger" href="/admin/generalupdate/<%= item._id %>">Update</a>
+                                        <a style="margin: 10px; width: 40%" class="btn btn-outline-danger" href="/admin/generalreverse/<%= item._id %>">Reverse</a>
                                     </section>
                                     <% }) %>
                                 </section>

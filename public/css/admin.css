@@ -63,7 +63,7 @@ Account Information Page
 */
 
 .accountInfo{
-    margin-top: 10%;
+    margin-top: 5%;
     display: flex;
     justify-content: flex-start;
     flex: wrap;
