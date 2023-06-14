@@ -173,7 +173,19 @@ section.last > h2 + section{
 
 .codesection{
     margin: 100px auto;
-    width: 70%;
+    width: 90%;
+}
+
+.codesection > h2 {
+    margin: 20px auto;
+    width: 50%;
+    font-size: 40px;
+    color: crimson;
+    text-decoration: underline;
+}
+
+.adminnavbody{
+    margin-left: 20%;
 }
 
 @media screen and (max-width: 480px){
@@ -205,15 +217,23 @@ section.last > h2 + section{
     .accountForm > h1 +  form{
         flex-direction: column;
     }
+
     .adminnavbody{
         background-color: cornflowerblue;
         color: #fff;
         border-radius: 10px;
         padding: 15px;
+        margin-left: 0;
     }
 
    #findAccountButton{
         color: #fff;
+   }
+
+   .codesection > h2 {
+     width: 85%;
+     margin: 10px auto;
+     font-size: 25px;
    }
 
  }

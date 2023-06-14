@@ -2,7 +2,7 @@
 <%- include('../partials/admin/nav.ejs') %>
 
 <section class="container codesection">
-    <h2 style="margin: auto; width : 60%; font-size: 40px;">All Transaction Histories</h2>
+    <h2>All Transaction Histories</h2>
     <% if (locals.messages.errors) { %>
         <% messages.errors.forEach( el => { %>
             <div class="alert alert-danger"><%= el.msg %></div>
@@ -20,7 +20,7 @@
                  <div class="col">
                         <section class="row receiptRow">
                                     <% alert.forEach((item) => { %>
-                                    <section class="col-xs-12 col-md-4 col-lg-4">
+                                    <section class="">
                                         <section class="clearfix">
                                             <h2>Transaction history</h2>
                                             <hr>
