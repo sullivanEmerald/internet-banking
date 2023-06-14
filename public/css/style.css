@@ -2077,11 +2077,12 @@ ALL TRANSACTIONS RECEIPT PAGE
 
 .profileuser > img {
     border-radius: 50%;
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
 }
 
-.accountInfo > div  {
+.infoprofile > div  {
     background-color: #093d2a;
     color: #fff;
     padding: 5px;
@@ -2089,11 +2090,15 @@ ALL TRANSACTIONS RECEIPT PAGE
 
 }
 
-.accountprofile > section > section {
-    line-height: 2.0px;
+.infoprofile > section, .infoheader > section {
+    line-height: 0.5;
 }
 
-.accountprofile > section {
+.infoheader > section > p:first-child {
+    color: #3498db ;
+}
+
+.infoprofile > section {
     margin-left: 10px;
 }
 
