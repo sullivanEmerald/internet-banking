@@ -2,7 +2,7 @@
 <%- include('../partials/admin/nav.ejs') %>
 
 <section class="container codesection">
-    <h2 style="margin: auto; width : 50%;">All transaction histories</h2>
+    <h2 style="margin: auto; width : 60%; font-size: 40px;">All Transaction Histories</h2>
     <% if (locals.messages.errors) { %>
         <% messages.errors.forEach( el => { %>
             <div class="alert alert-danger"><%= el.msg %></div>
@@ -13,7 +13,7 @@
             <div class="alert alert-info"><%= el.msg %></div>
         <% }) %>    
     <% } %>
-    
+
     <% if(!alert.length) { %>
         <p>No transaction have occurred on the account</p>
     <% } else { %>

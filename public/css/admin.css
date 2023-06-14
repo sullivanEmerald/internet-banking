@@ -172,7 +172,8 @@ section.last > h2 + section{
 }
 
 .codesection{
-    margin-top: 100px;
+    margin: 100px auto;
+    width: 70%;
 }
 
 @media screen and (max-width: 480px){
